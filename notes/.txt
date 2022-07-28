@@ -1,0 +1,8 @@
+fonts
+    Inria Sans
+        bold
+        bold-italic
+        italic
+        light
+        light-italic
+        regular
