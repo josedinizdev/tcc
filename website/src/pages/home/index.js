@@ -1,10 +1,12 @@
 import React from 'react';
-import { LandingPage } from './styles';
+import { Link } from 'react-router-dom';
+import StyledHome from './styles';
 
-export default function Index() {
+export default function Home() {
     return (
-        <LandingPage>
-            
-        </LandingPage>
+        <StyledHome>
+            <h1>teste</h1>
+            <Link to='/login'>Login</Link>
+        </StyledHome>
     )
 };

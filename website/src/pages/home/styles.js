@@ -1,4 +1,6 @@
 import styled from 'styled-components';
 
-export const LandingPage = styled.div`
+const StyledHome = styled.div`
 `;
+
+export default StyledHome;
