@@ -30,6 +30,55 @@ const Common = createGlobalStyle`
         font-family: 'inria-regular';
         src: url('/fonts/inria-sans/InriaSans-Regular.ttf');
     }
+
+    @font-face{
+        font-family: 'code-light';
+        src: url('/fonts/source-code-pro/SourceCodePro-Light.ttf');
+    }
+
+    @font-face{
+        font-family: 'code-regular';
+        src: url('/fonts/source-code-pro/SourceCodePro-Regular.ttf');
+    }
+
+    @font-face{
+        font-family: 'code-medium';
+        src: url('/fonts/source-code-pro/SourceCodePro-Medium.ttf');
+    }
+
+    @font-face{
+        font-family: 'code-semibold';
+        src: url('/fonts/source-code-pro/SourceCodePro-SemiBold.ttf');
+    }
+
+    @font-face{
+        font-family: 'code-bold';
+        src: url('/fonts/source-code-pro/SourceCodePro-Bold.ttf');
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'inria-bold'
+    }
+
+    h1 {
+        font-size: 3.4rem;
+        line-height: 4.2rem;
+        letter-spacing: 0.001rem;
+    }
+
+    h2 {
+
+    }
+
+    h3 {
+
+    }
+
+    .subtitle-h1 {
+        font-size: 1.4rem;
+        line-height: 1.7rem;
+        letter-spacing: 0.001rem;
+    }
     
     * {
         font-family: 'inria-regular';
@@ -41,6 +90,18 @@ const Common = createGlobalStyle`
         text-decoration: none;
         list-style: none;
         font-weight: normal;
+    }
+
+    .code-bold{
+        font-family: 'code-bold';
+    }
+
+    .code-semibold{
+        font-family: 'code-semibold';
+    }
+
+    .code-regular{
+        font-family: 'code-regular';
     }
 
     .container {
@@ -57,12 +118,17 @@ const Common = createGlobalStyle`
         justify-content: space-between;
     }
 
-    .ai-center{
-        align-itens: center;
+    .al-center{
+        align-items: center;
     }
 
     .txt-center{
         text-align: center;
+    }
+
+    .whf {
+        width: fit-content;
+        height: fit-content;
     }
 
     .wh100v {
@@ -100,7 +166,7 @@ const Common = createGlobalStyle`
     }
 
     .uppercase {
-        text-transform: capitalize;
+        text-transform: uppercase;
     }
 
     .obrigatory::after {
@@ -109,10 +175,18 @@ const Common = createGlobalStyle`
         color: red;
     }
 
+    .justaspace::after {
+        content: ' ';
+    }
+
     /* colors
     /* - login/register/admin
     /* #5551E3
     */
+
+    .cFFFFFF {
+        color: #FFFFFF;
+    }
 `;
 
 export default Common;

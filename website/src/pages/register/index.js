@@ -6,7 +6,7 @@ export default function Register() {
     return (
         <StyledRegister className='container wh100v'>
             <Background className='container-column w50 h100'>
-                <img src='/img/withu-logo.png'/>
+                <img src='/img/withu-logo.png' alt=''/>
                 <h1>Bem vindo(a) ao...</h1>
                 <p>Sempre com você. O problema apareceu, conte conosco</p>
             </Background>

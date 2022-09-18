@@ -1,83 +1,56 @@
 import styled from "styled-components";
 
 const StyledLogin = styled.section`
-    img {
-        width: 10%;
-        height: 8%;
+    .login__logo {
+        width: 4.7rem;
+        height: auto;
     }
-
-    h1 {
-        font-family: inria-bold;
-        font-size: 2.3rem;
-        color: #fff;
-        margin: -3% 0 5% 10%;
-    }
-
-    .conteudo {
-        font-family: inria-light;
-        font-size: 1.2rem;
-        color: #fff;
-        margin-left: 10%;
-    }
-
-    h2 {
-        font-family: inria-bold;
-        font-size: 2.3rem;
-        color: #5551E3;
-        margin: 6% 0 1% 2%;
-    }
-
-
-    label {
-        font-family: inria-bold;
-        font-size: 1.1rem; 
-        margin: 0 0 1% 3%;
-    }
-    
-
-
-    input {
-        border: #858181 solid 2px;
-        border-bottom-left-radius: 4px;
-        border-top: hidden;
-        border-right: hidden;
-        width: 90%;
-        height: 2rem;   
-        margin: 0 0 8% 3%;
-    }
-
         
-    button {
+    .login__button {
+        width: 100%;
+        padding: .4rem 0 .7rem;
+        font-size: 2.3rem;
         background-color: #5551E3;
-        width: 25rem;
-        padding: 0.6rem 0.8rem;
+        height: fit-content;
         color: #fff;
-        font-family: inria-bold;
-        font-size: 2.4rem;
         border-radius: 1.5rem;
         cursor: pointer;
-        margin: 0 0 1.2rem 25%;
+        margin-bottom: 1rem;
     }
 
-    span {
-        color: #5551E3;
+    .login__form {
+        label {
+            margin-bottom: .4rem;
+        }
+
+        input {
+            border: #858181 solid 4px;
+            border-top: none;
+            border-right: none;
+            border-radius: 0 0 0 10px;
+            outline: none;
+            height: 2rem;
+            margin-bottom: 2rem;
+        }
     }
     
-    .padding {
-        padding-left: 2%;
+    div:nth-child(2) > div {
+        padding: 5rem 0;
+        width: 75%
     }
+`;
 
-    
-    .desc {
-        font-family: inria-bold;
-        font-size: 1.3rem;   
-        letter-spacing: 1.5px; 
-        margin-bottom: 10%;
-    }
+export const BackgroundDiv = styled.div`
+    background: #5551E3 url('/img/background-login-cadastro.png') no-repeat bottom;
+    background-size: 75% auto;
 
-    .converter {
-        width: 88%;
-        margin-left: 2%;
+    div:nth-child(2) {
+        margin-top: 3rem; 
+        width: 75%;
+
+        h1 {
+            margin-bottom: 2rem;
+        }
     }
 `;
 

@@ -6,7 +6,8 @@ export default function Home() {
     return (
         <StyledHome>
             <h1>teste</h1>
-            <Link to='/loginn'>Login</Link>
+            <p>test</p>
+            <Link to='/login'>Login</Link>
             <Link to='/cadastro'>Registrar</Link>
         </StyledHome>
     )

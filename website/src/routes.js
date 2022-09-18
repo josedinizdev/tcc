@@ -9,7 +9,7 @@ export default function Index() {
         <BrowserRouter>
             <Routes>
                 <Route exact path='/' element={<Home />} />
-                <Route path='/loginn' element={<Login />} />
+                <Route path='/login' element={<Login />} />
                 <Route path='/cadastro' element={<Register />} />
             </Routes>
         </BrowserRouter>
