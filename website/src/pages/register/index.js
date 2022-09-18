@@ -6,6 +6,7 @@ export default function Register() {
     return (
         <StyledRegister className='container wh100v'>
             <Background className='container-column w50 h100'>
+                <img src='/img/withu-logo.png'/>
                 <h1>Bem vindo(a) ao...</h1>
                 <p>Sempre com você. O problema apareceu, conte conosco</p>
             </Background>
@@ -26,9 +27,11 @@ export default function Register() {
                 <button>Cadastrar</button>
                 <div className='container jc-between w100'>
                     <p>Já possui um login?</p>
-                    <Link to='/login'>Login</Link>
+                    <Link to='/loginn'> <span> Login </span> </Link>
                 </div>
             </div>
         </StyledRegister>
     )
 };
+
+export {Background}

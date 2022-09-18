@@ -36,6 +36,7 @@ const Common = createGlobalStyle`
         color: #323232;
         padding: 0;
         margin: 0;
+        border: 0;
         box-sizing: border-box;
         text-decoration: none;
         list-style: none;
@@ -54,6 +55,14 @@ const Common = createGlobalStyle`
 
     .jc-between {
         justify-content: space-between;
+    }
+
+    .ai-center{
+        align-itens: center;
+    }
+
+    .txt-center{
+        text-align: center;
     }
 
     .wh100v {
@@ -96,6 +105,7 @@ const Common = createGlobalStyle`
 
     .obrigatory::after {
         content: '*';
+        margin-left: 0.5%;
         color: red;
     }
 
