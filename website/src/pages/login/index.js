@@ -30,7 +30,7 @@ export default function Login() {
                     <div>
                         <button className='login__button'>Login</button>
                         <div className='container'>
-                            <p>Novo usuário? <Link to='/cadastro'><span>Login</span></Link></p>
+                            <p>Novo usuário? <Link to='/cadastro'><span className="blue">Cadastro</span></Link></p>
                         </div>
                     </div>
                 </div>
