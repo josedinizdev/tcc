@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/tcc/static/js/main.017c91e6.js",
-    "index.html": "/tcc/index.html",
-    "main.017c91e6.js.map": "/tcc/static/js/main.017c91e6.js.map"
+    "main.js": "/static/js/main.7b2abcaf.js",
+    "index.html": "/index.html",
+    "main.7b2abcaf.js.map": "/static/js/main.7b2abcaf.js.map"
   },
   "entrypoints": [
-    "static/js/main.017c91e6.js"
+    "static/js/main.7b2abcaf.js"
   ]
 }
