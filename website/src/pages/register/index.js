@@ -27,7 +27,7 @@ export default function Register() {
                 <button>Cadastrar</button>
                 <div className='container jc-between w100'>
                     <p>Já possui um login?</p>
-                    <Link to='/loginn'> <span> Login </span> </Link>
+                    <Link to='/login'> <span> Login </span> </Link>
                 </div>
             </div>
         </StyledRegister>

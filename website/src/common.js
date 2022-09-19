@@ -187,6 +187,10 @@ const Common = createGlobalStyle`
     .cFFFFFF {
         color: #FFFFFF;
     }
+
+    .blue {
+        color: #5551E3;
+    }
 `;
 
 export default Common;

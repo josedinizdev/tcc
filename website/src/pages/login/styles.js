@@ -31,6 +31,8 @@ const StyledLogin = styled.section`
             outline: none;
             height: 2rem;
             margin-bottom: 2rem;
+            padding: .5rem;
+            font-size: 1.2rem;
         }
     }
     
