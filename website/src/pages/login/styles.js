@@ -37,7 +37,7 @@ const StyledLogin = styled.section`
     }
     
     div:nth-child(2) > div {
-        padding: 5rem 0;
+        padding: 3rem 0;
         width: 75%
     }
 `;

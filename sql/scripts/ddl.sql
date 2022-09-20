@@ -91,7 +91,7 @@ create table tb_atribuido_chat(
     id_atribuido_chat       int primary key auto_increment,
     id_usuario              int not null,
     id_chat                 int not null,
-    foreign key (id_chat) references tb_chat(id_chat)
+    foreign key (id_chat) references tb_chat(id_chat),
     foreign key (id_usuario) references tb_usuario(id_usuario)
 );
 
@@ -165,7 +165,7 @@ create table tb_worker(
 create table tb_avaliacao(
     id_avaliacao            int primary key auto_increment,
     id_worker               int not null,
-    vl_avaliacao            decimal(2,2) not null
+    vl_avaliacao            decimal(2,2) not null,
     foreign key (id_worker) references tb_worker(id_worker)
 );
 
@@ -175,5 +175,5 @@ create table tb_atribuido(
     id_worker               int not null,
     id_servico              int not null,
     foreign key (id_worker) references tb_worker(id_worker),
-    foreign key (id_services) references tb_services(id_services)
+    foreign key (id_servico) references tb_servico(id_servico)
 );

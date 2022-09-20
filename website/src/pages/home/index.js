@@ -9,6 +9,7 @@ export default function Home() {
             <p>test</p>
             <Link to='/login'>Login</Link>
             <Link to='/cadastro'>Registrar</Link>
+            <Link to = '/Services'>Serviços</Link>
         </StyledHome>
     )
 };

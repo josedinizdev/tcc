@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/home/index';
 import Login from './pages/login';
 import Register from './pages/register';
+import HeaderBar from './components/view';
 
 export default function Index() {
     return (
@@ -11,6 +12,7 @@ export default function Index() {
                 <Route exact path='/' element={<Home />} />
                 <Route path='/login' element={<Login />} />
                 <Route path='/cadastro' element={<Register />} />
+                <Route path='/servicos' element={<HeaderBar />} />
             </Routes>
         </BrowserRouter>
     );
