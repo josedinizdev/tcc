@@ -122,6 +122,10 @@ const Common = createGlobalStyle`
         align-items: center;
     }
 
+    .jc-center{
+        justify-content: center;
+    }
+
     .txt-center{
         text-align: center;
     }

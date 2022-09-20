@@ -31,6 +31,8 @@ const StyledRegister = styled.div`
             outline: none;
             height: 2rem;
             margin-bottom: 2rem;
+            font-size: 1.2rem;
+            padding: .5rem;
         }
     }
     

@@ -6,16 +6,16 @@ export default function HeaderBar() {
         <StyledHeaderBar>
             <body className='container jc-between al-center'>
                 <div>
-                    <img src='/img/withu-logo.png' />
-                    <im classname='withu-logo' src='/img/logo-white.png' />
+                    <img src='/img/withu-logo.png' alt='' />
+                    <im classname='withu-logo' src='/img/logo-white.png' alt=''/>
                 </div>
 
                 <div>
-                    <a href=''> Página Inicial </a>
-                    <a href=''> Serviços </a>
-                    <a href=''> Suporte </a>
-                    <a href=''> Sobre </a>
-                    <a href=''> Perfil </a>
+                    <a href='/a'> Página Inicial </a>
+                    <a href='/b'> Serviços </a>
+                    <a href='/c'> Suporte </a>
+                    <a href='/d'> Sobre </a>
+                    <a href='/e'> Perfil </a>
 
                 </div>
             </body> 
