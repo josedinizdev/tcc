@@ -2,15 +2,15 @@ import styled from 'styled-components';
 
 const StytledListarProfissionais = styled.div`
     .card { 
-
         background-color: #fff;
         width: auto;
-        height: 16rem;
+        height: 100vh;
 
         padding: .2rem .8rem;
         border-radius: .3rem;
         margin: .4rem 2rem;
         box-sizing: border-box;
+        height: auto;
     }
 
     img {
@@ -29,12 +29,13 @@ const StytledListarProfissionais = styled.div`
         font-size: 1.4rem;
         font-family: inria-bold;
         line-height: 2rem;
+        width: auto;
     }
 
     h2 {    
         font-size: 1.1rem;
         font-family: inria-regular;
-        margin: 0;
+        width: 70%;
     }
 
     button {
@@ -51,11 +52,11 @@ const StytledListarProfissionais = styled.div`
     }
 
     .profissional {
-        margin: .3rem 0 0 0;
+        margin: .4rem 0 0 0;
     }
 
     .habilidades {
-        width: 40%;
+        width: 60%;
     }
 
 

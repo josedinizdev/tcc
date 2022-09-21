@@ -11,9 +11,9 @@ export default function Services() {
             <section className="container">
                 <div className="header-img-background">
                     <div className="container-column header-img-background">
-                        <h1 className="code-bold cFFFFFF "> - bem vindo(a) </h1>
-                        <img src="/img/logo-white.png" />
-                        <h2 className="code-regular cFFFFFF "> Sempre com você, o problema apareceu, conte conosco  </h2>
+                        <h1 className="code-bold cFFFFFF margin60"> - bem vindo(a) </h1>
+                        <img className="margin60 withu-logo-header" src="/img/logo-white.png" />
+                        <h2 className="code-regular cFFFFFF margin60"> Sempre com você, o problema apareceu, conte conosco  </h2>
                     </div>
                 </div>
             </section>
