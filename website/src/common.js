@@ -56,6 +56,11 @@ const Common = createGlobalStyle`
         src: url('/fonts/source-code-pro/SourceCodePro-Bold.ttf');
     }
 
+    @font-face {
+        font-family: 'filicudi-solid' ;
+        src: url('/fonts/source-code-pro/filicudi-solid.ttf');
+    }
+
     h1, h2, h3, h4, h5, h6 {
         font-family: 'inria-bold'
     }
@@ -194,6 +199,15 @@ const Common = createGlobalStyle`
 
     .blue {
         color: #5551E3;
+    }
+
+    .background-transparent {
+        background-color: rgba(105, 105, 105, 24%);
+        box-shadow: 0 .6rem rgba(0, 0, 0, 24%);
+    }
+
+    .c1E4F6F {
+        color: #1E4F6F;
     }
 `;
 

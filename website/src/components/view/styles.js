@@ -4,13 +4,18 @@ const StyledHeaderBar = styled.section `
     body {
         background-color: #242424;
         padding: .4rem 3rem .4rem 2rem;
-        top: 0;
         width: 100%;
     }   
 
     img {
         width: 4.7rem;
         height: auto;
+    }
+
+    img:nth-child(2) {
+        width: 8rem;
+        height: auto;
+        margin-bottom: 8.2%;
     }
 
     a {

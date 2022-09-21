@@ -7,7 +7,7 @@ export default function HeaderBar() {
             <body className='container jc-between al-center'>
                 <div>
                     <img src='/img/withu-logo.png' alt='' />
-                    <im classname='withu-logo' src='/img/logo-white.png' alt=''/>
+                    <img src="/img/logo-white.png" />
                 </div>
 
                 <div>
