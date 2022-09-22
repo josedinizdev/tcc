@@ -20,7 +20,7 @@ export default function Services() {
 
             <section className="container-column al-center">
                 <div className="container background-filters background-transparent">
-                    <button> <Link to='/servicos/cadastro'> Criar </Link> </button>
+                    <Link className="pointer" to='/servicos/cadastro'> <button>  Criar  </button> </Link>
                     <select>
                         <option> Gerenciar </option>
                     </select>

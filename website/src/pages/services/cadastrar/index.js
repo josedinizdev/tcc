@@ -1,38 +1,46 @@
+import { Link } from 'react-router-dom'
 import './styles.js'
 import StyledCadastrarServico from './styles.js'
 
 export default function CadastrarServic() {
     return(
-        <StyledCadastrarServico className='background-transparent container jc-center al-center wh100'>
-            <div>
-                <div>
-                    <input type='text' placeholder='Título'/>
-                    <input type='text' placeholder='Categoria'/>
+        <StyledCadastrarServico className='container-column wh100v jc-center al-center'> {/* Section Principal */}
+            <Link to='/servicos'>
+                <div className='container jc-start'>
+                    <img src='/img/setinha-voltar.png'/>
+                    <h2> Voltar </h2>
                 </div>
-                <button> Publicar</button>
-            </div>
+            </Link>
+            <form className='background'> {/* Formulario-Background */}
+                <div className='container jc-between al-center'> {/* Faixa1 */}
+                    <div className='container-column'> {/* Titulo E Categoria */}
+                        <input className='titulo-categoria' type='text' placeholder='Título' />
+                        <select className='titulo-categoria'> 
+                            <option> Categoria </option>
+                        </select>
+                    </div>
 
-            <div>
-                <div>
-                    <input type='text' placeholder='Descrição'/>
+                    <button className='cFFFFFF'> Publicar </button>
                 </div>
 
-                <div>
-                    <label> Ideias </label>
-                    <input type='text' placeholder='Ideias'/>
+                <div className='container jc-between w50v'> {/* Faixa2 */}
+                    <div className='container'> {/* lado Esquerdo */}
+                        <input className='descricao' type='text' placeholder='Descricao' />
+                    </div>
 
-                    <label> Endereço (opcional) </label>
-                    <input type='text'/>
-                </div>
-                
-                <div>
-                    <label> Requisitos </label>
-                    <input type='text' placeholder='Requisitos'/>
+                    <div className='container jc-between'> {/* Lado direito */}
+                        <div className='container-column' > {/* Ideias E Endereço  */}
+                            <input className='publicar-requisitos' type='text' placeholder='Ideias' />
+                            <input className='endereco-cep' type='text' />
+                        </div>
 
-                    <label> CEP (opcional) </label>
-                    <input type='text'/>
+                        <div className='container-column requisitos-margin'> {/* Requisitos E CEP */}
+                            <input className='publicar-requisitos' type='text' placeholder='Requisitos' />
+                            <input className='endereco-cep' type='text' />
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </form>
         </StyledCadastrarServico>
     )
 }

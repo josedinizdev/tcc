@@ -123,10 +123,18 @@ const Common = createGlobalStyle`
         justify-content: space-between;
     }
 
+    .jc-around {
+        justify-content: space-around;
+    }
+
     .al-center{
         align-items: center;
     }
 
+    .jc-start {
+        justify-content: flex-start;
+    }
+    
     .jc-center{
         justify-content: center;
     }
@@ -190,6 +198,10 @@ const Common = createGlobalStyle`
 
     .justaspace::after {
         content: ' ';
+    }
+
+    .pointer {
+        cursor: pointer;
     }
 
     /* colors

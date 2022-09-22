@@ -9,7 +9,4 @@ server.use(express.json());
 
 
 server.use(userController);
-
-server.get('/ping', (req, resp) => resp.send('Pong!'));
-
 server.listen(process.env.PORT, () => console.log(`API ONLINE NA PORTA ${process.env.PORT}`));
