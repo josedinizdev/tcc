@@ -15,7 +15,7 @@ export default function Index() {
                 <Route path='/login' element={<Login />} />
                 <Route path='/cadastro' element={<Register />} />
                 <Route path='/servicos' element={<Services />} />
-                <Route path='/servicos/cadastrar' element={<CadastrarServico />} />
+                <Route path='/servicos/cadastro' element={<CadastrarServico />} />
                 <Route path='/barra' element={<HeaderBar />} />
                 
             </Routes>

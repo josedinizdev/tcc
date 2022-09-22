@@ -131,6 +131,10 @@ const Common = createGlobalStyle`
         justify-content: center;
     }
 
+    .jc-end {
+        justify-content: flex-end;
+    }
+
     .txt-center{
         text-align: center;
     }

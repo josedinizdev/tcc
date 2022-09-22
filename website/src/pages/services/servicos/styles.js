@@ -26,7 +26,7 @@ const StyledServices = styled.main `
     }
 
     h2 {
-        width: 280%; // Tive que tacar isso pq nao tava alinhando, dps troca KDKASDKASKDASK//
+        width: 280%; 
     }
 
     .withu-logo-header {
@@ -62,9 +62,7 @@ const StyledServices = styled.main `
         }
         select, button {
             padding: 1rem 1.2rem;
-            cursor: pointer;
             outline: none;
-
         }
     }
 `
@@ -95,10 +93,24 @@ export const StyledListar = styled.div`
         width: auto;
     }
 
-    input {
-            padding: .6rem .5rem;
-            outline: none;
+    .pesquisar-profissionais {
+
+        width: 92%;
+        margin-left: 2rem;
+
+        h1 {
+            font-family: inria-bold;
+            font-size: 1.8rem;
         }
+
+        input {
+            padding: 1rem 2rem;
+            outline: none;
+            width: 60%;
+            border-right: 50px #1E4F6F solid;
+        }
+        }
+        
 `;
 
 export default StyledServices;

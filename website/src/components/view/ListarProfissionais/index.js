@@ -2,7 +2,7 @@ import StytledListarProfissionais from '../ListarProfissionais/styles.js';
 
 export default function ListarCardProfissionais(props) {
     return(
-        <StytledListarProfissionais className='container-column'>
+        <StytledListarProfissionais className='container-column jc-center'>
                 <div className='container-column card'>
                     <div className='container'>
                         <img src={props.img} />
@@ -17,11 +17,9 @@ export default function ListarCardProfissionais(props) {
                         <p className='habilidades'> {props.habilidades} </p>
                     </div>
 
-                    <div>
-                        <button> Enviar mensagem </button>
+                    <div className='container jc-end'>
+                        <button className='container'> Enviar mensagem </button>
                     </div>
-
-
                 </div>
         </StytledListarProfissionais>
     );

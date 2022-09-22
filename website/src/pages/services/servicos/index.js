@@ -31,17 +31,16 @@ export default function Services() {
             <StyledListar className="container background-orange">
                 <div className="container jc-between background-orange"> 
                     <div className="container-column background-transparent services-listar">
-                        <ListarCardServicos titulo='Prestação de serviço' categoria='Desenvolvimento Web' publicacao='26/08/2022'/>
+                        <ListarCardServicos titulo='Prestação de serviço' categoria='Desenvolvimento Web' publicacao='26/08/2022 12:50'/>
                     </div>
 
                     <div className="container background-transparent perfis-listar">
                         <div className="container-column">
-                            {/*}
-                            <div className="container al-between">
+                        
+                            <div className="container jc-between al-center pesquisar-profissionais">
                                 <h1 className="inria-bold c1E4F6F"> Pessoas </h1>
                                 <input type='text' placeholder="Pesquisar"/> 
                             </div>
-                            */}
 
                             <div> 
                                 <ListarCardProfissionais img='/img/services-background.svg' nome='David Douglas' cargo='Desenvolvedor Web' habilidades=' Desenvolvedor Web Designer UX/Ul Banco de dados' /> 

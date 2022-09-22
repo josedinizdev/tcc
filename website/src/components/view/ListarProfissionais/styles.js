@@ -4,13 +4,11 @@ const StytledListarProfissionais = styled.div`
     .card { 
         background-color: #fff;
         width: auto;
-        height: 100vh;
+        height: auto;
 
         padding: .2rem .8rem;
         border-radius: .3rem;
-        margin: .4rem 2rem;
-        box-sizing: border-box;
-        height: auto;
+        margin: .4rem 0 .4rem 2rem;
     }
 
     img {
@@ -29,19 +27,16 @@ const StytledListarProfissionais = styled.div`
         font-size: 1.4rem;
         font-family: inria-bold;
         line-height: 2rem;
-        width: auto;
+        width: 100%;
     }
 
     h2 {    
         font-size: 1.1rem;
         font-family: inria-regular;
-        width: 70%;
+        width: 100%;
     }
 
     button {
-        display: flex;
-        justify-content: flex-end;
-
         background-color: #242424;
         color: #fff;
         font-family: inria-bold;
@@ -56,10 +51,8 @@ const StytledListarProfissionais = styled.div`
     }
 
     .habilidades {
-        width: 60%;
+        width: 40%;
     }
-
-
 `;
 
 export default StytledListarProfissionais;
