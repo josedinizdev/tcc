@@ -1,22 +1,21 @@
 import { Router } from 'express'
-import { CadastrarServico} from '../repository/servicesRepository.js';
+import { CadastrarServico, BuscarServicosTitulo, BuscarProfissionaisNome, BuscarServicos } from '../repository/servicesRepository.js';
 const server = Router();
 
-server.post('/servico', async (req, resp) =>{
+server.post('/servicos', async (req, resp) =>{
   try {
-    const novoService = req.body;
+    const servico = req.body;
+    const resposta = await CadastrarServico(servico);
 
-    const resposta = await CadastrarServico(novoService);
-
-    if(!novoService.usuario)
+    if(!servico.usuario)
       throw new Error('Campo usuário é obrigatório.')
-    else if(!novoService.titulo)
+    else if(!servico.titulo)
       throw new Error('Campo título é obrigatório.')
-    else if(!novoService.descricao)
+    else if(!servico.descricao)
       throw new Error('Campo descrição é obrigatório.')
-    else if(!novoService.ideias)
+    else if(!servico.ideias)
       throw new Error('Campo ideias é obrigatório.')
-    else if(!novoService.requisitos)
+    else if(!servico.requisitos)
       throw new Error('Campo requisitos é obrigatório.')
     
     resp.status(204).send(resposta);                                        
@@ -29,5 +28,53 @@ server.post('/servico', async (req, resp) =>{
   }
 })
 
+server.get('/servicos/buscar', async (req, resp) =>{
+  try {
+    const resposta = await BuscarServicos();
+    resp.status(200).send(resposta)
+
+  } 
+  catch (err) {
+    resp.status(400).send ({
+      erro: err.message
+    });
+  }
+})
+
+server.get('/servicos/buscar/:titulo' , async (req, resp) =>{
+  try {
+    const {titulo} = req.params;
+    if(titulo === undefined || titulo === " ") 
+        throw new Error('Não encontrado')
+
+
+    const resposta = await BuscarServicosTitulo(titulo);
+    resp.status(200).send(resposta)
+
+  } 
+  catch (err) {
+    resp.status(400).send ({
+      erro: err.message
+    });
+  }
+})
+
+server.get('/servicos/buscar/profissional/:nome' , async (req, resp) =>{
+  try {
+    const {nome} = req.params;
+    if(nome === undefined || nome === " ") 
+    throw new Error('Não encontrado')
+
+    const resposta = await BuscarProfissionaisNome(nome);
+
+    resp.status(200).send(resposta)
+
+  } 
+  catch (err) {
+    resp.status(400).send ({
+      erro: err.message
+    });
+  }
+})
 
 export default server;

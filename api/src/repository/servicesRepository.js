@@ -12,12 +12,42 @@ export async function CadastrarServico(servico) {
     return linhas;
 };
 
-export async function CadastrarServicoCategoria(idServico, idCategoria) {
+
+export async function BuscarServicos() {
     const comando = `
-        insert into tb_categoria(id_servico, id_categoria)
-            values(?, ?) 
+        select  tb_servico.id_servico     id,
+            tb_servico.nm_servico     servico,
+            tb_servico.dt_publicado  publicacao
+        from tb_servico
+    `
+
+    const [linhas] = await con.query(comando);
+    return linhas;
+}
+
+export async function BuscarServicosTitulo(titulo) {
+    const comando = `
+        select id_servico   id,
+            nm_servico   nome,
+            dt_publicado data
+        from tb_servico
+        where nm_servico like ?
     `;
 
-    const [linhas] = await con.query(comando, [idServico, idCategoria]);
+    const [linhas] = await con.query(comando, [`%${titulo}%`]);
     return linhas;
-};
+}
+
+
+export async function BuscarProfissionaisNome(nome) {
+    const comando = `
+        select id_usuario   id,
+            nm_usuario      nome,
+            ds_sobre        sobre
+            from tb_usuario
+        where nm_usuario like ?;
+    `;
+
+    const [linhas] = await con.query(comando, [`%${nome}%`]);
+    return linhas;
+}
