@@ -1,36 +1,40 @@
 import styled from 'styled-components';
 
-const StyledServices = styled.main `   
-    /* Header */
-    section:nth-child(1) {
-        background: #EF7601 url('/img/services-background.svg') no-repeat right;
-        background-size: 100%;
+const StyledServices = styled.div`   
+    .services__top {
+        background-color: #242424;
+        height: 40rem;
+        background-size: 40% auto;
+        img {
+            width: 30rem;
+            height: auto;
+        }
+    }
+    .services__title {
+        padding-top: 8rem;
+        right: -10rem;
+    }
+    .services__img {
+        width: 55%;
+        height: 100%   
+        div {
+            top: 0;
+            right: 0;
+        }
+    }
+    .services__background {
+        background-image: url('/img/services-background.svg');
+        background-size: auto 100%;
+        background-position: 60% ;
     }
 
-
-    .header-img-background {
-        background-color: #242424;
-        height: 60vh;
-        width: 40%;
+    .services__background-color {
+        background-color: #EF7601;
+        opacity: .4;
     }
 
     .margin60 {
         margin-left: 60%;
-    }
-    
-    h1 {
-        margin-top: 5%;
-        width: 10rem;
-        font-size: 1.1rem;
-    }
-
-    h2 {
-        width: 280%; 
-    }
-
-    .withu-logo-header {
-        width: 330%;
-        height: 30%;
     }
     
     /* Faixa */
@@ -67,7 +71,7 @@ const StyledServices = styled.main `
 `
 ;
 
-export const StyledListar = styled.div`
+export const List = styled.div`
     .background-orange {
         background-color: #EF7601;
         width: 100%;
@@ -83,6 +87,7 @@ export const StyledListar = styled.div`
     .perfis-listar {
         width: 28%;
         height: 100%;
+        justify-content: center;
         }
 
     h1 {
@@ -108,6 +113,30 @@ export const StyledListar = styled.div`
         }
         }
         
+`;
+
+export const CardServicoList = styled.div`
+    .card { 
+        background-color: #fff;
+        width: 95%;
+        padding: .2rem .8rem;
+        border-radius: .3rem;
+        box-sizing: border-box;
+        margin: .3rem 2rem;
+    }
+    h1, h2 {
+        color: #242424;
+    }
+    h1 {
+        font-size: 1.2rem;
+        font-family: inria-bold;
+        line-height: 2rem;
+    }
+    h2 {    
+        font-size: 1.1rem;
+        font-family: inria-regular;
+        margin: 0;
+    }
 `;
 
 export default StyledServices;

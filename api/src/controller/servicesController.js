@@ -22,13 +22,13 @@ server.post('/servicos', async (req, resp) =>{
   } 
 
   catch (err) {
-    resp.status(400).send ({
+    resp.status(401).send ({
       erro: err.message
     });
   }
 })
 
-server.get('/servicos/buscar', async (req, resp) =>{
+server.get('/servicos', async (req, resp) =>{
   try {
     const resposta = await BuscarServicos();
     resp.status(200).send(resposta)
@@ -41,7 +41,7 @@ server.get('/servicos/buscar', async (req, resp) =>{
   }
 })
 
-server.get('/servicos/buscar/:titulo' , async (req, resp) =>{
+server.get('/servicos/:titulo' , async (req, resp) =>{
   try {
     const {titulo} = req.params;
     if(titulo === undefined || titulo === " ") 
@@ -59,7 +59,7 @@ server.get('/servicos/buscar/:titulo' , async (req, resp) =>{
   }
 })
 
-server.get('/servicos/buscar/profissional/:nome' , async (req, resp) =>{
+server.get('/servicos/profissional/:nome' , async (req, resp) =>{
   try {
     const {nome} = req.params;
     if(nome === undefined || nome === " ") 

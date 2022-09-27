@@ -1,9 +1,24 @@
+import { useState, useEffect } from 'react';
 import StyledRegister, {
     BackgroundDiv
 } from "./styles.js";
 import { Link } from "react-router-dom";
+import Toast from "../../components/toast/index.js";
+import { delay } from '../../services.js';
 
 export default function Register() {
+    const [nome, setNome] = useState('');
+    const [email, setEmail] = useState('');
+    const [nasc, setNasc] = useState();
+    const [senha, setSenha] = useState('');
+    const [confirmarSenha, setConfirmarSenha] = useState('');
+
+    const [err, setErr] = useState('');
+
+    useEffect(_ => {
+        delay(5000).then(_ => setErr(''))
+    }, [err])
+
     return(
         <StyledRegister className='container wh100v'>
             <BackgroundDiv className='container w50 h100'>
@@ -23,15 +38,15 @@ export default function Register() {
                     </div>
                     <form className='container-column register__form' action=''>
                         <label className='obrigatory' htmlFor=''>Nome completo</label>
-                        <input type='text' />
+                        <input value={nome} onChange={e => setNome(e.target.value)} type='text' />
                         <label className='obrigatory' htmlFor=''>E-Mail</label>
-                        <input type='text' />
+                        <input value={email} onChange={e => setEmail(e.target.value)} type='text' />
                         <label className='obrigatory' htmlFor=''>Data de nascimento</label>
-                        <input type='text' />
+                        <input value={nasc} onChange={e => setNasc(e.target.value)} type='date' />
                         <label className='obrigatory' htmlFor=''>Senha</label>
-                        <input type='text' />
+                        <input value={senha} onChange={e => setSenha(e.target.value)} type='password' />
                         <label className='obrigatory' htmlFor=''>Confirmar senha</label>
-                        <input type='text' />
+                        <input value={confirmarSenha} onChange={e => setConfirmarSenha(e.target.value)} type='password' />
                     </form>
                     <div>
                         <button className='register__button'>Cadastrar</button>
@@ -41,6 +56,7 @@ export default function Register() {
                     </div>
                 </div>
             </div>
+            {err !== '' &&(<Toast err={err}></Toast>)}
         </StyledRegister>
      )
 }

@@ -1,7 +1,7 @@
 import './styles.js'
 import StyledHeaderBar from './styles.js'
 
-export default function HeaderBar() {
+ function HeaderBar() {
     return(
         <StyledHeaderBar>
             <body className='container jc-between al-center'>

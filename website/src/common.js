@@ -225,6 +225,28 @@ const Common = createGlobalStyle`
     .c1E4F6F {
         color: #1E4F6F;
     }
+
+    .z1 {
+        z-index: 1;
+    }
+    .z2 {
+        z-index: 2;
+    }
+    .z5 {
+        z-index: 5;
+    }
+    .z6 {
+        z-index: 6;
+    }
+    .fixed {
+        position: fixed;
+    }
+    .relative {
+        position: relative;
+    }
+    .absolute {
+        position: absolute;
+    }
 `;
 
 export default Common;

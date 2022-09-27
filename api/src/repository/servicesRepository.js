@@ -16,8 +16,9 @@ export async function CadastrarServico(servico) {
 export async function BuscarServicos() {
     const comando = `
         select  tb_servico.id_servico     id,
-            tb_servico.nm_servico     servico,
-            tb_servico.dt_publicado  publicacao
+                tb_servico.nm_servico     servico,
+                tb_servico.ds_servico     descricao,
+                tb_servico.dt_publicado   publicacao
         from tb_servico
     `
 

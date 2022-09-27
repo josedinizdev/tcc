@@ -1,6 +1,6 @@
 import StyledListarCardsServicos from '../ListarServicos/styles.js'
 
-export default function ListarCardServicos(props) {
+function ListarCardServicos(props) {
     return(
         <StyledListarCardsServicos className='container-column'>
                 <div className='container card al-center jc-between'>
@@ -10,7 +10,6 @@ export default function ListarCardServicos(props) {
                     </div>
 
                     <a> Veja mais detalhes </a>
-
                     <p> {props.publicacao} </p>
                 </div>
         </StyledListarCardsServicos>

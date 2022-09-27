@@ -2,7 +2,7 @@ import { Router } from 'express'
 import { LoginUsuario } from '../repository/userRepository.js'
 const server = Router();
 
-server.post('/usuario/login/' , async (req, resp) =>{
+server.post('/usuario/login' , async (req, resp) =>{
   try {
     const {email, senha} = req.body;
     const resposta = await LoginUsuario(email, senha);

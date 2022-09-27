@@ -1,11 +1,47 @@
+import { useState, useEffect, useRef } from "react";
 import StyledLogin, {
     BackgroundDiv
 } from "./styles.js";
-import { Link } from "react-router-dom";
+import LoadingBar from 'react-top-loading-bar';
+import { LoginUsuario } from "../../api/user.js";
+import { Link, useNavigate } from "react-router-dom";
+import Toast from "../../components/toast/index.js";
+import { delay } from '../../services.js';
 
 export default function Login() {
+    const [email, setEmail] = useState('');
+    const [senha, setSenha] = useState('');
+    const [err, setErr] = useState('');
+    const [carregar, setCarregar] = useState(false);
+    const navigate = useNavigate();
+    const ref = useRef();
+
+    async function Logar() {
+        ref.current.continuousStart();
+        setCarregar(true);
+    
+        try {
+            const resp = await LoginUsuario(email, senha);
+            setTimeout(() => {
+                navigate('/admin');
+            }, 3000)
+        }
+        catch(err) {
+            ref.current.complete()
+            setCarregar(false)
+        
+            if(err.status === 401) {
+                setErr(err.erro);
+            }
+        }   
+    }
+
+    useEffect(_ => {
+        delay(5000).then(_ => setErr(''))
+    }, [err])
+
     return(
-        <StyledLogin className='container wh100v'>
+        <StyledLogin className='container wh100v z1 relative'>
             <BackgroundDiv className='container w50 h100'>
                 <div className='container whf'>
                     <img className='login__logo' src='/img/withu-logo.png' alt=''/>
@@ -23,18 +59,20 @@ export default function Login() {
                     </div>
                     <form className='container-column login__form' action=''>
                         <label className='obrigatory' htmlFor=''>E-Mail</label>
-                        <input type='text' />
+                        <input value={email} onChange={e => setEmail(e.target.value)} type='text' />
                         <label className='obrigatory' htmlFor=''>Senha</label>
-                        <input type='text' />
+                        <input value={senha} onChange={e => setSenha(e.target.value)} type='text' />
                     </form>
                     <div>
-                        <button className='login__button'>Login </button>
+                        <button className='login__button' onClick={Logar} disabled={carregar}>Login </button>
                         <div className='container'>
                             <p>Novo usuário? <Link to='/cadastro'> <span className="blue">Cadastro</span></Link></p>
                         </div>
                     </div>
                 </div>
             </div>
+            {err !== '' && (<Toast err={err}></Toast>)}
+            <LoadingBar color="#456426" ref={ref} />
         </StyledLogin>
      )
 }
