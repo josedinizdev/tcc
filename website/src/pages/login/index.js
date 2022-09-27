@@ -28,7 +28,7 @@ export default function Login() {
                         <input type='text' />
                     </form>
                     <div>
-                        <button className='login__button'>Login</button>
+                        <button className='login__button'>Login </button>
                         <div className='container'>
                             <p>Novo usuário? <Link to='/cadastro'> <span className="blue">Cadastro</span></Link></p>
                         </div>

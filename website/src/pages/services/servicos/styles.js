@@ -4,8 +4,7 @@ const StyledServices = styled.main `
     /* Header */
     section:nth-child(1) {
         background: #EF7601 url('/img/services-background.svg') no-repeat right;
-        background-size: auto;
-        height: 60vh;
+        background-size: 100%;
     }
 
 
@@ -71,7 +70,7 @@ const StyledServices = styled.main `
 export const StyledListar = styled.div`
     .background-orange {
         background-color: #EF7601;
-        width: 100vw;
+        width: 100%;
         height: 120vh;
         padding: 8% 5%;
     }
@@ -94,11 +93,9 @@ export const StyledListar = styled.div`
     }
 
     .pesquisar-profissionais {
-
         width: 92%;
-        margin-left: 2rem;
-
         h1 {
+            
             font-family: inria-bold;
             font-size: 1.8rem;
         }

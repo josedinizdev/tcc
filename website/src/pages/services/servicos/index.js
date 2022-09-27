@@ -35,7 +35,7 @@ export default function Services() {
                     </div>
 
                     <div className="container background-transparent perfis-listar">
-                        <div className="container-column">
+                        <div className="container-column al-center">
                         
                             <div className="container jc-between al-center pesquisar-profissionais">
                                 <h1 className="inria-bold c1E4F6F"> Pessoas </h1>

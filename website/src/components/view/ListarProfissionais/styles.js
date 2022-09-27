@@ -1,14 +1,16 @@
 import styled from 'styled-components';
 
 const StytledListarProfissionais = styled.div`
+    align-items: center;
+
     .card { 
         background-color: #fff;
-        width: auto;
+        width: 90%;
         height: auto;
 
         padding: .2rem .8rem;
         border-radius: .3rem;
-        margin: .4rem 0 .4rem 2rem;
+        margin: .4rem 0;
     }
 
     img {
