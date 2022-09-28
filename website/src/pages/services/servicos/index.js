@@ -32,8 +32,8 @@ export default function Services() {
             </div>
             <section className="container-column al-center">
                 <div className="container background-filters background-transparent">
-                    <Link className="pointer" to='/servicos/cadastro'>
-                        <button>Criar</button>
+                    <Link to='/servicos/cadastro'>
+                        <button className="pointer">Criar</button>
                     </Link>
                     <select>
                         <option>  </option>

@@ -1,6 +1,6 @@
-import StytledListarProfissionais from '../ListarProfissionais/styles.js';
+import StytledListarProfissionais from './styles.js';
 
-  function ListarCardProfissionais(props) {
+  export function ListarCardProfissionais(props) {
     return(
         <StytledListarProfissionais className='container-column jc-center'>
                 <div className='container-column card'>

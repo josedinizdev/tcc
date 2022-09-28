@@ -21,13 +21,18 @@ export async function ListarServico() {
     return resp.data;
 }
 
+export async function ListarProfissional() {
+    const resp = await api.get('/profissional')
+    return resp.data;
+}
+
 export async function PesquisarServicoTitulo(titulo) {
     const resp = await api.get(`/servicos/${titulo}`)
     return resp.data;
 }
 
 export async function PesquisarProfissionalNome(nome) {
-    const resp = await api.get(`/servicos/profissional/${nome}`)
+    const resp = await api.get(`/profissional/${nome}`)
     return resp.data;
 }
 

@@ -7,7 +7,7 @@ const StyledCadastrarServico = styled.main`
     background-color: rgb(255, 220, 188);
     border-radius: .4rem;
     padding: 2rem 1rem;
-    width: 65%;
+    width: 90%;
     height: 100%;
 
     .titulo-categoria {

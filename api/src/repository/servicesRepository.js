@@ -26,6 +26,18 @@ export async function BuscarServicos() {
     return linhas;
 }
 
+export async function BuscarProfissas() {
+    const comando = `
+        select  tb_usuario.id_usuario   id,
+                tb_usuario.nm_usuario      nome,
+                ds_sobre        sobre
+        from tb_usuario
+    `
+
+    const [linhas] = await con.query(comando);
+    return linhas;
+}
+
 export async function BuscarServicosTitulo(titulo) {
     const comando = `
         select id_servico   id,
@@ -52,3 +64,39 @@ export async function BuscarProfissionaisNome(nome) {
     const [linhas] = await con.query(comando, [`%${nome}%`]);
     return linhas;
 }
+
+export async function Deletarservico (id) {
+    const comando = `
+        delete from tb_servico 
+        where id_servico = ?
+    `;
+
+    const linhas = await con.query(comando, [`%${id}%`]);
+    return linhas;
+
+}
+
+export async function EditarServico (id) {
+    const comando = `
+    update set tb_servico.ds_titulo      = ?,
+           tb_servico.ds_sobre       = ?,
+           tb_servico.ds_ideias      = ?, 
+           tb_servico.ds_requisitos  = ?,  
+           tb_categoria.ds_categoria = ?, 
+           tb_local.ds_endereco      = ?, 
+           tb_local.ds_cep           = ? 
+       from tb_servico
+       inner join tb_categoria
+        on tb_servico.id_categoria = tb_categoria.id_categoria
+       inner join tb_usuario
+        on tb_servico.id_usuario = tb_usuario.id_usuario     
+       inner join tb_local
+        on tb_servico.id_local = tb_local.id_local;
+        where tb_sevico.id_servico = ? 
+    
+    `;
+    const [linhas] = await con.query(comando, [`%${id}%`]);
+    return linhas;
+
+}
+

@@ -12,6 +12,12 @@ export async function CadastroUsuario(novoUsuario) {
     return linhas;
 }
 
+export async function CadastrarLogin(novoUsuario) {
+    const comando = `
+    
+    `
+}
+
 export async function LoginUsuario(email, senha) {
     const comando = `
         select tb_usuario.id_usuario  as id,
