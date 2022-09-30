@@ -1,5 +1,6 @@
 import { Router } from 'express'
-import { CadastrarServico, BuscarServicosTitulo, BuscarProfissionaisNome, BuscarProfissas, BuscarServicos, Deletarservico } from '../repository/servicesRepository.js';
+import { con } from '../repository/connection.js';
+import { CadastrarServico, BuscarServicosTitulo,   BuscarServicos, Deletarservico, DetalhesServicos, aplicarServicos } from '../repository/servicesRepository.js';
 const server = Router();
 
 server.post('/servicos', async (req, resp) =>{
@@ -50,7 +51,6 @@ server.get('/servicos/:titulo' , async (req, resp) =>{
 
     const resposta = await BuscarServicosTitulo(titulo);
     resp.status(200).send(resposta)
-
   } 
   catch (err) {
     resp.status(400).send ({
@@ -59,36 +59,29 @@ server.get('/servicos/:titulo' , async (req, resp) =>{
   }
 })
 
-server.get('/profissional', async (req, resp) =>{
-  try {
-    const resposta = await BuscarProfissas();
-    resp.status(200).send(resposta)
 
-  } 
-  catch (err) {
-    resp.status(400).send ({
-      erro: err.message
-    });
-  }
+
+
+server.get('/servicos/detalhes/:id', async (req, resp) => {
+    try {
+      const { id } = req.params;
+
+      if(id === undefined || id < 0)
+        throw new Error('id inexistente');
+
+      const resposta = await DetalhesServicos(id);
+      resp.status(200).send(resposta);
+      console.log(id);
+      console.log(resposta);
+    }
+    catch(err) {
+      resp.status(404).send(err.message)
+    }
 })
 
-server.get('/profissional/:nome' , async (req, resp) =>{
-  try {
-    const {nome} = req.params;
-    if(nome === undefined || nome === " ") 
-    throw new Error('Não encontrado')
 
-    const resposta = await BuscarProfissionaisNome(nome);
 
-    resp.status(200).send(resposta)
 
-  } 
-  catch (err) {
-    resp.status(400).send ({
-      erro: err.message
-    });
-  }
-})
 
 server.delete('/servicos/remover/:id' , async (req, resp) => {
   try {
@@ -96,7 +89,7 @@ server.delete('/servicos/remover/:id' , async (req, resp) => {
     if(id === undefined || id === " ") 
     throw new Error('Perfil não encontrado ou inexistente.')
 
-    const resposta = await Deletarservico (Number(id));
+    const resposta = await Deletarservico(Number(id));
 
     resp.status(200).send(resposta)
   } 

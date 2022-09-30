@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { LoginUsuario } from '../repository/userRepository.js'
+import { LoginUsuario, PesquisarUsuario } from '../repository/userRepository.js'
 const server = Router();
 
 server.post('/usuario/login' , async (req, resp) =>{
@@ -20,6 +20,8 @@ server.post('/usuario/login' , async (req, resp) =>{
     });
   }
 })
+
+
 
 
 export default server;

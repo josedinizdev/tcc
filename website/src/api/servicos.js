@@ -36,3 +36,8 @@ export async function PesquisarProfissionalNome(nome) {
     return resp.data;
 }
 
+export async function VerDetalhes(id) {
+    const resp = await api.get(`/servicos/detalhes/${id}`)
+    return resp.data;
+}
+
