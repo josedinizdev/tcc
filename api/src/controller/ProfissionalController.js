@@ -1,11 +1,10 @@
 import { Router } from 'express'
-import {VirarProfissional, AvaliaProfissional, UsuarioWorker, BuscarProfissas, BuscarProfissionaisNome} from '../repository/profissionalRepository';
+import {BuscarProfissas, BuscarProfissionaisNome} from '../repository/profissionalRepository.js';
 const server = Router();
 
 server.get('/profissional', async (req, resp) =>{
     try {
-      const profissional =  req.params;
-      const resposta = await BuscarProfissas(profissional);
+      const resposta = await BuscarProfissas();
       resp.status(200).send(resposta)
   
     } 

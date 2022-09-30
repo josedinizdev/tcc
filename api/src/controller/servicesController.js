@@ -1,6 +1,5 @@
 import { Router } from 'express'
-import { con } from '../repository/connection.js';
-import { CadastrarServico, BuscarServicosTitulo,   BuscarServicos, Deletarservico, DetalhesServicos, aplicarServicos } from '../repository/servicesRepository.js';
+import { CadastrarServico, BuscarServicosTitulo, BuscarServicos, Deletarservico, DetalhesServicos, EditarServico } from '../repository/servicesRepository.js';
 const server = Router();
 
 server.post('/servicos', async (req, resp) =>{
@@ -60,37 +59,32 @@ server.get('/servicos/:titulo' , async (req, resp) =>{
 })
 
 
-
-
 server.get('/servicos/detalhes/:id', async (req, resp) => {
     try {
-      const { id } = req.params;
-
-      if(id === undefined || id < 0)
-        throw new Error('id inexistente');
+      const id = Number(req.params.id);
+      
+      if(id === undefined || id === "")
+        throw new Error('ID inexistente');
 
       const resposta = await DetalhesServicos(id);
       resp.status(200).send(resposta);
-      console.log(id);
       console.log(resposta);
+      console.log(id);
     }
+
     catch(err) {
-      resp.status(404).send(err.message)
+      resp.status(400).send(err.message)
     }
 })
 
 
-
-
-
 server.delete('/servicos/remover/:id' , async (req, resp) => {
   try {
-    const {id} = req.params;
+    const id = Number(req.params.id);
     if(id === undefined || id === " ") 
     throw new Error('Perfil não encontrado ou inexistente.')
 
-    const resposta = await Deletarservico(Number(id));
-
+    const resposta = await Deletarservico(id);
     resp.status(200).send(resposta)
   } 
   catch (err) {
@@ -102,14 +96,22 @@ server.delete('/servicos/remover/:id' , async (req, resp) => {
 
 server.put('/servicos/alterar/:id' , async (req , resp) => {
   try {
-    const {id} = req.params;
-    if(id === undefined || id === " ") 
-    throw new Error('Serviço  não encontrado ou inexistente.')
+    const id = Number(req.params.id);
+    const novoServico = req.body;
 
-    const resposta = await Deletarservico (Number(id));
+    if(!novoServico.titulo)
+      throw new Error('Campo título é obrigatório.')
+    else if(!novoServico.descricao)
+      throw new Error('Campo descrição é obrigatório.')
+    else if(!novoServico.ideias)
+      throw new Error('Campo ideias é obrigatório.')
+    else if(!novoServico.requisitos)
+      throw new Error('Campo requisitos é obrigatório.')
 
+    const resposta = await EditarServico(id, novoServico);
     resp.status(200).send(resposta)
   } 
+
   catch (err) {
     resp.status(400).send ({
       erro: err.message
