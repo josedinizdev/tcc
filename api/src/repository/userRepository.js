@@ -45,7 +45,7 @@ export async function LoginUsuario(email, senha) {
         insert into tb_usuario_img(id_usuario, img_usuario)
         values(?); 
         `;
-    const [linhas] = await con.query(comando, [`%${id}%`]);
+    const [linhas] = await con.query(comando, [`%${imagem}%`]);
     return linhas; 
     }
 
