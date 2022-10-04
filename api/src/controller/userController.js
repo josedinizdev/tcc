@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { editarPerfil, ListarUsuario, LoginUsuario, PesquisarUsuario } from '../repository/userRepository.js'
+import { CadastrarLogin, CadastroUsuario, editarPerfil, ListarUsuario, LoginUsuario, PesquisarUsuario } from '../repository/userRepository.js'
 const server = Router();
 
 server.post('/usuario/login' , async (req, resp) =>{
@@ -15,6 +15,17 @@ server.post('/usuario/login' , async (req, resp) =>{
   } 
   catch (err) {
     resp.status(400).send ({
+      erro: err.message
+    });
+  }
+})
+
+server.post('/usuario', async (req, resp) =>{
+  try {
+      
+  } 
+  catch (err) {
+    resp.status(401).send ({
       erro: err.message
     });
   }

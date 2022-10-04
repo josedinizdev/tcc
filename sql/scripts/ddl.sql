@@ -177,3 +177,9 @@ create table tb_atribuido(
     foreign key (id_worker) references tb_worker (id_worker),
     foreign key (id_servico) references tb_servico (id_servico)
 );
+
+create table tb_contato(
+	id_contato 			int primary key auto_increment,
+    id_usuario			int not null,
+    foreign key (id_usuario) references tb_usuario (id_usuario)
+);

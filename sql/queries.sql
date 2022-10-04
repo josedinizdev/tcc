@@ -91,32 +91,42 @@ select ds_categoria     categoria
     from tb_categoria;
 
 # create service
+insert into tb_servico_categoria(id_servico, id_categoria)
+       values(?, ?);
+
+insert into tb_local(ds_estado, ds_cidade, ds_endereco, ds_numero, ds_cep, ds_complemento)
+       values(?, ?, ?, ?, ?, ?)
+
 insert into tb_servico(id_usuario, id_local, nm_servico, ds_servico, ds_ideias, ds_requisitos, dt_publicado)
        values(?, ?, ?, ?, ?, ?, current_data());
 
 # list services (search by or for)
-select tb_servico.id_servico     as idServico,
-       tb_servico.nm_servico     as servico,
-       tb_servico.dt_publicacao  as publicacao,
-       tb_categoria.id_categoria as idCategoria,
-       tb_categoria.nm_categoria as categoria
+select tb_servico.id_servico         as idServico,
+       tb_servico.nm_servico         as servico,
+       tb_servico.dt_publicacao      as publicacao,
+       tb_categoria.id_categoria     as idCategoria,
+       tb_categoria.nm_categoria     as categoria
   from tb_servico
-inner join tb_categoria
-    on tb_categoria.id_categoria = tb_servico.id_categoria
+ inner join tb_servico_categoria
+    on tb_servico_categoria.id_servico = tb_servico.id_servico
+ inner join tb_categoria
+    on tb_categoria.id_categoria = tb_servico_categoria.id_categoria
  where tb_categoria.id_categoria = ?
-   and tb_servico.nm_servico     = ?; 'ID_CATEGORIA NÃO EXISTE EM TB_SERVIÇO'
+   and tb_servico.nm_servico     = ?;
 
 # list user created services
-select tb_servico.id_servico     as sv_id,
-       tb_servico.nm_servico     as servico,
-       tb_servico.dt_publicado  as publicacao,
-       tb_categoria.id_categoria as ca_id,
-       tb_categoria.nm_categoria as categoria
+select tb_servico.id_servico        as idServico,
+       tb_servico.nm_servico        as servico,
+       tb_servico.dt_publicado      as publicacao,
+       tb_categoria.id_categoria    as idCategoria,
+       tb_categoria.nm_categoria    as categoria
   from tb_servico
-inner join tb_categoria
-    on tb_categoria.id_categoria = tb_servico.id_categoria
-inner join tb_usuario
-    on tb_usuario.id_usuario     = tb_servico.id_usuario
+inner join tb_servico_categoria
+    on tb_servico_categoria.id_servico = tb_servico.id_servico
+ inner join tb_categoria
+    on tb_categoria.id_categoria = tb_servico_categoria.id_categoria
+ inner join tb_usuario
+    on tb_usuario.id_usuario = tb_servico.id_usuario
  where tb_servico.id_usuario     = ?
    and tb_categoria.id_categoria = ?
    and tb_servico.nm_servico     = ?;
@@ -143,7 +153,7 @@ select tb_servico.id_servico     as idServico,
     on tb_servico.id_usuario     = tb_usuario.id_usuario     
  inner join tb_local
     on tb_servico.id_local       = tb_local.id_local
- where tb_servico.id_servico     = ?; 'ID_ATRIBUIDO NÃO ESTÁ COMO CHAVE ESTRANGEIRA'
+ where tb_servico.id_servico     = ?;
 
 # if there's an applied worker
 select tb_usuario.id_usuario     as id,

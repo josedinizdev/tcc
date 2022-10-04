@@ -11,6 +11,18 @@ export async function CadastroUsuario(novoUsuario) {
     return linhas;
 }
 
+export async function CadastrarLogin(idUsuario, senha) {
+    const comando = `
+        insert into tb_login(id_usuario, ds_senha)
+             values(?, ?, ?);
+    `
+    const [linhas] = await con.query(comando, [idUsuario, senha])
+    novoLogin.id = linhas.insertId;
+    return linhas
+}
+
+
+
 export async function LoginUsuario(email, senha) {
     const comando = `
         select tb_usuario.id_usuario  as id,
@@ -71,3 +83,4 @@ export async function LoginUsuario(email, senha) {
         const [linhas] = await con.query(comando, [`%${nome}%`]);
         return linhas;
     }
+

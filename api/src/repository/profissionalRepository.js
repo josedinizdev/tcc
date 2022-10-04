@@ -38,13 +38,13 @@ const [linhas] = await con.query(comando, [`%${id}%`]);
 return linhas;  
 }
 
-export async function RemoverContatos (id) {
+export async function DeletarContato(id) {
     const comando = `
-        delete from tb_contato(id_usuario)
+        delete from tb_contato
         where id_usuario = ?;
     `;
-const [linhas] = await con.query(comando, [`%${id}%`]);
-return linhas; 
+const [linhas] = await con.query(comando, [id]);
+return linhas[0]; 
 }
 
 export async function BuscarProfissas(id) {
