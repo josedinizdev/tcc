@@ -52,19 +52,22 @@ export async function LoginUsuario(email, senha) {
 }
 
 
-    export async function AlterarFoto(imagem) {
+    export async function AlterarFoto(usuario, id) {
         const comando = `
-        insert into tb_usuario_img(id_usuario, img_usuario)
-        values(?); 
+            update tb_usuario
+                set img_usuario = ?
+            where id_usuario = ?;
         `;
-    const [linhas] = await con.query(comando, [`%${imagem}%`]);
-    return linhas; 
+    const [linhas] = await con.query(comando, [usuario.imagem, id]);
+    return linhas.affectedRows; 
+
     }
 
     export async function ListarUsuario() {
         const comando = `
                      select id_usuario   id,
                             nm_usuario   nome,
+                            img_usuario  img,
                             ds_sobre     sobre
                     from tb_usuario
         `;
@@ -76,6 +79,7 @@ export async function LoginUsuario(email, senha) {
         const comando = `
                      select id_usuario   id,
                             nm_usuario   nome,
+                            img_usuario  img,
                             ds_sobre     sobre
                     from tb_usuario
                     where nm_usuario like ?
@@ -84,3 +88,22 @@ export async function LoginUsuario(email, senha) {
         return linhas;
     }
 
+    export async function DeletarUsuario(id) {
+        const comando = `
+            delete from tb_usuario
+                where id_usuario = ?;
+        `;
+
+        const linhas = await con.query(comando, [id]);
+        return linhas.affectedRows;
+}
+    
+    export async function DeletarLogin(id) {
+        const comando = `
+            delete from tb_login
+                where id_usuario = ?;
+        `;
+
+        const linhas = await con.query(comando, [id]);
+        return linhas.affectedRows;
+    }

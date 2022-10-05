@@ -39,7 +39,7 @@ select id_usuario                as id,
 
 # delete user
 delete from tb_usuario
-  where id_usuario = ?; ERRO: 'TB_USUARIO.ID_USUARIO'
+  where id_usuario = ?;
 
 /* worker
 /* be worker
@@ -70,7 +70,7 @@ select vl_avaliacao             as avaliacao
 
 # delete worker
 delete from tb_worker
- where id_worker = ?; 'NÃO CONSEGUI EXECUTAR'
+ where id_worker = ?;
 
 /* services
 /* see categories

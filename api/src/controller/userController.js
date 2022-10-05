@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { CadastrarLogin, CadastroUsuario, editarPerfil, ListarUsuario, LoginUsuario, PesquisarUsuario } from '../repository/userRepository.js'
+import { AlterarFoto, DeletarLogin, DeletarUsuario, editarPerfil, ListarUsuario, LoginUsuario, PesquisarUsuario } from '../repository/userRepository.js'
 const server = Router();
 
 server.post('/usuario/login' , async (req, resp) =>{
@@ -56,7 +56,24 @@ server.put('/usuario/perfil/alterar/:id', async(req, resp) => {
   }
 })
 
-server.get('/usuario/perfil' , async (req, resp) =>{
+server.put('/usuario/perfil/alterar/foto/:id', async(req, resp) => {
+  try {
+    const id = Number(req.params.id);
+    const fotoUsuario = req.body
+
+    if(!fotoUsuario)
+        throw new Error("Não foi possível alterar.");
+
+    const result = await AlterarFoto(id, fotoUsuario)
+      resp.status(200).send(result);
+  }
+
+  catch(err) {
+    resp.status(400).send(err.message)
+  }
+})
+
+server.get('/usuario/perfil/s' , async (req, resp) =>{
   try {
     const resposta = await ListarUsuario();
     resp.status(200).send(resposta)
@@ -68,7 +85,7 @@ server.get('/usuario/perfil' , async (req, resp) =>{
   }
 })
 
-server.get('/usuario/perfil/:nome' , async (req, resp) =>{
+server.get('/usuario/perfil/s/:nome' , async (req, resp) =>{
   try {
     const {nome} = req.params;
     if(nome === undefined || nome === " ") 
@@ -85,5 +102,23 @@ server.get('/usuario/perfil/:nome' , async (req, resp) =>{
   }
 })
 
+server.delete('/usuario/perfil/remover/:id', async (req, resp) => {
+  try {
+    const id = Number(req.params.id);
+    if(id === NaN || id < 0) 
+      throw new Error('Não existente')
+      
+    const removerLogin = await DeletarLogin(id);
+
+    const removerUsuario = await DeletarUsuario(id);
+    const result = await (id, removerLogin, removerUsuario);
+    resp.status(200).send(result);
+  }
+  catch (err) {
+    resp.status(400).send({
+      erro: err.message
+    });
+  }
+})
 
 export default server;
