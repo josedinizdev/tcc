@@ -1,10 +1,7 @@
 -- SQLBook: Code
 
-/* usuarios
-*/
-
 insert into tb_usuario(nm_usuario, dt_registro, ds_email, dt_nascimento)
-        values('José Diogo Caetano Diniz', current_date(), 'jdcdiniz@gmail.com', '2004-04-27');
+       values('José Diogo Caetano Diniz', current_date(), 'jdcdiniz@gmail.com', '2004-04-27');
 
 insert into tb_login(id_usuario, ds_senha)
         values(1, '1234');
@@ -132,9 +129,6 @@ insert into tb_usuario(nm_usuario, dt_registro, ds_email, dt_nascimento)
 insert into tb_login(id_usuario, ds_senha)
         values(20, '1234');
 
-/* servicos
-*/
-
 insert into tb_categoria(ds_categoria)
         values('Assistência técnica');
 
@@ -187,10 +181,43 @@ insert into tb_categoria(ds_categoria)
         values('Serviços Domésticos');
 
 insert into tb_local(ds_estado, ds_cidade, ds_endereco, ds_numero, ds_cep, ds_complemento)
-        values('São Paulo', 'São Paulo', 'Rua 25 de Março', '235', '09999-190', 'condomínio');
+        values('São Paulo', 'São Paulo', 'Rua 25 de Março', '235', '09999190', 'condomínio');
 
 insert into tb_servico(id_usuario, id_local, nm_servico, ds_servico, ds_ideias, ds_requisitos, dt_publicado)
-        values(1, 1, 'Reparo de Máquina', 'Reparo', 'Máquina mt doida', 'Deixar a maquina foda', current_timesamp());
+        values(1, 1, 'Reparo de Máquina', 'Reparo', 'Máquina mt doida', 'Deixar a maquina foda', current_timestamp());
 
 insert into tb_servico_categoria(id_servico, id_categoria)
         values(1, 9);
+
+insert into tb_servico(id_usuario, id_local, nm_servico, ds_servico, ds_ideias, ds_requisitos, dt_publicado)
+        values(1, 2, 'Reparo de Máquina', 'Reparo', 'Máquina mt doida', 'Deixar a maquina foda', current_timestamp());
+
+insert into tb_servico_categoria(id_servico, id_categoria)
+        values(2, 9);
+        
+insert into tb_local(ds_estado, ds_cidade, ds_endereco, ds_numero, ds_cep, ds_complemento)
+        values('São Paulo', 'São Paulo', 'Rua 25 de Março', '235', '09999190', 'condomínio');
+
+insert into tb_servico(id_usuario, id_local, nm_servico, ds_servico, ds_ideias, ds_requisitos, dt_publicado)
+        values(1, 3, 'Reparo de Máquina', 'Reparo', 'Máquina mt doida', 'Deixar a maquina foda', current_timestamp());
+
+insert into tb_servico_categoria(id_servico, id_categoria)
+        values(3, 9);
+
+insert into tb_local(ds_estado, ds_cidade, ds_endereco, ds_numero, ds_cep, ds_complemento)
+        values('São Paulo', 'São Paulo', 'Rua 25 de Março', '235', '09999190', 'condomínio');
+
+insert into tb_servico(id_usuario, id_local, nm_servico, ds_servico, ds_ideias, ds_requisitos, dt_publicado)
+        values(1, 4, 'Reparo de Máquina', 'Reparo', 'Máquina mt doida', 'Deixar a maquina foda', current_timestamp());
+
+insert into tb_servico_categoria(id_servico, id_categoria)
+        values(4, 9);
+        
+insert into tb_local(ds_estado, ds_cidade, ds_endereco, ds_numero, ds_cep, ds_complemento)
+        values('São Paulo', 'São Paulo', 'Rua 25 de Março', '235', '09999190', 'condomínio');
+
+insert into tb_servico(id_usuario, id_local, nm_servico, ds_servico, ds_ideias, ds_requisitos, dt_publicado)
+        values(1, 5, 'Reparo de Máquina', 'Reparo', 'Máquina mt doida', 'Deixar a maquina foda', current_timestamp());
+
+insert into tb_servico_categoria(id_servico, id_categoria)
+        values(5, 9);

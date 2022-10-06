@@ -1,12 +1,36 @@
 import { Router } from 'express'
-import { CadastrarServico, BuscarServicosTitulo, BuscarServicos, Deletarservico, DetalhesServicos, EditarServico } from '../repository/servicesRepository.js';
+import { CadastrarServico, AtribuirCategoria, CadastrarLocal, BuscarServicosTitulo, BuscarServicos, Deletarservico, DetalhesServicos, EditarServico } from '../repository/servicesRepository.js';
 const server = Router();
 
 server.post('/servicos', async (req, resp) =>{
   try {
+    /* {
+	  /*    "categoria": [
+    /*      0,
+    /*      0
+    /*    ],
+	  /*    "estado": "",
+	  /*    "cidade": "",
+	  /*    "endereco": "",
+	  /*    "numero": 0,
+	  /*    "cep": "",
+	  /*    "complemento": "",
+	  /*    "usuario": 0,
+	  /*    "titulo": "",
+	  /*    "descricao": "",
+	  /*    "ideias": "",
+	  /*    "requisitos": ""
+    /* }
+    */
     const servico = req.body;
-    const resposta = await CadastrarServico(servico);
-
+    const local = await CadastrarLocal(servico);
+    console.log(local)
+    const servicos = await CadastrarServico(servico, local.id);
+    let categorias = [];
+    console.log(servicos)
+    for (let i = 0; i < servico.categoria.length; i++)
+      categorias.push(await AtribuirCategoria(servico.categoria[i], servicos.id));
+    
     if(!servico.usuario)
       throw new Error('Campo usuário é obrigatório.')
     else if(!servico.titulo)
@@ -18,10 +42,8 @@ server.post('/servicos', async (req, resp) =>{
     else if(!servico.requisitos)
       throw new Error('Campo requisitos é obrigatório.')
     
-    resp.status(204).send(resposta);                                        
-  } 
-
-  catch (err) {
+    resp.status(204).send({categoria: categorias, local: local, servico: servicos});                                        
+  } catch (err) {
     resp.status(401).send ({
       erro: err.message
     });

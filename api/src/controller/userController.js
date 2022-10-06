@@ -10,7 +10,6 @@ server.post('/usuario/login' , async (req, resp) =>{
     if(!resposta) {
       throw new Error('Credenciais Inválidas');
     }
-
     resp.status(200).send(resposta)
   } 
   catch (err) {

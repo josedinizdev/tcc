@@ -126,21 +126,21 @@ create table if not exists `tb_servico`(
     `id_servico`              int primary key auto_increment,
     `id_usuario`              int default null,
     `id_local`                int default null,
-    nm_servico              varchar(200) default null,
-    ds_servico              varchar(7500) default null,
-    ds_ideias               varchar(3500) default null,
-    ds_requisitos           varchar(3500) default null,
-    dt_publicado            datetime default null,
-    foreign key (id_usuario) references tb_usuario (id_usuario),
-    foreign key (id_local) references tb_local (id_local)
+    `nm_servico`              varchar(200) default null,
+    `ds_servico`              varchar(7500) default null,
+    `ds_ideias`               varchar(3500) default null,
+    `ds_requisitos`           varchar(3500) default null,
+    `dt_publicado`            datetime default null,
+    foreign key (`id_usuario`) references `tb_usuario` (`id_usuario`),
+    foreign key (`id_local`) references `tb_local` (`id_local`)
 );
 
-create table if not exists tb_servico_categoria(
-	id_servico_categoria	int primary key auto_increment,
-    id_servico				int,
-    id_categoria			int,
-    foreign key (id_categoria) references tb_categoria (id_categoria),
-    foreign key (id_servico) references tb_servico (id_servico)
+create table if not exists `tb_servico_categoria`(
+	`id_servico_categoria`	int primary key auto_increment,
+    `id_servico`				int,
+    `id_categoria`			int,
+    foreign key (`id_categoria`) references `tb_categoria` (`id_categoria`),
+    foreign key (`id_servico`) references `tb_servico` (`id_servico`)
 );
 
 /* worker (ref user)
@@ -149,38 +149,38 @@ create table if not exists tb_servico_categoria(
 */
 
 # worker
-create table if not exists tb_worker(
-    id_worker               int primary key auto_increment,
-    id_usuario              int default null,
-    nr_cpf                  int default null,
-    nm_cargo                varchar(150) default null,
-    ds_habilidades          varchar(350) default null,
-    ds_estado               varchar(150) default null,
-    ds_email_profissional   varchar(250) default null,
-    foreign key (id_usuario) references tb_usuario (id_usuario)
+create table if not exists `tb_worker`(
+    `id_worker`               int primary key auto_increment,
+    `id_usuario`              int default null,
+    `nr_cpf`                  int default null,
+    `nm_cargo`                varchar(150) default null,
+    `ds_habilidades`          varchar(350) default null,
+    `ds_estado`               varchar(150) default null,
+    `ds_email_profissional`   varchar(250) default null,
+    foreign key (`id_usuario`) references `tb_usuario` (`id_usuario`)
 );
 
 # cargo
-create table if not exists tb_avaliacao(
-    id_avaliacao            int primary key auto_increment,
-    id_worker               int default null,
-    id_usuario              int default null,
-    vl_avaliacao            decimal(2,2) default null,
-    foreign key (id_usuario) references tb_usuario (id_usuario),
-    foreign key (id_worker) references tb_worker (id_worker)
+create table if not exists `tb_avaliacao`(
+    `id_avaliacao`            int primary key auto_increment,
+    `id_worker`               int default null,
+    `id_usuario`              int default null,
+    `vl_avaliacao`            decimal(2,2) default null,
+    foreign key (`id_usuario`) references `tb_usuario` (`id_usuario`),
+    foreign key (`id_worker`) references `tb_worker` (`id_worker`)
 );
 
 # worker in service
-create table if not exists tb_atribuido(
-    id_atribuido            int primary key auto_increment,
-    id_worker               int default null,
-    id_servico              int default null,
-    foreign key (id_worker) references tb_worker (id_worker),
-    foreign key (id_servico) references tb_servico (id_servico)
+create table if not exists `tb_atribuido`(
+    `id_atribuido`            int primary key auto_increment,
+    `id_worker`               int default null,
+    `id_servico`              int default null,
+    foreign key (`id_worker`) references `tb_worker` (`id_worker`),
+    foreign key (`id_servico`) references `tb_servico` (`id_servico`)
 );
 
-create table if not exists tb_contato(
-	id_contato 			int primary key auto_increment,
-    id_usuario			int default null,
-    foreign key (id_usuario) references tb_usuario (id_usuario)
+create table if not exists `tb_contato`(
+	`id_contato` 			int primary key auto_increment,
+    `id_usuario`			int default null,
+    foreign key (`id_usuario`) references `tb_usuario` (`id_usuario`)
 );

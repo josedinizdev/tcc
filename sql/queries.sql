@@ -101,39 +101,20 @@ insert into tb_servico(id_usuario, id_local, nm_servico, ds_servico, ds_ideias, 
        values(?, ?, ?, ?, ?, ?, current_data());
 
 # list services (search by or for)
-select tb_servico.id_servico         as idServico,
-       tb_servico.nm_servico         as servico,
-       tb_servico.dt_publicacao      as publicacao,
-       tb_categoria.id_categoria     as idCategoria,
-       tb_categoria.nm_categoria     as categoria
+select tb_servico.id_servico     as idServico,
+       tb_servico.nm_servico     as titulo,
+       tb_servico.dt_publicado   as data,
+       tb_categoria.ds_categoria as categoria,
   from tb_servico
  inner join tb_servico_categoria
-    on tb_servico_categoria.id_servico = tb_servico.id_servico
+	on tb_servico_categoria.id_servico = tb_servico.id_servico
  inner join tb_categoria
     on tb_categoria.id_categoria = tb_servico_categoria.id_categoria
  where tb_categoria.id_categoria = ?
    and tb_servico.nm_servico     = ?;
 
 # list user created services
-select tb_servico.id_servico        as idServico,
-       tb_servico.nm_servico        as servico,
-       tb_servico.dt_publicado      as publicacao,
-       tb_categoria.id_categoria    as idCategoria,
-       tb_categoria.nm_categoria    as categoria
-  from tb_servico
-inner join tb_servico_categoria
-    on tb_servico_categoria.id_servico = tb_servico.id_servico
- inner join tb_categoria
-    on tb_categoria.id_categoria = tb_servico_categoria.id_categoria
- inner join tb_usuario
-    on tb_usuario.id_usuario = tb_servico.id_usuario
- where tb_servico.id_usuario     = ?
-   and tb_categoria.id_categoria = ?
-   and tb_servico.nm_servico     = ?;
-
-# see details of service
 select tb_servico.id_servico     as idServico,
-       tb_servico.id_atribuido   as atribuido,
        tb_servico.nm_servico     as titulo,
        tb_servico.ds_servico     as descricao,
        tb_servico.ds_ideias      as ideias,
@@ -147,12 +128,41 @@ select tb_servico.id_servico     as idServico,
        tb_local.ds_endereco      as endereco,
        tb_local.ds_cep           as cep
   from tb_servico
+ inner join tb_servico_categoria
+	on tb_servico_categoria.id_servico = tb_servico.id_servico
  inner join tb_categoria
-    on tb_servico.id_categoria   = tb_categoria.id_categoria
+    on tb_categoria.id_categoria = tb_servico_categoria.id_categoria
  inner join tb_usuario
-    on tb_servico.id_usuario     = tb_usuario.id_usuario     
+    on tb_usuario.id_usuario = tb_servico.id_usuario
  inner join tb_local
-    on tb_servico.id_local       = tb_local.id_local
+	on tb_local.id_local = tb_servico.id_local
+ where tb_servico.id_usuario     = ?
+   and tb_categoria.id_categoria = ?
+   and tb_servico.nm_servico     = ?;
+
+# see details of service
+select tb_servico.id_servico     as idServico,
+       tb_servico.nm_servico     as titulo,
+       tb_servico.ds_servico     as descricao,
+       tb_servico.ds_ideias      as ideias,
+       tb_servico.ds_requisitos  as requisitos,
+       tb_servico.dt_publicado   as data,
+       tb_categoria.ds_categoria as categoria,
+       tb_usuario.id_usuario     as idUsuario,
+       tb_usuario.nm_usuario     as nomeUsuario,
+       tb_usuario.img_usuario    as imgUsuario,
+       tb_local.id_local         as idLocal,
+       tb_local.ds_endereco      as endereco,
+       tb_local.ds_cep           as cep
+  from tb_servico
+ inner join tb_servico_categoria
+	on tb_servico_categoria.id_servico = tb_servico.id_servico
+ inner join tb_categoria
+    on tb_categoria.id_categoria = tb_servico_categoria.id_categoria
+ inner join tb_usuario
+    on tb_usuario.id_usuario = tb_servico.id_usuario
+ inner join tb_local
+	on tb_local.id_local = tb_servico.id_local
  where tb_servico.id_servico     = ?;
 
 # if there's an applied worker
