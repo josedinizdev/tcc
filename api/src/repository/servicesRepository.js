@@ -84,18 +84,31 @@ export async function EditarServico(id, servico) {
 
 export async function DetalhesServicos(id) {
     const comando = `
-        select	tb_servico.id_servico      idServico,
-                tb_servico.id_usuario      idUsuario,
-                tb_servico.nm_servico      titulo,
-                tb_servico.ds_servico      descricao,
-                tb_servico.ds_ideias       ideias,
-                tb_servico.ds_requisitos   requisitos, 
-                tb_servico.dt_publicado    data,
-                tb_usuario.nm_usuario      nomeUsuario
+        select	tb_servico.id_servico      as s-id,
+                tb_servico.id_usuario      as u-id,
+                tb_servico.nm_servico      as titulo,
+                tb_servico.ds_servico      as descricao,
+                tb_servico.ds_ideias       as ideias,
+                tb_servico.ds_requisitos   as requisitos, 
+                tb_servico.dt_publicado    as data,
+                tb_usuario.nm_usuario      as usuario,
+                ds_estado                  as estado, 
+                ds_cidade                  as cidade, 
+                ds_endereco                as endereco, 
+                ds_numero                  as numero, 
+                ds_cep                     as cep, 
+                ds_complemento             as complemento,
+                ds_categoria               as categoria  
         from tb_servico
         inner join tb_usuario
             on tb_usuario.id_usuario = tb_servico.id_usuario
-        where id_servico = ?
+        inner join tb_local
+            on tb_local.id_local = tb_servico.id_local
+        inner join tb_servico_categoria
+            on tb_servico_categoria.id_servico = tb_servico.id_servico
+        inner join tb_categoria
+            on tb_categoria.id_categoria = id_servico_categoria.id_categoria
+        where id_servico = ?;
     `;
     const linhas = await con.query(comando, [id]);
     return linhas[0];

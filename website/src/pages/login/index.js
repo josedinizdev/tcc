@@ -3,7 +3,7 @@ import StyledLogin, {
     BackgroundDiv
 } from "./styles.js";
 import LoadingBar from 'react-top-loading-bar';
-// import storage from 'local-storage';
+import storage from 'local-storage';
 import { LoginUsuario } from "../../api/user.js";
 import { Link, useNavigate } from "react-router-dom";
 import Toast from "../../components/toast/index.js";
@@ -17,10 +17,10 @@ export default function Login() {
     const navigate = useNavigate();
     const ref = useRef();
 
-    // useEffect(_ => {
-    //     if (storage('usuario-logado'))
-    //         navigate('/perfil');
-    // }, {})
+    useEffect(_ => {
+        if (storage('usuario-logado'))
+            navigate('/perfil');
+    }, {})
 
     async function Logar() {
         ref.current.continuousStart();
@@ -28,7 +28,7 @@ export default function Login() {
     
         try {
             const resp = await LoginUsuario(email, senha);
-            // storage('usuario-logado', resp)
+            storage('usuario-logado', resp)
             setTimeout(() => {
                 navigate('/perfil');
             }, 3000)
@@ -36,7 +36,7 @@ export default function Login() {
         catch(err) {
             ref.current.complete()
             setCarregar(false)
-        
+            console.log(err)
             if(err.status === 401) {
                 setErr(err.erro);
             }
@@ -68,7 +68,7 @@ export default function Login() {
                         <label className='obrigatory' htmlFor=''>E-Mail</label>
                         <input value={email} onChange={e => setEmail(e.target.value)} type='text' />
                         <label className='obrigatory' htmlFor=''>Senha</label>
-                        <input value={senha} onChange={e => setSenha(e.target.value)} type='text' />
+                        <input value={senha} onChange={e => setSenha(e.target.value)} type='password' />
                     </form>
                     <div>
                         <button className='login__button' onClick={Logar} disabled={carregar}>Login </button>

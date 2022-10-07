@@ -17,6 +17,7 @@ export default function Services() {
     useEffect(() => {
         async function ExibirListagem() {
             const resp = await ListarServico();
+            console.log(resp)
             let newResp = [];
             for (let i = 0; i < resp.length; i++) {
                 let category = false;
@@ -77,10 +78,7 @@ export default function Services() {
                     </div>
                 </div>
             </div>
-
-
             {cadastro && (<Cadastrar />)}
-
             <List className="container background-orange">
                 <div className="container jc-between background-orange"> 
                     <div className="container-column background-transparent services-listar">
@@ -112,4 +110,3 @@ export default function Services() {
         </StyledServices>
     )
 }
-
