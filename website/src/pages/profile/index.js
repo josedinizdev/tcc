@@ -4,7 +4,7 @@ import StyledProfile from './styles.js';
 import { Navigate } from 'react-router-dom';
 
 function click(e) {
-    switch (e.target.value) {
+    switch (e.target.id) {
         case 'desconectar':
             storage.remove('usuario-logado')
             Navigate('/')

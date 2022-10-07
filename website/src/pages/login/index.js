@@ -25,7 +25,6 @@ export default function Login() {
     async function Logar() {
         ref.current.continuousStart();
         setCarregar(true);
-    
         try {
             const resp = await LoginUsuario(email, senha);
             storage('usuario-logado', resp)
@@ -36,10 +35,7 @@ export default function Login() {
         catch(err) {
             ref.current.complete()
             setCarregar(false)
-            console.log(err)
-            if(err.status === 401) {
-                setErr(err.erro);
-            }
+            setErr(err.response.data.erro);
         }   
     }
 

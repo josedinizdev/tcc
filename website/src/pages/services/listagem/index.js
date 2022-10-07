@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
-import { ListarServico, PesquisarServicoTitulo } from '../../api/servicos.js';
-import Cadastrar from "../../components/cadastrar/index.js";
+import { ListarServico, PesquisarServicoTitulo } from '../../../api/servicos.js';
+import Cadastrar from "../../../components/cadastrar/index.js";
+import Detalhes from "../../../components/detalhes/index.js";
 import StyledServices, {
     List,
     CardServicoList,
@@ -12,12 +13,11 @@ export default function Services() {
     const [buscar, setBuscar] = useState('');
     const [cadastro, setCadastro] = useState(false);
     const [detalhes, setDetalhes] = useState(false);
-    const [currentPos, setCurrentPos] = useState(0);
+    const [currentPos, setCurrentPos] = useState();
     
     useEffect(() => {
         async function ExibirListagem() {
             const resp = await ListarServico();
-            console.log(resp)
             let newResp = [];
             for (let i = 0; i < resp.length; i++) {
                 let category = false;
@@ -33,18 +33,27 @@ export default function Services() {
             setServicos(newResp);
         }
         ExibirListagem();
-    }, []);
+    }, [cadastro]);
 
     function verDetalhes(id) {
-        for (let i = 0; i < servicos.length; i++)
-            if (servicos[i].id === id)
-                setCurrentPos(i);
+        setCurrentPos(id);
         setDetalhes(true);
     }
     
     function click(e) {
+        switch (e.target.id) {
+            case 'cadastrar':
+                setCadastro(!cadastro)
+                break;
+            case 'detalhes':
+                setDetalhes(!detalhes);
+                break;
+            default:
+                break;
+        }
         if (e.target.id === 'cadastrar')
             setCadastro(!cadastro);
+        
     }
 
     async function buscarServico() {
@@ -64,11 +73,11 @@ export default function Services() {
                     <h1 className="services__title "> - bem vindo(a) </h1>
                     <img src="/img/logo-white.png" alt='withu' className="services__img" />
                     <p className="services__slogan"> Sempre com você, o problema apareceu, conte conosco </p>
-
                     <div>
                         <section className="container-column al-center">
                             <div className="container background-filters background-transparent">
                                 <button id="cadastrar" onClick={click} className="pointer">Criar</button>
+                                <button><Link to='/servicos/usuario'>Gerenciar</Link></button>
                                 <select>
                                     <option>  </option>
                                 </select>
@@ -78,7 +87,8 @@ export default function Services() {
                     </div>
                 </div>
             </div>
-            {cadastro && (<Cadastrar />)}
+            {cadastro && (<Cadastrar close={e => click(e)} />)}
+            {detalhes && (<Detalhes close={e => click(e)} id={currentPos} />)}
             <List className="container background-orange">
                 <div className="container jc-between background-orange"> 
                     <div className="container-column background-transparent services-listar">

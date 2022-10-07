@@ -47,6 +47,23 @@ export async function BuscarServicos() {
     return linhas;
 }
 
+export async function BuscarServicosUsuario(id) {
+    const comando = `
+        select tb_servico.id_servico     as id,
+               tb_servico.nm_servico     as titulo,
+               tb_servico.dt_publicado   as data,
+               tb_categoria.ds_categoria as categoria
+          from tb_servico
+         inner join tb_servico_categoria
+            on tb_servico_categoria.id_servico = tb_servico.id_servico
+         inner join tb_categoria
+            on tb_categoria.id_categoria = tb_servico_categoria.id_categoria
+         where tb_servico.id_usuario = ?;
+    `
+    const [linhas] = await con.query(comando, [id]);
+    return linhas;
+}
+
 export async function BuscarServicosTitulo(titulo) {
     const comando = `
         select id_servico   id,
@@ -62,30 +79,54 @@ export async function BuscarServicosTitulo(titulo) {
 export async function Deletarservico (id) {
     const comando = `
         delete from tb_servico 
-        where id_servico = ?
+            where id_servico = ?;
     `;
-    const linhas = await con.query(comando, [id]);
+    const [linhas] = await con.query(comando, [id]);
     return linhas.affectedRows;
-
 }
 
-export async function EditarServico(id, servico) {
+export async function EditarLocal(local) {
     const comando = `
-    update tb_servico 
-            set  nm_servico      = ?,
-                    ds_servico      = ?,
-                    ds_ideias       = ?, 
-                    ds_requisitos   = ?
-            where id_servico = ? 
+            update tb_local
+               set ds_estado      = ?, 
+                   ds_cidade      = ?, 
+                   ds_endereco    = ?, 
+                   ds_numero      = ?, 
+                   ds_cep         = ?, 
+                   ds_complemento = ?
+            where id_local = ?
             `;
-    const [linhas] = await con.query(comando, [servico.titulo, servico.descricao, servico.ideias, servico.requisitos, id]);
+    const [linhas] = await con.query(comando, [local.estado, local.cidade, local.endereco, local.numero, local.cep, local.complemento, local.local]);
     return linhas[0];
+}
+
+export async function EditarServico(servico) {
+    const comando = `
+            update tb_servico
+               set nm_servico      = ?,
+                   ds_servico      = ?,
+                   ds_ideias       = ?, 
+                   ds_requisitos   = ?
+            where id_servico = ?
+            `;
+    const [linhas] = await con.query(comando, [servico.titulo, servico.descricao, servico.ideias, servico.requisitos, servico.servico]);
+    return linhas[0];
+}
+
+export async function RedefinirCategorias (id) {
+    const comando = `
+        delete from tb_servico_categoria 
+            where id_servico = ?;
+    `;
+    const [linhas] = await con.query(comando, [id]);
+    return linhas.affectedRows;
 }
 
 export async function DetalhesServicos(id) {
     const comando = `
-        select	tb_servico.id_servico      as s-id,
-                tb_servico.id_usuario      as u-id,
+        select	tb_servico.id_servico      as s_id,
+                tb_servico.id_usuario      as u_id,
+                tb_servico.id_local        as l_id,
                 tb_servico.nm_servico      as titulo,
                 tb_servico.ds_servico      as descricao,
                 tb_servico.ds_ideias       as ideias,
@@ -98,6 +139,7 @@ export async function DetalhesServicos(id) {
                 ds_numero                  as numero, 
                 ds_cep                     as cep, 
                 ds_complemento             as complemento,
+                tb_servico_categoria.id_categoria as c_id,
                 ds_categoria               as categoria  
         from tb_servico
         inner join tb_usuario
@@ -107,22 +149,21 @@ export async function DetalhesServicos(id) {
         inner join tb_servico_categoria
             on tb_servico_categoria.id_servico = tb_servico.id_servico
         inner join tb_categoria
-            on tb_categoria.id_categoria = id_servico_categoria.id_categoria
-        where id_servico = ?;
+            on tb_categoria.id_categoria = tb_servico_categoria.id_categoria
+        where tb_servico.id_servico = ?;
     `;
-    const linhas = await con.query(comando, [id]);
-    return linhas[0];
+    const [linhas] = await con.query(comando, [id]);
+    return linhas;
 }
 
 export async function aplicarServicos (id) {
     const comando = `
         insert into tb_servico( ds_titulo, ds_servico, ds_ideias, ds_requisitos, dt_publicado)
         values( ?, ?, ?, ?, current_data() ) 
-                
 
         insert into tb_atribuido ( id_servico, id_worker)
         values   (?, ?) 
     `;
-    const linhas = await con.query(comando, [`%${id}%`]);
+    const [linhas] = await con.query(comando, [`%${id}%`]);
     return linhas[0];
 }

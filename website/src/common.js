@@ -247,6 +247,32 @@ const Common = createGlobalStyle`
     .absolute {
         position: absolute;
     }
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        background-color: #000000cc;
+    }
+    .content {
+        position: relative;
+        z-index: 2;
+        background-color: #fff;
+        border-radius: .5rem;
+        width: 75%;
+        height: 75%;
+    }
+    .modal__close::before {
+        content: 'X';
+        color: red;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        z-index: 3;
+        cursor: pointer;
+    }
 `;
 
 export default Common;

@@ -5,7 +5,9 @@ const StyledToast = styled.div`
     right: 0;
     height: 3rem;
     width: 7rem;
-    background-color: #fff;
+    background-color: #d6d6d6;
+    border: #242424 solid 2px;
+    border-radius: .5rem;
     padding: 1rem 0;
 `;
 
