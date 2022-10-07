@@ -55,10 +55,10 @@ server.put('/usuario/perfil/alterar/:id', async(req, resp) => {
   }
 })
 
-server.put('/usuario/perfil/alterar/foto/:id', async(req, resp) => {
+server.put('/usuario/perfil/alterar/:id/foto', async(req, resp) => {
   try {
     const id = Number(req.params.id);
-    const fotoUsuario = req.body
+    const fotoUsuario = req.body;
 
     if(!fotoUsuario)
         throw new Error("Não foi possível alterar.");

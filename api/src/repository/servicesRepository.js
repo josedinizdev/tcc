@@ -14,7 +14,7 @@ export async function CadastrarLocal(local) {
     const comando = `
         insert into tb_local(ds_estado, ds_cidade, ds_endereco, ds_numero, ds_cep, ds_complemento)
                values(?, ?, ?, ?, ?, ?)
-    `;
+    `;  
     const [linhas] = await con.query(comando, [local.estado, local.cidade, local.endereco, local.numero, local.cep, local.complemento]);
     local.id = linhas.insertId;
     return { linhas: linhas, id: local.id };

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { ListarServico } from '../../api/servicos.js';
+import { ListarServico, PesquisarServicoTitulo } from '../../api/servicos.js';
 import Cadastrar from "../../components/cadastrar/index.js";
 import StyledServices, {
     List,
@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom'
 
 export default function Services() {
     const [servicos, setServicos] = useState([]);
+    const [buscar, setBuscar] = useState('');
     const [cadastro, setCadastro] = useState(false);
     const [detalhes, setDetalhes] = useState(false);
     const [currentPos, setCurrentPos] = useState(0);
@@ -45,19 +46,41 @@ export default function Services() {
             setCadastro(!cadastro);
     }
 
+    async function buscarServico() {
+        const filtrar = await PesquisarServicoTitulo(buscar);
+        setBuscar(filtrar);
+    }
+
+    function verificarEnter(tecla) {
+        if(tecla.key === 'Enter')
+            buscarServico(buscar);
+    }
+
     return(
         <StyledServices className='container-column relative z1'>
-            {cadastro && (<Cadastrar />)}
-            <div style={{ height: '4rem' }}></div>
-            <section className="container-column al-center">
-                <div className="container background-filters background-transparent">
-                    <button id="cadastrar" onClick={click} className="pointer">Criar</button>
-                    <select>
-                        <option>  </option>
-                    </select>
-                    <input type='text' placeholder="Pesquisar" /> 
+            <div className="services__background">
+                <div className="services">
+                    <h1 className="services__title "> - bem vindo(a) </h1>
+                    <img src="/img/logo-white.png" alt='withu' className="services__img" />
+                    <p className="services__slogan"> Sempre com você, o problema apareceu, conte conosco </p>
+
+                    <div>
+                        <section className="container-column al-center">
+                            <div className="container background-filters background-transparent">
+                                <button id="cadastrar" onClick={click} className="pointer">Criar</button>
+                                <select>
+                                    <option>  </option>
+                                </select>
+                                <input type='text' placeholder="Pesquisar" value={buscar} onKeyDown={verificarEnter}  onChange={e => setBuscar(e.target.value)}/> 
+                            </div>
+                        </section>
+                    </div>
                 </div>
-            </section>
+            </div>
+
+
+            {cadastro && (<Cadastrar />)}
+
             <List className="container background-orange">
                 <div className="container jc-between background-orange"> 
                     <div className="container-column background-transparent services-listar">

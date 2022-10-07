@@ -1,52 +1,40 @@
 import styled from 'styled-components';
 
-const StyledServices = styled.div`   
-    .services__top {
-        background-color: #242424;
-        height: 40rem;
-        background-size: 40% auto;
-        img {
-            width: 30rem;
-            height: auto;
-        }
-    }
-    .services__title {
-        padding-top: 8rem;
-        right: -10rem;
-    }
-    .services__img {
-        width: 55%;
-        height: 100%   
-        div {
-            top: 0;
-            right: 0;
-        }
+const StyledServices = styled.div`
+    .services {
+        display: flex;
+        flex-direction: column;
     }
     .services__background {
-        background-image: url('/img/services-background.svg');
-        background-size: auto 100%;
-        background-position: 60% ;
-    }
+        background: url('/img/services-background.svg') #242424 no-repeat 100%;
+        background-size: 100% auto;
+    }   
 
-    .services__background-color {
-        background-color: #EF7601;
-        opacity: .4;
+    .services__title {
+        padding: 8rem 0 0 8rem;
+        color: #fff;
+        font-size: 1.3rem;
     }
-
-    .margin60 {
-        margin-left: 60%;
+    .services__slogan {
+        color: #fff;
+        font-family: inria-regular;
+        font-size: 2rem;
+        padding-left: 8rem;
+    }
+    .services__img {
+        width: 50%;
+        height: 100%;
+        padding-left: 8rem;
     }
     
     /* Faixa */
     .background-filters {
         justify-content: flex-end;
-
         padding: .4rem 3rem;
         border-radius: .6rem;
         width: 90%;
         height: auto;
-        margin-top: .6rem;
-        position: absolute;
+        margin: 3rem 0 1rem 0;
         
 
         button, select, input {
@@ -76,7 +64,7 @@ export const List = styled.div`
         background-color: #EF7601;
         width: 100%;
         height: 120vh;
-        padding: 8% 5%;
+        padding: 2% 5%;
     }
 
     .services-listar {
@@ -100,7 +88,6 @@ export const List = styled.div`
     .pesquisar-profissionais {
         width: 92%;
         h1 {
-            
             font-family: inria-bold;
             font-size: 1.8rem;
         }
@@ -123,6 +110,7 @@ export const CardServicoList = styled.div`
         border-radius: .3rem;
         box-sizing: border-box;
         margin: .3rem 2rem;
+        flex-wrap: wrap;
     }
     h1, h2 {
         color: #242424;

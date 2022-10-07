@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import storage from 'local-storage';
+// import storage from 'local-storage';
 import styled from 'styled-components';
 import { obterCategorias } from '../../api/categorias';
 import { CadastrarServico } from '../../api/servicos';
@@ -42,13 +42,13 @@ export default function Cadastrar() {
             );
     };
 
-    useEffect(_ => {
-        if (storage('usuario-logado')) {
-            const usuarioLogado = storage('usuario-logado')
-            setLogado(true);
-            setUsuario(usuarioLogado.id);
-        };
-    }, {});
+    // useEffect(_ => {
+    //     if (storage('usuario-logado')) {
+    //         const usuarioLogado = storage.Element('usuario-logado')
+    //         setLogado(true);
+    //         setUsuario(usuarioLogado.id);
+    //     };
+    // }, {});
 
     useEffect(_ => {
         async function definirCategorias() {

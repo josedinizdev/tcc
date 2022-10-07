@@ -7,7 +7,7 @@ insert into tb_login(id_usuario, ds_senha)
         values(1, '1234');
 
 insert into tb_admin(id_usuario, bt_admin)
-        values(1, true);
+        values(1, true);        
 
 insert into tb_usuario(nm_usuario, dt_registro, ds_email, dt_nascimento)
         values('João Vitor Moura', current_date(), 'joaovitormoura@gmail.com', '2004-09-24');
@@ -221,3 +221,23 @@ insert into tb_servico(id_usuario, id_local, nm_servico, ds_servico, ds_ideias, 
 
 insert into tb_servico_categoria(id_servico, id_categoria)
         values(5, 9);
+
+
+desc tb_servico;
+show tables;
+select * from tb_admin;
+select * from tb_atribuido;
+select * from tb_atribuido_chat;
+select * from tb_avaliacao;
+select * from tb_categoria;
+select * from tb_chat;
+select * from tb_ideia;
+select * from tb_local;
+select * from tb_login;
+select * from tb_mensagem;
+select * from tb_opiniao;
+select * from tb_servico;
+select * from tb_servico_categoria;
+select * from tb_suporte;
+select * from tb_usuario;
+select * from tb_worker;         

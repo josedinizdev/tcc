@@ -3,7 +3,7 @@ import StyledLogin, {
     BackgroundDiv
 } from "./styles.js";
 import LoadingBar from 'react-top-loading-bar';
-import storage from 'local-storage';
+// import storage from 'local-storage';
 import { LoginUsuario } from "../../api/user.js";
 import { Link, useNavigate } from "react-router-dom";
 import Toast from "../../components/toast/index.js";
@@ -17,10 +17,10 @@ export default function Login() {
     const navigate = useNavigate();
     const ref = useRef();
 
-    useEffect(_ => {
-        if (storage('usuario-logado'))
-            navigate('/perfil');
-    }, {})
+    // useEffect(_ => {
+    //     if (storage('usuario-logado'))
+    //         navigate('/perfil');
+    // }, {})
 
     async function Logar() {
         ref.current.continuousStart();
@@ -28,7 +28,7 @@ export default function Login() {
     
         try {
             const resp = await LoginUsuario(email, senha);
-            storage('usuario-logado', resp)
+            // storage('usuario-logado', resp)
             setTimeout(() => {
                 navigate('/perfil');
             }, 3000)
