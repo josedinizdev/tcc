@@ -9,3 +9,13 @@ export async function obterCategorias() {
     const [linhas] = await con.query(comando);
     return linhas;
 };
+
+
+export async function removerServicoCategoria(id) {
+    const comando = `
+        delete from tb_servico_categoria 
+        where id_servico = ?;
+    `;
+    const [linhas] = await con.query(comando, [id]);
+    return linhas;
+};

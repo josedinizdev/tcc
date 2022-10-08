@@ -1,27 +1,28 @@
 import { Router } from 'express'
+import { removerServicoCategoria } from '../repository/categoriasRepository.js';
 import { CadastrarServico, AtribuirCategoria, CadastrarLocal, BuscarServicosTitulo, BuscarServicos, Deletarservico, DetalhesServicos, EditarServico } from '../repository/servicesRepository.js';
 const server = Router();
 
 server.post('/servicos', async (req, resp) =>{
   try {
-    /* {
-	  /*    "categoria": [
-    /*      0,
-    /*      0
-    /*    ],
-	  /*    "estado": "",
-	  /*    "cidade": "",
-	  /*    "endereco": "",
-	  /*    "numero": 0,
-	  /*    "cep": "",
-	  /*    "complemento": "",
-	  /*    "usuario": 0,
-	  /*    "titulo": "",
-	  /*    "descricao": "",
-	  /*    "ideias": "",
-	  /*    "requisitos": ""
-    /* }
-    */
+    //  {
+	  //     "categoria": [
+    //       0,
+    //       0
+    //     ],
+	  //     "estado": "",
+	  //     "cidade": "",
+	  //     "endereco": "",
+	  //     "numero": 0,
+	  //      "cep": "",
+	  //    "complemento": "",
+	  //    "usuario": 0,
+	  //     "titulo": "",
+	  //     "descricao": "",
+	  //     "ideias": "",
+	  //     "requisitos": ""
+    //  }
+    
     const servico = req.body;
     const local = await CadastrarLocal(servico);
     console.log(local)
@@ -106,7 +107,9 @@ server.delete('/servicos/remover/:id' , async (req, resp) => {
     if(id === undefined || id === " ") 
     throw new Error('Perfil não encontrado ou inexistente.')
 
-    const resposta = await Deletarservico(id);
+    const removerCategoria = await removerServicoCategoria(id)
+    const removerServico = await Deletarservico(id);
+    const resposta = await (id, removerCategoria, removerServico)
     resp.status(200).send(resposta)
   } 
   catch (err) {

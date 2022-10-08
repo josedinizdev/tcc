@@ -1,0 +1,63 @@
+.cadastrar {
+    height: 100%;
+    width: 90%;
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 1rem;
+
+    input, select, textarea {
+        border: 1px solid #242424;
+        border-radius: .6rem;
+        padding: .5rem;
+        font-family: 'inria-sans';
+        font-size: 1rem;
+    }
+
+    select {
+        margin-top: 1rem;
+        appearance:none;
+    }
+
+    textarea {
+        width: 80%;
+        padding-bottom: 20rem;
+        margin: 1rem .5rem;
+    }
+
+    button {
+        color: #fff;
+        background-color: #1E4F6F;
+        border-radius: 1.1rem;
+        padding: 1.1rem 3rem;
+    }
+
+    .Medio {
+        width: 100%;
+    }
+
+    .lEsquerdo {
+        width: 32%;
+        
+        input:nth-child(1) {
+            margin-bottom: 1rem;
+        }
+    }
+
+    .lMeio {
+        width: 32%;
+        
+        input:nth-child(1) {
+            margin-bottom: 1rem;
+        }
+        input:nth-child(2) {
+            width: 50%;
+        }
+    }
+
+    .lDireito {
+        width: 16%;        
+        input:nth-child(1) {
+            margin-bottom: 1rem;
+        }
+    }
+}

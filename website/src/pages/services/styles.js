@@ -56,6 +56,10 @@ const StyledServices = styled.div`
             outline: none;
         }
     }
+
+    .toast {
+        position: absolute;
+    }
 `
 ;
 
