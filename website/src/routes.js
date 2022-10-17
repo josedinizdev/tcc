@@ -6,6 +6,7 @@ import Login from './pages/login';
 import Register from './pages/register';
 import Services from './pages/services';
 import Profile from './pages/profile';
+import Footer from './components/footer';
 
 export default function Index() {
     return (
@@ -16,6 +17,7 @@ export default function Index() {
                 <Route path='/cadastro' element={<Register />} />
                 <Route path='/servicos' element={<View><Services /></View>} />
                 <Route path='/perfil' element={<View><Profile /></View>} />
+                <Route path='/footer' element={<Footer />} />
             </Routes>
         </BrowserRouter>
     );
