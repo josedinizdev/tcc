@@ -1,6 +1,4 @@
-main {
-    padding: 1rem;
-}
+
 h2 {
     font-family: 'inria-regular';
     font-size: 1.5rem;
@@ -16,8 +14,17 @@ p {
         height: 4rem;
     }
     
+    .card-perfil {
+        padding: 1rem;
+        height: 10rem;
+    }
+
+    .habilidades {
+        max-width: 20%;
+    }
+
     article, div {
-        width: 65%;
+        width: 100%;
     }
 
     nav > div, button {
@@ -36,6 +43,10 @@ p {
         border-radius: .6rem;
     }
 
+    article > div:nth-child(1) {
+        margin-bottom: 1rem;
+    }
+
     .icon {
         width: 1.2rem;
         height: 1.2rem;
@@ -45,9 +56,17 @@ p {
         justify-self: end;
         position: absolute;
     }
+
+    .user {
+        margin-right: 1rem;
+    }
+
+    .max10 {
+        max-width: 20rem;
+    }
     
     .habilidades {
-        margin-top: 1rem;
+        width: 80%;
     }
     
     nav {
@@ -75,7 +94,7 @@ p {
 
 .card-branco {
     background-color: #fff;
-    padding: 1rem 0 1rem 1rem;
+    padding: 1rem;
     border-radius: .6rem;
 }
 

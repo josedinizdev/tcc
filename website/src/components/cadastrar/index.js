@@ -10,7 +10,7 @@ const StyledCadastrar = styled.div`
     left: 0;
 `;
 
-export default function Cadastrar() {
+export default function Cadastrar(props) {
     const [catDisp, setCatDisp] = useState([]);
     const [categorias, setCategorias] = useState([]);
     const [estado, setEstado] = useState('');
@@ -64,8 +64,9 @@ export default function Cadastrar() {
 
     return (
         <StyledCadastrar className='fixed container jc-center al-center wh100'>
-            <div className='cadastrar__overlay absolute z1' />
+            <div id='close-cadastro' className='cadastrar__overlay absolute z1 wh100' onClick={props.close} />
             <div className='cadastrar__content relative z2 container-column cadastrar'>
+                <div id='close-cadastro' onClick={props.close}>x</div>
                 <div className='container jc-between al-center'> {/* Titulo, categoria e botão */}
                     <div className='container-column'> {/* Título e categoria */}
                         <input  className='iMedio' placeholder='Ex.: Manunteção de Máquina'         value={titulo}          onChange={e => setTitulo(e.target.value)} type="text" />

@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+// import styled from 'styled-components';
 
-const StyledAdmin = styled.div`
+// const StyledAdmin = styled.div`
 
-`;
+// `;
 
-export default StyledAdmim;
+// export default StyledAdmim;

@@ -46,6 +46,8 @@ export default function Services() {
     function click(e) {
         if (e.target.id === 'cadastrar')
             setCadastro(!cadastro);
+        else if (e.target.id === 'close-cadastro')
+            setCadastro(false);
     }
 
     async function filtrar() {
@@ -61,7 +63,6 @@ export default function Services() {
                     <h1 className="services__title "> - bem vindo(a) </h1>
                     <img src="/img/logo-white.png" alt='withu' className="services__img" />
                     <p className="services__slogan"> Sempre com você, o problema apareceu, conte conosco </p>
-
                     <div>
                         <section className="container-column al-center">
                             <div className="container background-filters background-transparent">
@@ -77,7 +78,7 @@ export default function Services() {
                     </div>
                 </div>
             </div>
-            {cadastro && (<Cadastrar />)}
+            {cadastro && (<Cadastrar close={e => click(e)}/>)}
             <List className="container background-orange">
                 <div className="container jc-between background-orange"> 
                     <div className="container-column background-transparent services-listar">

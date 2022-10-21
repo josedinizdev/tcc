@@ -1,11 +1,10 @@
 import { Link } from 'react-router-dom'
 import '../styles.scss'
-import User from '../../../assets/images/perfil.png'
-import EditIcon from '../../../assets/images/editar-icon.png'
 import FerramentasIcon from '../../../assets/images/ferramentas-icon.png'
 import HistoricoIcon from '../../../assets/images/historico-icon.png'
 import ContatoIcon from '../../../assets/images/contato-icon.png'
 import SairIcon from '../../../assets/images/sair-icon.png'
+import ProfileCard from '../../../components/profile'
 
 
 export default function AdmAndamentoPage() {
@@ -14,25 +13,9 @@ export default function AdmAndamentoPage() {
             <section className="container cinza-card">
                 <section className="container-column profile"> { /* Perfil */ }
                     <article className="container-column card-branco"> 
-                        <div className="container jc-between">  { /* Nome, Perfil e cargo */ }
-                            <img src={User} alt="perfil" />
-                            <img className='container icon editar jc-end al-end' src={EditIcon} alt="editar" />
-
-                            <div className="container-column">
-                                <h2> David Ribeiro </h2>
-                                <p> Programador Sênior</p>
-                            </div>
-                        </div>  { /* Nome, Perfil e cargo */ }
-
-                        <div className="container-column habilidades">
-                            <h2> Habilidade </h2>
-                            <p>     
-                                Designer UX/UL
-                                Desenvolvedor de Software
-                                Desenvolvedor Web
-                                HTML & CSS Avançado
-                            </p>
-                        </div>
+                        <ProfileCard nome='David Ribeiro'
+                                     cargo='Desenvolvedor' 
+                                     habilidades='DesignerDesignerDesignerDesignerDesignerDesignerDesignerDesignerDesignerDesigner'/>
                     </article> 
 
                     <nav className="container-column">

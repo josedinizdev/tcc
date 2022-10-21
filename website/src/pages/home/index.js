@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import StyledHome from './styles';
 import StyledJuntar from '../../components/juntarse/styles';
 
-export default function Home() {
+export default function Home(props) {
     return (
         <StyledHome>
             <header className='container'>  
@@ -14,7 +14,6 @@ export default function Home() {
                         <p className='cFFFFFF'> Sempre com você, o problema apareceu, conte conosco </p>
                     </div>
                 </div>
-
                 <div className='container-column header-img header-orange al-end jc-end'>
                     <div className='jc-start espacamento'>
                         <h2 className='cFFFFFF'> - introdução </h2>
@@ -23,7 +22,6 @@ export default function Home() {
                     </div>
                 </div>     
             </header>
-
             <section className='faixa1 container jc-center al-center'> {/* Faixa 1 */}  
                 <div className='container cinza-card'>
                     <div className='container-column'> 
@@ -131,11 +129,6 @@ export default function Home() {
                             <p> Diretor de TI (CMO) </p>
                         </div>
 
-                        <div className='container-column jc-center al-center'>
-                            <img src='/img/diretores/diretora-cio.png' alt='CIO' />
-                            <h3> Camilly Costa </h3> 
-                            <p> Diretora de Marketing (CIO) </p>
-                        </div>
                     </div>
                 </div>
             </section>  

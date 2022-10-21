@@ -167,6 +167,10 @@ const Common = createGlobalStyle`
         text-align: center;
     }
 
+    .wrap {
+        flex-wrap: wrap;
+    }
+
     .whf {
         width: fit-content;
         height: fit-content;

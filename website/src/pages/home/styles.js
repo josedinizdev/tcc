@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 const StyledHome = styled.main`
+    padding: 0;
 h2  {
     font-size: 1.1rem;
     letter-spacing: 1px;
@@ -177,10 +178,10 @@ header {
         color: #1E4F6F;
     
         width: 15%;
-        padding: 1rem;
         margin: 1rem 0 .5rem 0;
         border: 1px solid #C8D2D2;
-        border-radius: 100%;
+        padding: .5rem 1rem;
+        border-radius: 999px;
     }
 
     img {
