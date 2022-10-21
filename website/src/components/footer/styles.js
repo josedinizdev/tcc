@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 const StyledFooter = styled.footer`
+bottom: 0;
 padding: 1rem;
 bottom: 0;
 background-color: #000;
@@ -70,7 +71,7 @@ form {
         font-size: 1.1rem;
     }
 
-    input[type='textarea'] {
+    textarea {
         height: 100%;
         margin-top: .4rem;
 
@@ -78,6 +79,7 @@ form {
         border-radius: .8rem;
 
         font-size: 1rem;
+        padding: .4rem;
     }
     
     button {

@@ -5,7 +5,7 @@ import ProfileCard from '../../../components/profile'
 import TableCard from '../../../components/table'
 
 
-export default function AdmAndamentoPage() {
+export default function AdmHistoricoPage() {
     return(
         <main className="container wh100v b5551E3 jc-center al-center">
             <section className="container cinza-card">
@@ -16,7 +16,7 @@ export default function AdmAndamentoPage() {
 
                  <div className='linha'/> { /* Linha */ }
                  
-                <TableCard h1='Projetos em Andamento'/>
+                <TableCard h1='Histórico'/>
             </section>
         </main>
     )

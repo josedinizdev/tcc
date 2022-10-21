@@ -1,103 +1,13 @@
 
-h2 {
+h2, p, h1 {
     font-family: 'inria-regular';
     font-size: 1.5rem;
 }
+
+h1 {
+    font-size: 1.5rem;
+}
+
 p {
-    font-family: 'inria-regular';
     font-size: 1rem;
-}
-
-.profile {
-    img {
-        width: 4rem;
-        height: 4rem;
-    }
-    
-    .card-perfil {
-        padding: 1rem;
-        height: 10rem;
-    }
-
-    .habilidades {
-        max-width: 20%;
-    }
-
-    article, div {
-        width: 100%;
-    }
-
-    nav > div, button {
-        letter-spacing: 1px;
-    }
-
-    nav  p {
-        margin: .5rem;
-    }
-
-    button {
-        font-size: 1.2rem;
-        margin-top: 1rem;
-        width: 100%;
-        padding: 1rem;
-        border-radius: .6rem;
-    }
-
-    article > div:nth-child(1) {
-        margin-bottom: 1rem;
-    }
-
-    .icon {
-        width: 1.2rem;
-        height: 1.2rem;
-    }
-    
-    .editar {
-        justify-self: end;
-        position: absolute;
-    }
-
-    .user {
-        margin-right: 1rem;
-    }
-
-    .max10 {
-        max-width: 20rem;
-    }
-    
-    .habilidades {
-        width: 80%;
-    }
-    
-    nav {
-        margin-top: 1rem;
-    }
-
-    .padding0 {
-        padding: 0;
-    }
-
-    .arredondar-top {
-        border-top-left-radius: .6rem;
-        border-top-right-radius: .6rem;
-    }
-
-    .arredondar-bottom {
-        border-bottom-left-radius: .6rem;
-        border-bottom-right-radius: .6rem;
-    }
-}
-
-.linha {
-    border: 2px solid rgba(36, 36, 36, 65%);
-}
-
-.card-branco {
-    background-color: #fff;
-    padding: 1rem;
-    border-radius: .6rem;
-}
-
-    .servico {
-        
 }

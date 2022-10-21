@@ -21,10 +21,10 @@ export default function Footer() {
                     <h2> Sempre com você, o problema apareceu, conte conosco </h2>
                     
                     <div className='container-column'>
-                        <Link to='/https://www.facebook.com/profile.php?id=100087019570457'     className='container icon-contato jc-center al-center'>  <img src='/img/footer/facebook-icon.svg' alt='facebook' />  </Link>
-                        <Link to='/https://twitter.com/WithuEnterprise'                         className='container icon-contato jc-center al-center'>  <img src='/img/footer/instagram-icon.svg' alt='instagram' />  </Link>
-                        <Link to='/'                                                            className='container icon-contato jc-center al-center'>  <img src='/img/footer/twitter-icon.svg' alt='twitter' />  </Link>
-                        <Link to='/https://www.linkedin.com/in/withu-enterprise-092391254/'         className='container icon-contato jc-center al-center'>  <img src='/img/footer/linkedin-icon.svg' alt='linkedin'/>  </Link>
+                        <Link to='https://www.facebook.com/profile.php?id=100087019570457'     className='container icon-contato jc-center al-center'>  <img src='/img/footer/facebook-icon.svg' alt='facebook' />  </Link>
+                        <Link to='https://www.instagram.com/withu_enterprise/'                 className='container icon-contato jc-center al-center'>  <img src='/img/footer/instagram-icon.svg' alt='instagram' />  </Link>
+                        <Link to='https://twitter.com/WithuEnterprise'                         className='container icon-contato jc-center al-center'>  <img src='/img/footer/twitter-icon.svg' alt='twitter' />  </Link>
+                        <Link to='https://www.linkedin.com/in/withu-enterprise-092391254/'     className='container icon-contato jc-center al-center'>  <img src='/img/footer/linkedin-icon.svg' alt='linkedin'/>  </Link>
                     </div>
                 </div>
             </section>
@@ -62,7 +62,7 @@ export default function Footer() {
                         <label className='cFFFFFF'> Deixe sua avaliação: </label>
                         <button className='cFFFFFF pointer'> Enviar </button>
                     </div>
-                        <input className='cFFFFFF' type='textarea' />
+                        <textarea className='cFFFFFF'  />
                 </form>
             </section>
         </StyledFooter>

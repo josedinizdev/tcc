@@ -120,6 +120,21 @@ const Common = createGlobalStyle`
         backdrop-filter: blur(1rem);
     }
 
+    .card-branco {
+        background-color: #fff;
+        border-radius: .6rem;
+    }   
+
+    .pad1r {
+        padding: 1rem;
+    }
+
+    .linha {
+        border: 1px solid rgba(36, 36, 36, 65%);
+        margin: 0 1rem;
+    }
+
+
     .container {
         display: flex;
         flex-direction: row;
@@ -150,6 +165,29 @@ const Common = createGlobalStyle`
         align-items: flex-end;
     }
 
+    .js-start {
+        justify-self: start;
+    }
+
+    .js-center {
+        justify-self: center;
+    }
+
+    .js-end {
+        justify-self: end;
+    }
+
+    .as-start {
+        align-self: start;
+    }
+
+    .as-center {
+        align-self: center;
+    }
+
+    .as-end {
+        align-self: end;
+    }
 
     .jc-start {
         justify-content: flex-start;
@@ -161,6 +199,10 @@ const Common = createGlobalStyle`
 
     .jc-end {
         justify-content: flex-end;
+    }
+
+    .jc-stretch {
+        justify-content: stretch;
     }
 
     .txt-center{
@@ -237,6 +279,14 @@ const Common = createGlobalStyle`
 
     .cFFFFFF {
         color: #FFFFFF;
+    }
+
+    .c7370FF {
+        color: #7370FF;
+    }
+
+    .b7370FF {
+        background-color: #7370FF;
     }
 
     .bFFFFFF {
