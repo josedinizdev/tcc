@@ -1,4 +1,5 @@
 import StyledFooter from './styles.js'
+import { Link } from 'react-router-dom';
 
 export default function Footer() {
     return(
@@ -14,56 +15,56 @@ export default function Footer() {
                     </p>
                 </div>
 
-                <div className='linha'/>
+                <div className='linha al-center'/>
 
                 <div className='container al-center jc-around'>
                     <h2> Sempre com você, o problema apareceu, conte conosco </h2>
                     
                     <div className='container-column'>
-                        <img className='icon-contato' src='/img/footer/facebook-icon.svg' alt='facebook' />
-                        <img className='icon-contato' src='/img/footer/instagram-icon.svg' alt='instagram' />
-                        <img className='icon-contato' src='/img/footer/twitter-icon.svg' alt='twitter' />
-                        <img className='icon-contato' src='/img/footer/linkedin-icon.svg' alt='linkedin' />
+                        <Link to='/https://www.facebook.com/profile.php?id=100087019570457'     className='container icon-contato jc-center al-center'>  <img src='/img/footer/facebook-icon.svg' alt='facebook' />  </Link>
+                        <Link to='/https://twitter.com/WithuEnterprise'                         className='container icon-contato jc-center al-center'>  <img src='/img/footer/instagram-icon.svg' alt='instagram' />  </Link>
+                        <Link to='/'                                                            className='container icon-contato jc-center al-center'>  <img src='/img/footer/twitter-icon.svg' alt='twitter' />  </Link>
+                        <Link to='/https://www.linkedin.com/in/withu-enterprise-092391254/'         className='container icon-contato jc-center al-center'>  <img src='/img/footer/linkedin-icon.svg' alt='linkedin'/>  </Link>
                     </div>
                 </div>
             </section>
 
-            {/* <section>
-                <div>
-                    <div>
-                        <img src='' alt='withu-logo' />
-                    </div>
+            <div className='linha jc-center'/>
 
-                    <div>
+            <section className='container jc-between'>
+                <div className='container al-center'>
+                    <img className='withu-logo' src='/img/withu-logo.png' alt='withu-logo' />
+
+                    <div className='container-column'>
                         <h1> Contatos </h1>
-                        <div> 
-                            <img src='' alt='telefone-icon' />
+                        <div className='container contato'> 
+                            <img className='telefone-icon' src='/img/footer/telefone-icon.png' alt='telefone-icon' />
                             <p> (11) 4002-8922 </p>
                         </div> 
                         
-                        <div> 
-                            <img src='' alt='local-icon' />
+                        <div className='container contato'> 
+                            <img className='endereco-icon' src='/img/footer/endereco-icon.png' alt='local-icon' />
                             <p> 
-                                (11) Av. Coronel Octaviano de Freitas Costa, 463 - 
+                                Av. Coronel Octaviano de Freitas Costa, 463 - 
                                 Socorro, São Paulo - SP, 04773-000 
                             </p>
                         </div>
 
-                        <div> 
-                            <img src='' alt='email-icon' />
-                            <p>  withu@outlook.com </p>
+                        <div className='container contato'> 
+                            <img src='/img/footer/email-icon.png' alt='email-icon' />
+                            <p>  enterprise.withu@outlook.com </p>
                         </div> 
                     </div>
                 </div>
 
-                <div>
-                    <form> 
-                        <label> Deixe sua avaliação: </label>
-                        <button> Enviar </button>
-                        <input type='textarea' />
-                    </form>
-                </div>
-            </section> */}
+                <form className='container-column'>
+                    <div className='container jc-between al-end'> 
+                        <label className='cFFFFFF'> Deixe sua avaliação: </label>
+                        <button className='cFFFFFF pointer'> Enviar </button>
+                    </div>
+                        <input className='cFFFFFF' type='textarea' />
+                </form>
+            </section>
         </StyledFooter>
     )
 }
