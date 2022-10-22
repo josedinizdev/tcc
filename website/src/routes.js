@@ -1,23 +1,37 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import View from './components/view/index'
-import Home from './pages/home/index';
-import Login from './pages/login/index';
-import Register from './pages/register/index';
-import Services from './pages/services/listagem/index';
-import Profile from './pages/profile/index';
-import Gerenciar from './pages/services/usuario/index';
+import View from './components/view'
+import Home from './pages/home';
+import Login from './pages/login';
+import Register from './pages/register';
+import Services from './pages/services/listagem';
+import Profile from './pages/profile';
+import Footer from './components/footer';
+import JuntarSe from './components/juntarse';
+import AdmAndamentoPage from './pages/admin/andamento';
+import AdmHistoricoPage from './pages/admin/historico';
+import AdmContatosPage from './pages/admin/contatos';
+import BuscarUsuarioPage from './pages/profile/pesquisarUsuario';
+import EditarPerfil from './pages/profile/editar';
+import Gerenciar from './pages/services/usuario'
 
 export default function Index() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route exact path='/' element={<View><Home /></View>} />
+                <Route exact path='/' element={<View><Home /> <Footer /> </View> } />
                 <Route path='/login' element={<Login />} />
                 <Route path='/cadastro' element={<Register />} />
-                <Route path='/servicos' element={<View><Services /></View>} />
-                <Route path='/perfil' element={<View><Profile /></View>} />
                 <Route path='/servicos/usuario' element={<View><Gerenciar /></View>} /> 
+                <Route path='/servicos' element={<View><Services /> <Footer /> </View>} />
+                <Route path='/perfil' element={<View><Profile /> <Footer /> </View>} />
+                <Route path='/perfil/pesquisa' element={<View><BuscarUsuarioPage />  </View>} />
+                <Route path='/perfil/editar' element={<View><EditarPerfil />  </View>} />
+                <Route path='/perfil/adm/andamento' element={<View><AdmAndamentoPage />  </View>} />
+                <Route path='/perfil/adm/historico' element={<View><AdmHistoricoPage />  </View>} />
+                <Route path='/perfil/adm/contato' element={<View><AdmContatosPage />  </View>} />
+                <Route path='/juntar' element={<JuntarSe />} />
+                <Route path='/footer' element={<Footer />} />
             </Routes>
         </BrowserRouter>
     );

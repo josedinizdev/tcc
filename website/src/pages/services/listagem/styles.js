@@ -6,7 +6,7 @@ const StyledServices = styled.div`
         flex-direction: column;
     }
     .services__background {
-        background: url('/img/services-background.svg') #242424 no-repeat 100%;
+        background: url('/img/services-background.svg') #242424 ;
         background-size: 100% auto;
     }   
 
@@ -55,6 +55,10 @@ const StyledServices = styled.div`
             padding: 1rem 1.2rem;
             outline: none;
         }
+    }
+
+    .toast {
+        position: absolute;
     }
 `
 ;

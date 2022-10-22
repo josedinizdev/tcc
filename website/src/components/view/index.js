@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 const StyledView = styled.div`
     .view__nav {
         background-color: #242424;
+        align-items: center;
         top: 0;
         padding: 0 1rem;
         li {
@@ -15,6 +16,10 @@ const StyledView = styled.div`
             color: #fff;
             height: fit-content;
         }
+        img {
+            width: 4rem;
+            height: 4rem;
+        }
     }
 `;
 
@@ -23,8 +28,8 @@ export default function View(props) {
         <StyledView className='relative container-column wh100'>
             <div className='view__nav fixed container w100 jc-between z5'>
                 <div><img src='/img/withu-logo.png' /></div>
-                <div className='h100'>
-                    <nav className='container h100'>
+                <div className='h100 al-center'>
+                    <nav className='container h100 '>
                         <ul className='container h100 al-center'>
                             <li><Link to='/'>Página Inicial</Link></li>
                             <li><Link to='/servicos'>Serviços</Link></li>

@@ -16,24 +16,24 @@ const server = Router();
 
 server.post('/servicos', async (req, resp) =>{
   try {
-    /* {
-	  /*    "categoria": [
-    /*      0,
-    /*      0
-    /*    ],
-	  /*    "estado": "",
-	  /*    "cidade": "",
-	  /*    "endereco": "",
-	  /*    "numero": 0,
-	  /*    "cep": "",
-	  /*    "complemento": "",
-	  /*    "usuario": 0,
-	  /*    "titulo": "",
-	  /*    "descricao": "",
-	  /*    "ideias": "",
-	  /*    "requisitos": ""
-    /* }
-    */
+    //  {
+	  //     "categoria": [
+    //       0,
+    //       0
+    //     ],
+	  //     "estado": "",
+	  //     "cidade": "",
+	  //     "endereco": "",
+	  //     "numero": 0,
+	  //      "cep": "",
+	  //    "complemento": "",
+	  //    "usuario": 0,
+	  //     "titulo": "",
+	  //     "descricao": "",
+	  //     "ideias": "",
+	  //     "requisitos": ""
+    //  }
+    
     const servico = req.body;
 
     if(!servico.usuario)
@@ -165,8 +165,8 @@ server.delete('/servicos/remover/:id' , async (req, resp) => {
     const id = Number(req.params.id);
     if(id === undefined || id === " ") 
     throw new Error('Perfil não encontrado ou inexistente.')
-
-    const resposta = await Deletarservico(id);
+    const removerServico = await Deletarservico(id);
+    const resposta = await (id, removerServico)
     resp.status(200).send(resposta)
   } 
   catch (err) {

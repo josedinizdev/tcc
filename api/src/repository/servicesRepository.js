@@ -66,11 +66,16 @@ export async function BuscarServicosUsuario(id) {
 
 export async function BuscarServicosTitulo(titulo) {
     const comando = `
-        select id_servico   id,
-            nm_servico   nome,
-            dt_publicado data
-        from tb_servico
-        where nm_servico like ?
+    select  tb_servico.id_servico   id,
+            tb_servico.nm_servico   titulo,
+            tb_servico.dt_publicado data,
+            tb_categoria.ds_categoria as categoria
+    from tb_servico
+    inner join tb_servico_categoria
+        on tb_servico_categoria.id_servico = tb_servico.id_servico
+    inner join tb_categoria
+        on tb_categoria.id_categoria = tb_servico_categoria.id_categoria
+    where nm_servico like ?;
     `;
     const [linhas] = await con.query(comando, [`%${titulo}%`]);
     return linhas;

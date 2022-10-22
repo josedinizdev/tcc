@@ -35,6 +35,7 @@ export default function Login() {
         catch(err) {
             ref.current.complete()
             setCarregar(false)
+            console.log(err)
             setErr(err.response.data.erro);
         }   
     }

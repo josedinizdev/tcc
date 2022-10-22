@@ -7,10 +7,11 @@ import StyledServices, {
     CardServicoList,
 } from "./styles";
 import { Link } from 'react-router-dom' 
+import { ToastContainer } from "react-toastify";
 
 export default function Services() {
     const [servicos, setServicos] = useState([]);
-    const [buscar, setBuscar] = useState('');
+    const [filtro, setFiltro] = useState('');
     const [cadastro, setCadastro] = useState(false);
     const [detalhes, setDetalhes] = useState(false);
     const [currentPos, setCurrentPos] = useState();
@@ -53,23 +54,20 @@ export default function Services() {
         }
         if (e.target.id === 'cadastrar')
             setCadastro(!cadastro);
-        
+        else if (e.target.id === 'close-cadastro')
+            setCadastro(false);
     }
 
-    async function buscarServico() {
-        const filtrar = await PesquisarServicoTitulo(buscar);
-        setBuscar(filtrar);
-    }
-
-    function verificarEnter(tecla) {
-        if(tecla.key === 'Enter')
-            buscarServico(buscar);
+    async function filtrar() {
+        const resp = await PesquisarServicoTitulo(filtro);
+        setServicos(resp);
     }
 
     return(
         <StyledServices className='container-column relative z1'>
             <div className="services__background">
                 <div className="services">
+                    <ToastContainer className='toast'/>
                     <h1 className="services__title "> - bem vindo(a) </h1>
                     <img src="/img/logo-white.png" alt='withu' className="services__img" />
                     <p className="services__slogan"> Sempre com você, o problema apareceu, conte conosco </p>
@@ -81,7 +79,9 @@ export default function Services() {
                                 <select>
                                     <option>  </option>
                                 </select>
-                                <input type='text' placeholder="Pesquisar" value={buscar} onKeyDown={verificarEnter}  onChange={e => setBuscar(e.target.value)}/> 
+                                <div>
+                                    <input type='text' placeholder="Pesquisar" value={filtro} onDoubleClick={filtrar} onChange={e => setFiltro(e.target.value)}/> 
+                                </div>
                             </div>
                         </section>
                     </div>
@@ -98,8 +98,8 @@ export default function Services() {
                                     <div className='container-column'>
                                         <li> {item.titulo} </li>
                                         <div className="container">
-                                            {item.categorias.map(categoria => <li key={categoria} style={{marginRight: '.4rem'}}>{categoria}</li>)}
-                                        </div>
+                                                {item.categorias.map(categoria => <li key={categoria} style={{marginRight: '.4rem'}}>{categoria}</li>)} 
+                                        </div> 
                                     </div>
                                     <li onClick={_ => verDetalhes(item.id)} style={{cursor: "pointer"}}> Veja mais detalhes </li>
                                     <li>{item.data}</li>
@@ -119,4 +119,4 @@ export default function Services() {
             </List>
         </StyledServices>
     )
-}
+} 

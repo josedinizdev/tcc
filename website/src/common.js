@@ -109,6 +109,32 @@ const Common = createGlobalStyle`
         font-family: 'code-regular';
     }
 
+    .cinza-card {
+        background-color: rgba(255, 255, 255, 74%);
+        width: 90%;
+        height: 90%;
+        z-index: 1;
+        padding: 2rem;
+        border-radius: .2rem;
+        box-shadow: 0 10px 4px rgba(105, 105, 105, .8);
+        backdrop-filter: blur(1rem);
+    }
+
+    .card-branco {
+        background-color: #fff;
+        border-radius: .6rem;
+    }   
+
+    .pad1r {
+        padding: 1rem;
+    }
+
+    .linha {
+        border: 1px solid rgba(36, 36, 36, 65%);
+        margin: 0 1rem;
+    }
+
+
     .container {
         display: flex;
         flex-direction: row;
@@ -131,6 +157,38 @@ const Common = createGlobalStyle`
         align-items: center;
     }
 
+    .al-start{
+        align-items: flex-start;
+    }
+
+    .al-end   {
+        align-items: flex-end;
+    }
+
+    .js-start {
+        justify-self: start;
+    }
+
+    .js-center {
+        justify-self: center;
+    }
+
+    .js-end {
+        justify-self: end;
+    }
+
+    .as-start {
+        align-self: start;
+    }
+
+    .as-center {
+        align-self: center;
+    }
+
+    .as-end {
+        align-self: end;
+    }
+
     .jc-start {
         justify-content: flex-start;
     }
@@ -143,8 +201,16 @@ const Common = createGlobalStyle`
         justify-content: flex-end;
     }
 
+    .jc-stretch {
+        justify-content: stretch;
+    }
+
     .txt-center{
         text-align: center;
+    }
+
+    .wrap {
+        flex-wrap: wrap;
     }
 
     .whf {
@@ -160,6 +226,8 @@ const Common = createGlobalStyle`
     .w100v {
         min-width: 100vw;
     }
+    
+
 
     .h100v {
         min-height: 100vw;
@@ -213,6 +281,18 @@ const Common = createGlobalStyle`
         color: #FFFFFF;
     }
 
+    .c7370FF {
+        color: #7370FF;
+    }
+
+    .b7370FF {
+        background-color: #7370FF;
+    }
+
+    .bFFFFFF {
+        background-color: #FFFFFF;
+    }
+
     .blue {
         color: #5551E3;
     }
@@ -222,8 +302,27 @@ const Common = createGlobalStyle`
         box-shadow: 0 .6rem rgba(0, 0, 0, 24%);
     }
 
+    .cEF7601 {
+        color: #EF7601;
+    }
+
+    .bEF7601 {
+        background-color: #EF7601;
+    }
+
+    .c5551E3 {
+        color: #5551E3;
+    }
+
+    .b5551E3 {
+        background-color: #5551E3;
+    }
+
     .c1E4F6F {
         color: #1E4F6F;
+    }
+    .b1E4F6F {
+        background-color: #1E4F6F;
     }
 
     .z1 {
