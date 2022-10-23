@@ -331,6 +331,12 @@ const Common = createGlobalStyle`
     .z2 {
         z-index: 2;
     }
+    .z3 {
+        z-index: 3;
+    }
+    .z4 {
+        z-index: 4;
+    }
     .z5 {
         z-index: 5;
     }

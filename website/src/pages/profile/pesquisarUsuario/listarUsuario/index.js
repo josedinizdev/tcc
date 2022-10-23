@@ -12,7 +12,7 @@ export default function ListarUsuarios(props) {
                 </div>
             </div>
 
-            <button className='al-center contatar cFFFFFF'> Contatar </button>
+            <button className='al-center contatar cFFFFFF'>Enviar Mensagem</button>
         </div>
     )
 }

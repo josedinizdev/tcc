@@ -10,7 +10,9 @@ import {
   BuscarServicos,
   Deletarservico,
   DetalhesServicos,
-  EditarServico
+  EditarServico,
+  listarServicosAplicados,
+  concluirServico
 } from '../repository/servicesRepository.js';
 const server = Router();
 
@@ -164,7 +166,7 @@ server.delete('/servicos/remover/:id' , async (req, resp) => {
   try {
     const id = Number(req.params.id);
     if(id === undefined || id === " ") 
-    throw new Error('Perfil não encontrado ou inexistente.')
+      throw new Error('Perfil não encontrado ou inexistente.')
     const removerServico = await Deletarservico(id);
     const resposta = await (id, removerServico)
     resp.status(200).send(resposta)
@@ -173,6 +175,46 @@ server.delete('/servicos/remover/:id' , async (req, resp) => {
     resp.status(400).send ({
       erro: err.message
     });
+  }
+})
+
+server.get('/servicos/worker/', async (req, resp) => {
+  try {
+    const body = req.body
+    /* {
+    /*    "categoria": undefined,
+    /*    "nome": undefined,
+    /*    "trabalhador": 1
+    /* }
+    */
+    if(body.trabalhador === undefined || body.trabalhador === " ") 
+      throw new Error('Perfil não encontrado ou inexistente.')
+    const lista = await listarServicosAplicados(body);
+    resp.status(200).charsetsend(lista)
+  } catch (err) {
+    resp.status(400).send({
+      erro: err.message
+    });
+    console.log(err)
+  }
+})
+
+server.post('/servicos/worker/done/:id', async (req, resp) => {
+  try {
+    /* {
+    /*    "done": true
+    /* }
+    */
+    const body = req.body
+    if(body.done === undefined || body.done === " ") 
+      throw new Error('Valor Inválido')
+    const resposta = await concluirServico(id, body.done)
+    resp.status(200).charsetsend(resposta)
+  } catch (err) {
+    resp.status(400).send ({
+      erro: err.message
+    });
+    console.log(err)
   }
 })
 

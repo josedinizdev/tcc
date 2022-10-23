@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 
 const StyledView = styled.div`
     .view__nav {
@@ -26,7 +27,8 @@ const StyledView = styled.div`
 export default function View(props) {
     return (
         <StyledView className='relative container-column wh100'>
-            <div className='view__nav fixed container w100 jc-between z5'>
+            <ToastContainer/>
+            <div className='view__nav fixed container w100 jc-between z2'>
                 <div><img src='/img/withu-logo.png' /></div>
                 <div className='h100 al-center'>
                     <nav className='container h100 '>

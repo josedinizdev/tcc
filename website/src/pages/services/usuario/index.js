@@ -36,6 +36,9 @@ export default function Services() {
             case 'cadastrar':
                 setCadastro(!cadastro)
                 break;
+            case 'close-cadastro':
+                    setCadastro(!cadastro)
+                    break;
             case 'detalhes':
                 setDetalhes(!detalhes);
                 break;

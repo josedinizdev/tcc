@@ -71,3 +71,10 @@ export async function VerDetalhes(id) {
     return resp.data;
 }
 
+export async function ServicosAplicados(user) {
+    const resp = await api.get('/servicos/worker/', {
+        nome: user.pesquisa,
+        trabalhador: user.user
+    })
+    return resp.data;
+}

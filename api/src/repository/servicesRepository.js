@@ -172,3 +172,34 @@ export async function aplicarServicos (id) {
     const [linhas] = await con.query(comando, [`%${id}%`]);
     return linhas[0];
 }
+
+export async function listarServicosAplicados({ categoria = '', nome = '', trabalhador }) {
+    const comando = `
+    select tb_servico.id_servico     as idServico,
+        tb_servico.nm_servico     as titulo,
+        tb_servico.dt_publicado   as data,
+        tb_categoria.ds_categoria as categoria,
+    from tb_servico
+    inner join tb_servico_categoria
+        on tb_servico_categoria.id_servico = tb_servico.id_servico
+    inner join tb_categoria
+        on tb_categoria.id_categoria = tb_servico_categoria.id_categoria
+    inner join tb_atribuido
+        on tb_atribuido.id_servico = tb_servico.id_servico
+    where tb_categoria.id_categoria = ?
+        and tb_servico.nm_servico     = ?
+        and tb_atribuido.id_worker    = ?;
+    `;
+    const [linhas] = await con.query(comando, [categoria, nome, trabalhador]);
+    return linhas;
+}
+
+export async function concluirServico(id, value) {
+    const comando = `
+    update tb_servico
+        set bt_servico = ?
+    where id_servico = ?;
+    `
+    const [linhas] = await con.query(comando, [value, id])
+    return linhas;
+}

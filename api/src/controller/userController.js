@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { AlterarFoto, DeletarLogin, DeletarUsuario, editarPerfil, ListarUsuario, LoginUsuario, PesquisarUsuario } from '../repository/userRepository.js'
+import { AdicionarContato, AlterarFoto, DeletarLogin, DeletarUsuario, DescobrirContatoUsuario, editarPerfil, ListarMeusContatos, ListarUsuario, LoginUsuario, PesquisarUsuario, VerDetalhesPerfil } from '../repository/userRepository.js'
 const server = Router();
 
 server.post('/usuario/login' , async (req, resp) =>{
@@ -27,6 +27,20 @@ server.post('/usuario', async (req, resp) =>{
     resp.status(401).send ({
       erro: err.message
     });
+  }
+})
+
+server.get('/usuario/:id', async (req, resp) => {
+  try {
+    const id = req.params.id
+    if (!id)
+      throw new Error('Parametro invalido');
+    const resposta = await VerDetalhesPerfil(id);
+    resp.status(200).send(resposta);
+  } catch (err) {
+    resp.status(400).send({
+      erro: err.message
+    })
   }
 })
 
@@ -114,6 +128,35 @@ server.delete('/usuario/perfil/remover/:id', async (req, resp) => {
     resp.status(200).send(result);
   }
   catch (err) {
+    resp.status(400).send({
+      erro: err.message
+    });
+  }
+})
+
+server.get('/usuario/contatos/:id', async (req, resp) => {
+  try {
+    const id = req.params.id;
+    if(id === NaN || id < 0) 
+      throw new Error('Não existente')
+    const linhas = ListarMeusContatos(id);
+    resp.status(200).send(linhas)
+  } catch (err) {
+    resp.status(400).send({
+      erro: err.message
+    });
+  }
+})
+
+server.post('/usuario/contatos/:id/:usuario', async (req, resp) => {
+  try {
+    const { id, usuario } = req.params;
+    if(id === NaN || id < 0) 
+      throw new Error('Não existente')
+    const usuContato = await DescobrirContatoUsuario(id)
+    const response = await AdicionarContato(usuContato.id, usuario)
+    resp.send(response)
+  } catch (err) {
     resp.status(400).send({
       erro: err.message
     });

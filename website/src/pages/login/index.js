@@ -4,15 +4,15 @@ import StyledLogin, {
 } from "./styles.js";
 import LoadingBar from 'react-top-loading-bar';
 import storage from 'local-storage';
-import { LoginUsuario } from "../../api/user.js";
+import { isWorker, LoginUsuario } from "../../api/user.js";
 import { Link, useNavigate } from "react-router-dom";
 import Toast from "../../components/toast/index.js";
 import { delay } from '../../services.js';
+import { toast } from "react-toastify";
 
 export default function Login() {
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
-    const [err, setErr] = useState('');
     const [carregar, setCarregar] = useState(false);
     const navigate = useNavigate();
     const ref = useRef();
@@ -28,6 +28,13 @@ export default function Login() {
         try {
             const resp = await LoginUsuario(email, senha);
             storage('usuario-logado', resp)
+            try {
+                const worker = await isWorker(storage('usuario-logado').id)
+                storage('worker', worker)
+            } catch (err) {
+                console.log(err)
+            }
+            toast('Usuario logado!')
             setTimeout(() => {
                 navigate('/perfil');
             }, 3000)
@@ -35,14 +42,9 @@ export default function Login() {
         catch(err) {
             ref.current.complete()
             setCarregar(false)
-            console.log(err)
-            setErr(err.response.data.erro);
+            toast(err.message)
         }   
     }
-
-    useEffect(_ => {
-        delay(5000).then(_ => setErr(''))
-    }, [err])
 
     return(
         <StyledLogin className='container wh100v z1 relative'>
@@ -75,7 +77,6 @@ export default function Login() {
                     </div>
                 </div>
             </div>
-            {err !== '' && (<Toast err={err}></Toast>)}
             <LoadingBar color="#456426" ref={ref} />
         </StyledLogin>
      )

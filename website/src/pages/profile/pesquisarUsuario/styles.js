@@ -55,6 +55,8 @@ const StyledPesquisarUsuario = styled.main `
     .listar {
         padding: 2rem;
         height: 60vh;
+        overflow-y: scroll;
+        height: 25rem;
     }
 
     .card {

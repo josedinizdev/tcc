@@ -24,9 +24,31 @@ select tb_usuario.id_usuario     as id,
  where tb_usuario.ds_email       = ?
    and tb_login.ds_senha         = ?;
 
+# details user
+select id_usuario                as id,
+       nm_usuario                as nome,
+       ds_sobre                  as sobre,
+       img_usuario               as foto,
+       ds_email                  as email,
+       nr_celuar                 as celular,
+       dt_nascimento             as nascimento
+ from tb_usuario
+  where id_usuario = ?;
+
+
 # update image
 update tb_usuario
    set img_usuario = ?
+ where id_usuario = ?;
+
+# update user
+update tb_usuario
+   set nm_usuario = ?,
+       ds_genero = ?,
+       ds_email = ?,
+       nr_celular = ?,
+       ds_sobre = ?,
+       dt_nascimento = ?
  where id_usuario = ?;
 
 # list users (search or not)
@@ -40,6 +62,17 @@ select id_usuario                as id,
 # delete user
 delete from tb_usuario
   where id_usuario = ?;
+
+# list my contacts
+select id_usuario                as id,
+       nm_usuario                as nome,
+       ds_sobre                  as sobre,
+       img_usuario               as foto
+ from tb_usuario
+inner join tb_contato
+   on tb_contanto.id_usuario = tb_usuario.id_usuario 
+where nm_usuario like ?
+  and tb_contato.id_usuario = ?;
 
 /* worker
 /* be worker
@@ -61,7 +94,7 @@ select tb_worker.id_usuario     as id,
 
 # evaluate worker
 insert into tb_avaliacao(id_worker, id_usuario, vl_avaliacao)
-       values(?, ?, ?); 'NÃO CONSEGUI EXECUTAR'
+       values(?, ?, ?);
 
 # get evaluated worker
 select vl_avaliacao             as avaliacao
@@ -184,6 +217,32 @@ update tb_servico
    set id_atribuido              = ?
  where id_servico                = ?;
 
+# list applied services
+select tb_servico.id_servico     as idServico,
+       tb_servico.nm_servico     as titulo,
+       tb_servico.dt_publicado   as data,
+       tb_categoria.ds_categoria as categoria,
+  from tb_servico
+ inner join tb_servico_categoria
+	on tb_servico_categoria.id_servico = tb_servico.id_servico
+ inner join tb_categoria
+    on tb_categoria.id_categoria = tb_servico_categoria.id_categoria
+ inner join tb_atribuido
+    on tb_atribuido.id_servico = tb_servico.id_servico
+ where tb_categoria.id_categoria = ?
+   and tb_servico.nm_servico     = ?
+   and tb_atribuido.id_worker    = ?;
+
+# mark service as done
+update tb_servico
+   set bt_servico = true
+ where id_servico = ?;
+
+# undone
+update tb_servico
+   set bt_servico = false
+ where id_servico = ?;
+
 # update service
 update tb_servico
    set tb_servico.ds_titulo      = ?,
@@ -211,7 +270,7 @@ delete from tb_atribuido
 
 # delete local
 delete from tb_local
- where id_local = ?; 'NÃO CONSEGUI EXECUTAR'
+ where id_local = ?;
 
 # delete category
 delete from tb_categoria

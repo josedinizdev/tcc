@@ -36,28 +36,32 @@ export default function Cadastrar(props) {
     }, {})
 
     function cadastrar() {
-        if (logado)
-            CadastrarServico(
-                categorias,
-                estado,
-                cidade,
-                endereco,
-                numero,
-                cep.replace(/\-/g, ''),
-                complemento,
-                usuario,
-                titulo,
-                descricao,
-                ideias,
-                requisitos  
-            );
-        else
-            toast('Serviço cadastrado com sucesso!');
+        try {
+            if (logado) {
+                CadastrarServico(
+                    categorias,
+                    estado,
+                    cidade,
+                    endereco,
+                    numero,
+                    cep.replace(/\-/g, ''),
+                    complemento,
+                    usuario,
+                    titulo,
+                    descricao,
+                    ideias,
+                    requisitos
+                );
+                toast('Serviço cadastrado com sucesso!');
+            }
+        } catch (err) {
+            toast(err.message)
+        }
     };
 
     useEffect(_ => {
         if (storage('usuario-logado')) {
-            const usuarioLogado = storage   ('usuario-logado');
+            const usuarioLogado = storage('usuario-logado');
             setLogado(true);
             setUsuario(usuarioLogado.id);
         };
@@ -67,12 +71,12 @@ export default function Cadastrar(props) {
         async function definirCategorias() {
             const resp = await obterCategorias();
             setCatDisp(resp.data);
-        }
+        }   
         definirCategorias();
     }, []);
 
     return (
-        <StyledCadastrar className='fixed container jc-center al-center wh100'>
+        <StyledCadastrar className='fixed z4 container jc-center al-center wh100'>
             <div id='close-cadastro' className='cadastrar__overlay absolute z1 wh100' onClick={props.close} />
             <div className='cadastrar__content relative z2 container-column cadastrar'>
                 <div id='close-cadastro' onClick={props.close}>x</div>
@@ -80,15 +84,16 @@ export default function Cadastrar(props) {
                     <div className='container-column'> {/* Título e categoria */}
                         <input  className='iMedio' placeholder='Ex.: Manunteção de Máquina'         value={titulo}          onChange={e => setTitulo(e.target.value)} type="text" />
                         <select className='iMedio' onChange={e => {
-                            const newArray = [...categorias + e.target.value];
+                            let newArray = categorias;
+                            newArray.push(Number(e.target.value));
                             setCategorias(newArray);
-                            console.log(categorias)
+                            setUpdated(!updated)
                         }}>
                             {catDisp.map(item => <option key={item.id} value={item.id}>{item.categoria}</option>)}
                         </select>
-                        {categorias.length >= 1 && (<ul className='container'>{categorias.map(item => <li>{catDisp[item - 1].categoria}</li>)}</ul>)}
+                        {categorias.length >= 1 && (<ul className='container'>{categorias.map(item => <li key={item}>{catDisp[item - 1].categoria}</li>)}</ul>)}
                     </div>
-                    <button className='pointer' onClick={cadastrar}>Cadastrar</button>
+                    <button className='pointer' onClick={_ => cadastrar()}>Cadastrar</button>
                 </div>
                 <div className='container jc-between'>
                     <textarea placeholder='Ex.: Uma máquina com intel celeron e...  para...' value={descricao} onChange={e => setDescricao(e.target.value)} type="text" />                

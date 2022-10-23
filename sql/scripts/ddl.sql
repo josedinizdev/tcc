@@ -21,7 +21,7 @@ create table if not exists `tb_usuario`(
     `nr_celular`              int,
     `ds_sobre`                varchar(2500),
     `dt_nascimento`           date default null,
-    `img_usuario`             blob
+    `img_usuario`             varchar(300)
 );
 
 # user login
@@ -131,6 +131,7 @@ create table if not exists `tb_servico`(
     `ds_ideias`               varchar(3500) default null,
     `ds_requisitos`           varchar(3500) default null,
     `dt_publicado`            datetime default null,
+    `bt_servico`              bool default false,
     foreign key (`id_usuario`) references `tb_usuario` (`id_usuario`),
     foreign key (`id_local`) references `tb_local` (`id_local`)
 );
@@ -179,8 +180,16 @@ create table if not exists `tb_atribuido`(
     foreign key (`id_servico`) references `tb_servico` (`id_servico`)
 );
 
+create table if not exists `tb_usuario_contato`(
+    `id_usuario_contato`    int primary key auto_increment,
+    `id_usuario`            int default null,
+    foreign key (`id_usuario`) references `tb_usuario` (`id_usuario`)
+);
+
 create table if not exists `tb_contato`(
 	`id_contato` 			int primary key auto_increment,
+    `id_usuario_contato`    int default null,
     `id_usuario`			int default null,
-    foreign key (`id_usuario`) references `tb_usuario` (`id_usuario`)
+    foreign key (`id_usuario`) references `tb_usuario` (`id_usuario`),
+    foreign key (`id_usuario_contato`) references `tb_usuario_contato`(`id_usuario_contato`)
 );

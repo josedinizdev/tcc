@@ -20,7 +20,8 @@ export async function AvaliaProfissional (input) {
 
 export async function UsuarioWorker (id) {
     const comando = `
-        select tb_worker.id_usuario from tb_worker
+        select tb_worker.id_usuario as id
+        from tb_worker
          inner join tb_usuario
             on tb_usuario.id_usuario = tb_worker.id_usuario
          where tb_worker.id_usuario = ?;

@@ -1,12 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import storage from 'local-storage';
 import StyledProfile from './styles.js';
 import { Link, useNavigate } from "react-router-dom";
 import ProfileCard from '../../components/profile/index.js';
 import User from '../../assets/images/perfil.png'
+import { DetalhesUsuario } from '../../api/user.js';
 
 export default function Profile() {
     const navigate = useNavigate();
+    const [perfil, setPerfil] = useState(0);
+    const [dados, setDados] = useState({});
     
     function click(e) {
         switch (e.target.id) {
@@ -20,21 +23,35 @@ export default function Profile() {
     }
     
     useEffect(_ => {
+        let resp;
         if (!storage('usuario-logado'))
             navigate('/login');
-    }, {})
+        else
+            resp = storage('usuario-logado');
+        setPerfil(resp.id)
+    }, [])
+
+    useEffect(_ => {
+        async function requisicao() {
+            const resp = await DetalhesUsuario(perfil)
+            setDados(resp);
+        }
+        requisicao();
+    }, [perfil])
 
     return(
         <StyledProfile className='container wh100 jc-center al-center bEF7601 '>
-            <div className='container cinza-card '>
-                <ProfileCard userProfile={User}
-                             desconectar={e => click(e)}
-                             nome='David Douglas'
-                             cargo='Desenvolvedor Sênior'
-                             habilidades='   Designer UX/UL   Desenvolvedor de Software   Desenvolvedor Web   HTML & CSS Avançado'/>
-                <div className='linha'/> { /* Linha */ }
+            {dados && (
+                <div className='container cinza-card '>
+                    <ProfileCard userProfile={User}
+                        desconectar={e => click(e)}
+                        nome={dados.nome}
+                        habilidades={dados.sobre}
+                        normal={true}
+                    />
+                    <div className='linha' />
                 <section className='container-column'>
-                    <h1> Bem-vindo de volta, David! </h1>
+                    <h1> Bem-vindo de volta</h1>
                     <article className='container jc-around al-center'>
                         <div className='container-colum card-branco notificacoes'>
                             <h2> Novas Mensagens </h2>
@@ -45,6 +62,7 @@ export default function Profile() {
                     </article>
                 </section>
             </div>
+            )}
     </StyledProfile>
     )
 }

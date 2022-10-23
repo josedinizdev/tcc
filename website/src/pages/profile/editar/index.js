@@ -1,16 +1,40 @@
+import { useState, useEffect } from "react";
+import { DetalhesUsuario } from "../../../api/user";
+import storage from 'local-storage';
+import { useNavigate } from "react-router-dom";
 import StyledEditarPerfil from "./styles";
 import ProfileCard from '../../../components/profile/index.js';
 import User from '../../../assets/images/perfil.png'
 
 export default function EditarPerfil() {
+    const [dados, setDados] = useState({});
+    const [perfil, setPerfil] = useState(0)
+    const navigate = useNavigate();
+
+    useEffect(_ => {
+        let resp;
+        if (!storage('usuario-logado'))
+            navigate('/login');
+        else
+            resp = storage('usuario-logado');
+        setPerfil(resp.id)
+    }, [])
+
+    useEffect(_ => {
+        async function requisicao() {
+            const resp = await DetalhesUsuario(perfil)
+            setDados(resp);
+        }
+        requisicao();
+    }, [perfil])
     return(
         <StyledEditarPerfil className="container al-center jc-center bEF7601 wrap wh100v">
             <section className="container cinza-card jc-center">
-                <ProfileCard    userProfile={User}
-                                nome='David Douglas'
-                                cargo='Desenvolvedor Sênior'
-                                habilidades='   Designer UX/UL   Desenvolvedor de Software   Desenvolvedor Web   HTML & CSS Avançado' /> 
-
+                <ProfileCard userProfile={User}
+                    nome={dados.nome}
+                    habilidades={dados.sobre}
+                    normal={true}
+                /> 
                 <div className="linha" /> 
 
                 <article className="container-column container-editar card-branco ">
