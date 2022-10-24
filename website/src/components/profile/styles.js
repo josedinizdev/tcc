@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 
 const StyledProfile = styled.div`
-    max-width: 20vw;
-    height: 70vh;
+    height: 100%;
+
+
 
     aside {
         max-height: 10rem;
@@ -11,7 +12,7 @@ const StyledProfile = styled.div`
     article > div > img {
         width: 4rem;
         height: 4rem;
-        margin: 0 1rem 1.2rem 0;
+        margin: 0 .5rem .5rem 0;
     }
 
     nav > div > a > img, nav > button > img {
@@ -20,7 +21,7 @@ const StyledProfile = styled.div`
         margin-right: 1rem;
     }
 
-    a {
+    .nav-linkar {
         font-size: 1rem;
         width: 100%;
         padding: 1rem;
@@ -33,6 +34,15 @@ const StyledProfile = styled.div`
 
     nav {
         margin-top: 1rem;
+    }
+
+
+
+    .icon-editar {
+        width: 1rem;
+        height: 1rem;
+        position: absolute;
+        
     }
 
 `;

@@ -8,7 +8,7 @@ padding: 2rem 0;
 .notificacoes {
     padding: 1rem;
     width: 40%;
-    height: 60vh;
+    height: 100%;
 }
 
 section {
@@ -22,6 +22,10 @@ h1 {
 
 h2 {
     font-size: 1.1rem;
+}
+
+.height100 {
+    height: 100%;
 }
 
 `

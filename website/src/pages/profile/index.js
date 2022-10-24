@@ -52,7 +52,7 @@ export default function Profile() {
                     <div className='linha' />
                 <section className='container-column'>
                     <h1> Bem-vindo de volta</h1>
-                    <article className='container jc-around al-center'>
+                    <article className='container jc-around al-center height100'>
                         <div className='container-colum card-branco notificacoes'>
                             <h2> Novas Mensagens </h2>
                         </div>
