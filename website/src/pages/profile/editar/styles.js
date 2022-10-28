@@ -12,20 +12,21 @@ const StyledEditarPerfil = styled.main`
         font: bold;
         width: 100%;
         margin: .6rem 0;
-        width: 20rem;
+        width: 22rem;
     }
 
     input, textarea {
         padding: .4rem;
         border: 1px solid #242424;
         border-radius: .4rem;
-        margin-right: 1rem;
         width: 100%;
     }
 
     textarea {
         max-height: 10rem;
-        height: 10rem;
+        height: 12rem;
+        width: 15rem;
+        margin-left: 1rem;
     }
 
     .container-editar {
@@ -33,22 +34,34 @@ const StyledEditarPerfil = styled.main`
         height: 70vh;
         width: 100%;
     }
+
     .linha {
-        margin: 1rem 1rem;
+        margin: 1rem;
     }
 
-    article button {
+    div button {
         border-radius: .4rem;
         font-size: 1rem;
         padding: 1rem 2rem;
         margin: 0 .5rem;
     }
 
-    
+    .input {
+        margin-left: 1rem;
+        width: 15rem;
+    }
 
-    .alterar-img {
-        margin: 0;
-        background: none;
+    .marg-top1r {
+        margin-top: 1rem;
+    }
+
+    .marg-right20r {
+        margin-right: 20rem;
+    }
+
+    .profissional {
+        padding: .8rem 1rem;
+        border-radius: .6rem;
     }
 `;
 

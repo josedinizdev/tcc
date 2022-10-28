@@ -34,10 +34,10 @@ export default function Login() {
             } catch (err) {
                 console.log(err)
             }
-            toast('Usuario logado!')
             setTimeout(() => {
                 navigate('/perfil');
-            }, 3000)
+                toast('Usuario logado!')
+            }, 2000)
         }
         catch(err) {
             ref.current.complete()

@@ -125,6 +125,11 @@ export const CardServicoList = styled.div`
         font-family: inria-regular;
         margin: 0;
     }
+
+    .icon {
+        width: 1rem;
+        height: 1rem;
+    }
 `;
 
 export default StyledGerenciar;

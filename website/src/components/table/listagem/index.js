@@ -9,7 +9,7 @@ export default function ListarServicosTable(props) {
                 <td> {props.categoria} </td>
             </div>
 
-            <td> Ver mais detalhes >> </td>
+            <td> <span className='pointer'> Ver mais detalhes >> </span> </td>
             <td className='pointer'> <img src={RemoverIcon} alt='' /> </td>
             <div className="container-column"> 
                 <td className='titulo'> {props.data} </td>

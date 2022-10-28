@@ -5,8 +5,7 @@ import User from '../../../assets/images/perfil.png'
 import ProfileCard from '../../../components/profile'
 import TableCard from '../../../components/table'
 import { useEffect } from 'react'
-import { useState } from 'react'
-
+    
 export default function AdmAndamentoPage() {
     const navigate = useNavigate()
 

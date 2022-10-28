@@ -4,6 +4,7 @@ import { ListarServicoUsuario, PesquisarServicoTitulo } from '../../../api/servi
 import Cadastrar from "../../../components/cadastrar/index.js";
 import Detalhes from "../../../components/detalhes/index.js";
 import Editar from "../../../components/editar/index.js";
+import EditarIcon from '../../../assets/images/editar-icon.png'
 import StyledGerenciar, {
     List,
     CardServicoList,
@@ -134,7 +135,7 @@ export default function Services() {
                                         </div>
                                     </div>
                                     <li onClick={_ => verDetalhes(item.id)} style={{ cursor: "pointer" }}> Veja mais detalhes </li>
-                                    <li  onClick={_ => editarF(item.id)} style={{ cursor: "pointer" }}>Editar</li>
+                                    <li  onClick={_ => editarF(item.id)} style={{ cursor: "pointer" }}><img className="icon" src={EditarIcon} alt='editar' /></li>
                                     <li>{item.data}</li>
                                 </ul> 
                             </CardServicoList>

@@ -14,6 +14,7 @@ import AdmContatosPage from './pages/admin/contatos';
 import BuscarUsuarioPage from './pages/profile/pesquisarUsuario';
 import EditarPerfil from './pages/profile/editar';
 import Gerenciar from './pages/services/usuario'
+import ProfissionalPage from './pages/profile/profisisonal';
 
 export default function Index() {
     return (
@@ -27,6 +28,7 @@ export default function Index() {
                 <Route path='/perfil' element={<View><Profile /> <Footer /> </View>} />
                 <Route path='/perfil/pesquisa' element={<View><BuscarUsuarioPage />  </View>} />
                 <Route path='/perfil/editar' element={<View><EditarPerfil />  </View>} />
+                <Route path='/perfil/editar/profissional' element={<View><ProfissionalPage />  </View>} />
                 <Route path='/perfil/adm/andamento' element={<View><AdmAndamentoPage />  </View>} />
                 <Route path='/perfil/adm/historico' element={<View><AdmHistoricoPage />  </View>} />
                 <Route path='/perfil/adm/contato' element={<View><AdmContatosPage />  </View>} />

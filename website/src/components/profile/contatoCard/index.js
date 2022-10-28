@@ -3,6 +3,7 @@ import MensagemIcon from '../../../assets/images/historico-icon.png'
 import PerfilIcon from '../../../assets/images/perfil-icon.png'
 import DeletarIcon  from '../../../assets/images/deletar-icon.png'
 
+
 export default function ContatoCardCarrousel(props) {
     return(
         <div className='container-column al-center carrousel-card'>

@@ -34,10 +34,19 @@ nav {
 
     //
 
+    .contatoCard{
+        height: 16rem;
+        width: 100%;
+    }
+
+    #setas {
+        height: 2rem;
+        width: 2rem;
+    }
+
     .carrousel {
         background-color: #fff;
         height: 60vh;
-
     }
 
     .carrousel-card { 
