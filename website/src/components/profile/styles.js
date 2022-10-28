@@ -12,14 +12,22 @@ const StyledProfile = styled.div`
         text-transform: uppercase;
         color: #fff;
         background-color: #7370FF;
-        width: 100%;
+        width: auto;
         padding: .5rem;
         border-radius: .6rem;
     }
 
     .contato {
-        margin-left: 1rem;
+        margin-left: 10rem;
         background-color: #d9d9d9;
+    }
+
+    .cargo {
+        width: 100%;
+    }
+
+    .absolute {
+        position: absolute;
     }
 }
 
@@ -59,6 +67,9 @@ nav {
     border-radius: .4rem;
 }
 
+.cargo {
+    width: 10%;
+}
 
 `;
 

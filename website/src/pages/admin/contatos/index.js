@@ -14,38 +14,27 @@ export default function AdmContatosPage() {
     const [contatos, setContatos] = useState([]);
 
     return(
-        <StyledContatos className="container wh100v b5551E3 jc-center al-center">
-            <section className="container cinza-card">
-                <ProfileCard userProfile={User}
-                             nome='David Douglas'
-                             cargo='Desenvolvedor Sênior'
-                             habilidades='   Designer UX/UL   Desenvolvedor de Software   Desenvolvedor Web   HTML & CSS Avançado'/>
+        <StyledContatos className="container b5551E3 al-center jc-center">
+            <section className='container contato-page pad1r' >
+                <div>
+                    <ProfileCard userProfile={User}
+                                nome='David Douglas'
+                                cargo='Desenvolvedor Sênior'
+                                habilidades='   Designer UX/UL   Desenvolvedor de Software   Desenvolvedor Web   HTML & CSS Avançado'/>
+                </div>
 
-                 <div className='linha'/> { /* Linha */ }
+                <div className='linha'> </div>
 
-                <nav className='container-column'>
-                    <div className='container jc-between'> { /* bla bla bla */}
-                        <h1> Contatos </h1>
-
-                        <div className="container al-center"> 
-                            <input type='text'  placeholder="Pesquisar"/>
-                            <button className="b7370FF pointer btn3rem"> 
-                                <img src={LupaIcon} alt='' />
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <div className='container carrousel'>
-                        <div className='container contatoCard pad1r jc-center'>
-                            <ContatoCardCarrousel userProfile={User} nome='David Ribeiro' />
-                            <ContatoCardCarrousel userProfile={User} nome='David Ribeiro' />
-                            <ContatoCardCarrousel userProfile={User} nome='David Ribeiro' />
-                            <ContatoCardCarrousel userProfile={User} nome='David Ribeiro' />
-
-                        </div>
-                    </div>
-                </nav>
+                <div className='container-column card-branco contatos'>
+                    <h1> Contatos </h1>
+                </div>
             </section>
         </StyledContatos>
     )
 }
+
+
+{/* <ProfileCard userProfile={User}
+                             nome='David Douglas'
+                             cargo='Desenvolvedor Sênior'
+                             habilidades='   Designer UX/UL   Desenvolvedor de Software   Desenvolvedor Web   HTML & CSS Avançado'/> */}

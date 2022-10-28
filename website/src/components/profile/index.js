@@ -17,14 +17,15 @@ export default function ProfileCard(props) {
 
                     <div className='container-column'>
                         <h2> {props.nome} </h2>
-                        <p> {props.cargo}</p>
+                        <p className='cargo'> {props.cargo}</p>
                     </div>
                 </div>
+
                 <h2> Sobre </h2>
                 <p>{props.habilidades}</p>
-                <div >
-                    <Link to='/perfil/editar' className='buttons'>Editar Perfil</Link>
-                    <Link to='/perfil/adm/contato' className='buttons contato'>Contatos</Link>
+                <div className='container jc-between w100'>
+                    <Link to='/perfil/editar' className='buttons absolute'>Editar Perfil</Link>
+                    <Link to='/perfil/adm/contato' className='buttons contato absolute'>Contatos</Link>
                 </div>
             </article>
             {props.normal && (
