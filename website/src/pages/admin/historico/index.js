@@ -8,7 +8,7 @@ import TableCard from '../../../components/table'
 export default function AdmHistoricoPage() {
     return(
         <main className="container wh100v b5551E3 jc-center al-center">
-            <section className="container cinza-card">
+            <section className="container cinza-card resolutionAdm">
                 <ProfileCard userProfile={User}
                              nome='David Douglas'
                              cargo='Desenvolvedor Sênior'

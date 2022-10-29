@@ -1,23 +1,27 @@
 import styled from "styled-components";
 
 const StyledContatos = styled.main`
-width: 100vw;
-height: 100vh;
-
-section {
-    height: 80vh;
+.contatos-container {
     width: 100%;
-}
-.contatoPage {
-    height: 2vh;
 
-.linha {
-    height: 2rem;
+    h1 {
+        font-family: 'inria-regular';
+        font-size: 2.1rem;
+        margin-left: 1rem;
+    }
 }
 
-.contatos {
-    width: 100vh;
+.scroll {
+    overflow-y: scroll;
 }
+
+.containerCards {
+    width: 100%;
+    flex-wrap: wrap;
+}
+ 
+.margin1r {
+    margin-bottom: 1rem;
 }
 `;
 

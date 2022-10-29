@@ -4,8 +4,8 @@ import ListarServicosTable from "./listagem";
 
 export default function TableCard(props) {
     return(
-        <StyledTable className="container-column jc-center">
-            <nav className="container al-center card-branco jc-between"> 
+        <StyledTable className="container-column">
+            <nav className="container card-branco jc-between"> 
                 <h1> {props.h1} </h1>
 
                 <div className="container"> 

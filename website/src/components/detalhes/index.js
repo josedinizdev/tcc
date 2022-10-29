@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { VerDetalhes } from '../../api/servicos';
+import './styles.scss'
 const StyledDetalhes = styled.div`
     top: 0;
     left: 0;
+    
 `;
 
 export default function Detalhes(props) {
@@ -30,7 +32,7 @@ export default function Detalhes(props) {
     return (
         <StyledDetalhes className='fixed container jc-center al-center wh100'>
             <div id='detalhes' className='overlay' onClick={props.close} />
-            <div className='content container-column'>
+            <div className='content container-column detalhesContainer'>
                 <div id='detalhes' className="modal__close" onClick={props.close} />
                 <p>{servicos.titulo}</p>
                 <p>{servicos.descricao}</p>

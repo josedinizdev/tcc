@@ -1,21 +1,12 @@
-import { Link } from 'react-router-dom'
-import '../styles.scss'
 import User from '../../../assets/images/perfil.png'
 import ProfileCard from '../../../components/profile'
-import LupaIcon from '../../../assets/images/lupa-icon.png'
 import StyledContatos from './styles'
-import ContatoCardCarrousel from '../../../components/profile/contatoCard'
-import SetinhaEsquerda from '../../../assets/images/setinha-carrousel-contato.png'
-import SetinhaDireita from '../../../assets/images/setinha-carrousel-contato2.png'
-import { useState } from 'react'
-
+import ContatoCard from '../../../components/profile/contatoCard'
 
 export default function AdmContatosPage() {
-    const [contatos, setContatos] = useState([]);
-
     return(
-        <StyledContatos className="container b5551E3 al-center jc-center">
-            <section className='container contato-page pad1r' >
+        <StyledContatos className="container wh100v b5551E3 al-center jc-center">
+            <section className='container cinza-card resolutionAdm' >
                 <div>
                     <ProfileCard userProfile={User}
                                 nome='David Douglas'
@@ -25,8 +16,32 @@ export default function AdmContatosPage() {
 
                 <div className='linha'> </div>
 
-                <div className='container-column card-branco contatos'>
-                    <h1> Contatos </h1>
+                <div className='container-column contatos-container'>
+                    <div className='card-branco jc-center margin1r'>
+                        <h1> Contatos </h1>
+                    </div>
+
+                    <div className='container al-center card-branco scroll'>
+                        <div className='container containerCards'>
+                            <ContatoCard userProfile={User}
+                                            nome='Fábio Santana'/>
+                            <ContatoCard userProfile={User}
+                                            nome='Fábio Santana'/>
+                                                                        <ContatoCard userProfile={User}
+                                            nome='Fábio Santana'/>
+                            <ContatoCard userProfile={User}
+                                            nome='Fábio Santana'/>
+                                                                        <ContatoCard userProfile={User}
+                                            nome='Fábio Santana'/>
+                            <ContatoCard userProfile={User}
+                                            nome='Fábio Santana'/>
+                                                                        <ContatoCard userProfile={User}
+                                            nome='Fábio Santana'/>
+                            <ContatoCard userProfile={User}
+                                            nome='Fábio Santana'/>
+                        </div>
+                    </div>
+
                 </div>
             </section>
         </StyledContatos>

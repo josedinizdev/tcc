@@ -1,6 +1,12 @@
 import styled from "styled-components";
 
 const StyledEditarPerfil = styled.main`
+
+    section {
+        height: 84vh;
+        width: 95%;
+    }
+    
     img {
         width: 8rem;
         height: 8rem;
@@ -12,7 +18,7 @@ const StyledEditarPerfil = styled.main`
         font: bold;
         width: 100%;
         margin: .6rem 0;
-        width: 22rem;
+        width: 30rem;
     }
 
     input, textarea {
@@ -25,18 +31,22 @@ const StyledEditarPerfil = styled.main`
     textarea {
         max-height: 10rem;
         height: 12rem;
-        width: 15rem;
+        width: 25rem;
         margin-left: 1rem;
     }
 
     .container-editar {
         padding: 1rem 2rem;
-        height: 70vh;
+        height: 100%;
         width: 100%;
     }
 
     .linha {
         margin: 1rem;
+    }
+
+    .editarFoto {
+        visibility: hidden;
     }
 
     div button {
@@ -48,11 +58,11 @@ const StyledEditarPerfil = styled.main`
 
     .input {
         margin-left: 1rem;
-        width: 15rem;
+        width: 25rem;
     }
 
-    .marg-top1r {
-        margin-top: 1rem;
+    .marg-top2r {
+        margin-top: 2.5rem;
     }
 
     .marg-right20r {

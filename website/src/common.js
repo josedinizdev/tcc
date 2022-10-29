@@ -134,6 +134,10 @@ const Common = createGlobalStyle`
         margin: 0 1rem;
     }
 
+    .resolutionAdm {
+        height: 84vh;
+        width: 95%;
+    }
 
     .container {
         display: flex;
@@ -366,8 +370,8 @@ const Common = createGlobalStyle`
         z-index: 2;
         background-color: #fff;
         border-radius: .5rem;
-        width: 75%;
-        height: 75%;
+        width: 80%;
+        height: 80vh;
     }
     .modal__close::before {
         content: 'X';

@@ -60,7 +60,10 @@ export default function EditarPerfil() {
 
                     <div className="container jc-center">
                         <img src={User} alt='' />
-                        <span className="container pointer c1E4F6F al-end"> Alterar foto de perfil </span>
+                        <span className="container c1E4F6F al-end"> 
+                            Alterar foto de perfil 
+                            <input className="editarFoto" type='file' />
+                        </span>
                     </div>
 
                     <form className="container-column">
@@ -88,7 +91,7 @@ export default function EditarPerfil() {
                             <input className="input" type='text' value={genero} onChange={e => setGenero(e.target.value)} />
                         </label> 
 
-                        <div className="marg-top1r">
+                        <div className="marg-top2r">
                             <Link to='/perfil/editar/profissional' className="b1E4F6F cFFFFFF pointer profissional"> Tornar-se Profissional </Link>
                         </div>
                     </form>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import storage from 'local-storage';
 import StyledProfile from './styles.js';
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import ProfileCard from '../../components/profile/index.js';
 import User from '../../assets/images/perfil.png'
 import { DetalhesUsuario } from '../../api/user.js';

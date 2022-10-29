@@ -53,7 +53,7 @@ export default function BuscarUsuarioPage() {
 
     return(
         <StyledPesquisarUsuario className="wh100v container bEF7601 wrap jc-center al-center">
-            <section className="container cinza-card relative">
+            <section className="container cinza-card    ">
                 {dados && (
                     <ProfileCard userProfile={User}
                         desconectar={e => click(e)}
@@ -63,7 +63,7 @@ export default function BuscarUsuarioPage() {
                     />
                 )}
                 <div className="linha" />
-                <nav className="container-column al-center jc-center">
+                <nav className="container-column">
                     <div className="container jc-end">
                         <input type='text' placeholder='Pesquisar' />
                     </div>

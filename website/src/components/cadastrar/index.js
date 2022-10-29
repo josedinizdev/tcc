@@ -82,36 +82,77 @@ export default function Cadastrar(props) {
                 <div id='close-cadastro' onClick={props.close}>x</div>
                 <div className='container jc-between al-center'> {/* Titulo, categoria e botão */}
                     <div className='container-column'> {/* Título e categoria */}
-                        <input  className='iMedio' placeholder='Ex.: Manunteção de Máquina'         value={titulo}          onChange={e => setTitulo(e.target.value)} type="text" />
-                        <select className='iMedio' onChange={e => {
-                            let newArray = categorias;
-                            newArray.push(Number(e.target.value));
-                            setCategorias(newArray);
-                            setUpdated(!updated)
-                        }}>
-                            {catDisp.map(item => <option key={item.id} value={item.id}>{item.categoria}</option>)}
-                        </select>
-                        {categorias.length >= 1 && (<ul className='container'>{categorias.map(item => <li key={item}>{catDisp[item - 1].categoria}</li>)}</ul>)}
+                    <div className='container-column'>
+                            <label> Título </label>
+                            <input  className='iMedio' placeholder='Ex.: Manunteção de Máquina' value={titulo} onChange={e => setTitulo(e.target.value)} type="text" />
+                        </div>
+
+                        <div>
+                            <label className='container-column'> Categoria </label>
+                            <select className='iMedio' onChange={e => {
+                                let newArray = categorias;
+                                newArray.push(Number(e.target.value));
+                                setCategorias(newArray);
+                                setUpdated(!updated)
+                            }}>
+                                {catDisp.map(item => <option key={item.id} value={item.id}>{item.categoria}</option>)}
+                            </select>
+                            {categorias.length >= 1 && (<ul className='container'>{categorias.map(item => <li key={item}>{catDisp[item - 1].categoria}</li>)}</ul>)}
+                        </div>
                     </div>
                     <button className='pointer' onClick={_ => cadastrar()}>Cadastrar</button>
                 </div>
-                <div className='container jc-between'>
-                    <textarea placeholder='Ex.: Uma máquina com intel celeron e...  para...' value={descricao} onChange={e => setDescricao(e.target.value)} type="text" />                
-                    <textarea placeholder='Ex.: Fique limpa e quero uma decoração...' value={ideias} onChange={e => setIdeias(e.target.value)} type="text" />
-                    <textarea placeholder='Ex.: Precisa ter ensino...' value={requisitos} onChange={e => setRequisitos(e.target.value)} type="text" />
+                <div className='container jc-between textareaDiv    '>
+                    <div className='container-column inputDiv'>
+                        <label> Descrição </label>
+                        <textarea placeholder='Ex.: Uma máquina com intel celeron e...  para...' value={descricao} onChange={e => setDescricao(e.target.value)} type="text" />                
+                    </div>
+
+                    <div className='container-column inputDiv'>
+                        <label> Ideías </label>
+                        <textarea placeholder='Ex.: Fique limpa e quero uma decoração...' value={ideias} onChange={e => setIdeias(e.target.value)} type="text" />
+                    </div>
+
+                    <div className='container-column inputDiv'>
+                        <label> Requisitos </label>
+                        <textarea placeholder='Ex.: Precisa ter ensino...' value={requisitos} onChange={e => setRequisitos(e.target.value)} type="text" />
+                    </div>
                 </div>
-                <div className='container jc-between'>
+                <div className='container jc-between al-end'>
                     <div className='container-column lEsquerdo'>
-                        <input placeholder='Ex.: São Paulo' value={estado}          onChange={e => setEstado(e.target.value)} type="text" />
-                        <input placeholder='Ex.: São Paulo'                                         value={cidade}          onChange={e => setCidade(e.target.value)} type="text" />
+                        <div className='container-column'>
+                            <label> Estado </label>
+                            <input placeholder='Ex.: São Paulo' value={estado} onChange={e =>  setEstado(e.target.value)} type="text" />
+                        </div>
+
+                        <div className='container-column'>
+                            <label> Cidade </label>
+                            <input placeholder='Ex.: São Paulo' value={cidade} onChange={e => setCidade(e.target.value)} type="text" />
+                        </div>
                     </div>
+
                     <div className='container-column lMeio'>
-                        <input  placeholder='Ex.: Rua 25 de Março'                                   value={endereco}        onChange={e => setEndereco(e.target.value)} type="text" />
-                        <input placeholder='Ex.: 124'                                               value={numero}          onChange={e => setNumero(Number(e.target.value))} type="number" />
+                        <div className='container-column'>
+                            <label> Endereço </label>
+                            <input  placeholder='Ex.: Rua 25 de Março'  value={endereco} onChange={e => setEndereco(e.target.value)} type="text" />
+                        </div>
+
+                        <div className='container-column'>
+                            <label> Número </label>
+                            <input placeholder='Ex.: 124' value={numero} onChange={e => setNumero(Number(e.target.value))} type="number" />
+                        </div>
                     </div>
+
                     <div className='container-column lDireito'>
-                        <input placeholder='Ex.: 04826-190'                                         value={cep}             onChange={e => setCep(e.target.value)} type="text" />
-                        <input placeholder='Ex.: Casa'                                              value={complemento}     onChange={e => setComplemento(e.target.value)} type="text" />
+                        <div className='container-column'>
+                            <label> CEP </label>
+                            <input placeholder='Ex.: 04826-190' value={cep} onChange={e => setCep(e.target.value)} type="text" />
+                        </div>
+
+                        <div className='container-column'>
+                            <label> Complemento </label>
+                            <input placeholder='Ex.: Casa' value={complemento} onChange={e => setComplemento(e.target.value)} type="text" />
+                        </div>
                     </div>
                 </div>
             </div>

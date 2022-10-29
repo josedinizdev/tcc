@@ -1,20 +1,22 @@
-import '../../../pages/admin/contatos/styles.js'
 import MensagemIcon from '../../../assets/images/historico-icon.png'
 import PerfilIcon from '../../../assets/images/perfil-icon.png'
 import DeletarIcon  from '../../../assets/images/deletar-icon.png'
+import StyledContatoCard from './styles'
 
 
-export default function ContatoCardCarrousel(props) {
+export default function ContatoCard(props) {
     return(
-        <div className='container-column al-center carrousel-card'>
-            <img className='imgPerfil' src={props.userProfile} alt=''/>
-            <h2> {props.nome} </h2>
-
-            <div className='container jc-between w100'>
-                <img className='icon' src={MensagemIcon} alt=''/>
-                <img className='icon' src={PerfilIcon} alt=''/>
-                <img className='icon' src={DeletarIcon} alt=''/>
+        <StyledContatoCard className='container al-center jc-between'>
+            <div className='container al-center'>
+                <img className='imgPerfil' src={props.userProfile} alt=''/>
+                <h2> {props.nome} </h2>
             </div>
-        </div>
+
+            <div className='container-column '>
+                <img className='pointer' src={MensagemIcon} alt=''/>
+                <img className='pointer' src={PerfilIcon} alt=''/>
+                <img className='pointer' src={DeletarIcon} alt=''/>
+            </div>
+        </StyledContatoCard>
     )
 }

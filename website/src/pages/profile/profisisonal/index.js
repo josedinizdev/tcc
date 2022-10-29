@@ -18,10 +18,6 @@ export default function Profissional() {
         navigate('/perfil');
     }
 
-    function alterarPerfilClick() {
-        
-    }
-
     useEffect(_ => {
         let resp;
         if (!storage('usuario-logado'))
@@ -40,7 +36,7 @@ export default function Profissional() {
     }, [perfil])
     return(
         <StyledProfissional className="container jc-center al-center wh100v bEF7601">
-            <section className="container  cinza-card">
+            <section className="container cinza-card">
                 <ProfileCard userProfile={User}
                         nome={dados.nome}
                         habilidades={dados.sobre}
@@ -49,7 +45,7 @@ export default function Profissional() {
 
                 <div className="linha" /> 
 
-                <form className="container-column card-branco pad1r w80">
+                <form className="container-column card-branco">
                     <div className="container">
                         <label> CPF </label>
                         <input type='text' />
@@ -67,21 +63,22 @@ export default function Profissional() {
 
                     <div className="container">
                         <label> Estado </label>
-                        <input type='text' />
+                        <input className="estado" type='text' />
                     </div>
 
-                    <div className="container">
-                        <label> Cargo </label>
-                        <input type='text' />
-                    </div>
+                    <div className="container-column jc-end desc">
+                        <div className="container">
+                            <label> Cargos </label>
+                            <input type='text' />
+                        </div>  
 
-                    <div className="container">
-                        <label> Habilidades </label>
-                        <textarea />
+                        <div className="container">
+                            <label> Habilidades </label>
+                            <textarea />
+                        </div>
                     </div>
-
-                    <div className="container js-end">
-                        <button className="b1E4F6F cFFFFFF pointer pad1r finalizar"> Finalizar </button>
+                    <div className="container al-end jc-end botaoTamanho">
+                        <button className="b1E4F6F cFFFFFF pointer"> Concluir </button>
                     </div>
 
                 </form>

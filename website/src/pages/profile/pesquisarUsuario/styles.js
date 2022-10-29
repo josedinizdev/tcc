@@ -1,6 +1,11 @@
 import styled from "styled-components";
 
 const StyledPesquisarUsuario = styled.main `
+    section {
+        height: 84vh;
+        width: 95%;
+    }
+
     section nav, section nav div {
         width: 100%;
     }
@@ -54,14 +59,18 @@ const StyledPesquisarUsuario = styled.main `
 
     .listar {
         padding: 2rem;
-        height: 60vh;
+        height: 100%;
         overflow-y: scroll;
-        height: 25rem;
+    }
+
+    .card:nth-child(1) {
+        margin: 0;
     }
 
     .card {
         width: 80%;
         box-shadow: 0 10px 4px rgba(105, 105, 105, .8);
+        margin: 2rem 0;
     }
 
     .linha {

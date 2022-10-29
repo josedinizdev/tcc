@@ -33,7 +33,7 @@ const StyledTable = styled.div`
 
     table {
         margin-top: 1rem;
-        height: 50vh;   
+        height: 100%;   
     }
 
     tr {

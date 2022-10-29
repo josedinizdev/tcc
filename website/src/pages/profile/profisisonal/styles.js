@@ -1,14 +1,20 @@
 import styled from "styled-components";
 
 const StyledProfissional = styled.section`
-width: 100%;
 
-.w80 {
-    width: 80%;
+button{
+    padding: 1rem 2.5rem;
+    border-radius: .6rem;
 }
 
-.finalizar{
-    border-radius: .6rem;
+section {
+    width: 95%;
+    height: 84vh;
+}
+
+form {
+    width: 100%;
+    padding: 2rem;
 }
 
 label {
@@ -16,23 +22,34 @@ label {
     font-size: 1.4rem;
     font: bold;
     width: 100%;
-    margin: .6rem 0;
-    width: 15rem;
+    margin: 1rem 0;
+    width: 13rem;
+}
+
+.estado {
+    width: 10rem;
 }
 
 input, textarea {
+    font-size: 1.1rem;
     padding: .4rem;
     border: 1px solid #242424;
     border-radius: .4rem;
-    width: 25%;
     margin-bottom: 1rem;
+    width: 25rem;
 }
 
 textarea {
     max-height: 10rem;
     height: 12rem;
-    width: 15rem;
-    margin-left: 1rem;
+}
+
+.desc {
+    height: 100%;
+}
+
+.botaoTamanho {
+    height: 40%;
 }
 `;
 

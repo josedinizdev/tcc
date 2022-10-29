@@ -1,6 +1,5 @@
 import storage from 'local-storage';
-import { Link, useNavigate } from 'react-router-dom'
-import '../styles.scss'
+import { useNavigate } from 'react-router-dom'
 import User from '../../../assets/images/perfil.png'
 import ProfileCard from '../../../components/profile'
 import TableCard from '../../../components/table'
@@ -16,7 +15,7 @@ export default function AdmAndamentoPage() {
 
     return(
         <main className="container wh100v b5551E3 jc-center al-center">
-            <section className="container cinza-card">
+            <section className="container cinza-card resolutionAdm">
                 <ProfileCard userProfile={User}
                              nome='David Douglas'
                              cargo='Desenvolvedor Sênior'
