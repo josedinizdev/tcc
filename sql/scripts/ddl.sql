@@ -18,7 +18,7 @@ create table if not exists `tb_usuario`(
     `dt_registro`             datetime default null,
     `ds_genero`               varchar(10),
     `ds_email`                varchar(75) default null,
-    `nr_celular`              int,
+    `nr_celular`              varchar(50),
     `ds_sobre`                varchar(2500),
     `dt_nascimento`           date default null,
     `img_usuario`             varchar(300)

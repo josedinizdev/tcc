@@ -41,8 +41,12 @@ export async function AtualizarServico(servico, local, categoria, estado, cidade
     return resp.data;
 }
 
-export async function ListarServico() {
-    const resp = await api.get('/servicos')
+export async function ListarServico({ nome, categoria }) {
+    const req = {
+        nome: nome,
+        categoria: categoria
+    }
+    const resp = await api.get('/servicos/s', req)
     return resp.data;
 }
 

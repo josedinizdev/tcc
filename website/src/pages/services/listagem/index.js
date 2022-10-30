@@ -8,6 +8,7 @@ import StyledServices, {
 } from "./styles";
 import { Link } from 'react-router-dom' 
 import { ToastContainer } from "react-toastify";
+import { obterCategorias } from "../../../api/categorias.js";
 
 export default function Services() {
     const [servicos, setServicos] = useState([]);
@@ -15,10 +16,12 @@ export default function Services() {
     const [cadastro, setCadastro] = useState(false);
     const [detalhes, setDetalhes] = useState(false);
     const [currentPos, setCurrentPos] = useState();
+    const [catDisp, setCatDisp] = useState([{id: 0, categoria: ''}]);
+    const [categoria, setCategoria] = useState('');
     
     useEffect(() => {
         async function ExibirListagem() {
-            const resp = await ListarServico();
+            const resp = await ListarServico({nome: filtro, categoria: categoria});
             let newResp = [];
             for (let i = 0; i < resp.length; i++) {
                 let category = false;
@@ -40,6 +43,24 @@ export default function Services() {
         setCurrentPos(id);
         setDetalhes(true);
     }
+
+    async function pesquisar() {
+        const req = { nome: filtro, categoria: categoria }
+        const resp = await ListarServico(req);
+        let newResp = [];
+        for (let i = 0; i < resp.length; i++) {
+            let category = false;
+            if (newResp.length > 1)
+                for (let j = 0; j < newResp.length && !category; j++)
+                    if (newResp[j].id === resp[i].id) {
+                        category = true;
+                        newResp[j].categorias.push(resp[i].categoria);
+                    }
+            if (!category)
+                newResp.push({ id: resp[i].id, titulo: resp[i].titulo, data: resp[i].data, categorias: [resp[i].categoria] });
+        }
+        setServicos(newResp);
+    }
     
     function click(e) {
         switch (e.target.id) {
@@ -58,10 +79,13 @@ export default function Services() {
             setCadastro(false);
     }
 
-    async function filtrar() {
-        const resp = await PesquisarServicoTitulo(filtro);
-        setServicos(resp);
-    }
+    useEffect(_ => {
+        async function definirCategorias() {
+            const resp = await obterCategorias();
+            setCatDisp(resp.data);
+        }   
+        definirCategorias();
+    }, []);
 
     return(
         <StyledServices className='container-column relative z1'>
@@ -76,11 +100,15 @@ export default function Services() {
                             <div className="container background-filters background-transparent">
                                 <button id="cadastrar" onClick={click} className="pointer">Criar</button>
                                 <button><Link to='/servicos/usuario'>Gerenciar</Link></button>
-                                <select>
-                                    <option>  </option>
+                                <select className='iMedio' onChange={e => {
+                                    setCategoria(catDisp[e.target.value]);
+                                }}>
+                                    <option value=''>Selecione</option>
+                                    {catDisp.map((item, index) => <option key={item.id} value={index}>{item.categoria}</option>)}
                                 </select>
                                 <div>
-                                    <input type='text' placeholder="Pesquisar" value={filtro} onDoubleClick={filtrar} onChange={e => setFiltro(e.target.value)}/> 
+                                    <input type='text' placeholder="Pesquisar" value={filtro} onChange={e => setFiltro(e.target.value)} /> 
+                                    <button onClick={pesquisar}>pesquisar</button>
                                 </div>
                             </div>
                         </section>
@@ -92,8 +120,8 @@ export default function Services() {
             <List className="container background-orange">
                 <div className="container jc-between background-orange"> 
                     <div className="container-column background-transparent services-listar">
-                        {servicos.map(item =>
-                            <CardServicoList key={item.id} className='container-column'>
+                        {servicos.map((item, index) =>
+                            <CardServicoList key={index} className='container-column'>
                                 <ul className='container card al-center jc-between'>
                                     <div className='container-column'>
                                         <li> {item.titulo} </li>

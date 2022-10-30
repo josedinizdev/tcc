@@ -63,9 +63,11 @@ server.post('/servicos', async (req, resp) =>{
   }
 })
 
-server.get('/servicos', async (req, resp) =>{
+server.get('/servicos/s', async (req, resp) =>{
   try {
-    const resposta = await BuscarServicos();
+    let input = req.body;
+    console.log(input);
+    const resposta = await BuscarServicos(input);
     resp.status(200).send(resposta)
   } 
   catch (err) {

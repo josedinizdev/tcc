@@ -31,7 +31,7 @@ export async function CadastrarServico(servico, local) {
     return { linhas: linhas, id: servico.id };
 };
 
-export async function BuscarServicos() {
+export async function BuscarServicos({nome = '', categoria = ''}) {
     const comando = `
         select tb_servico.id_servico     as id,
                tb_servico.nm_servico     as titulo,
@@ -41,9 +41,11 @@ export async function BuscarServicos() {
          inner join tb_servico_categoria
             on tb_servico_categoria.id_servico = tb_servico.id_servico
          inner join tb_categoria
-            on tb_categoria.id_categoria = tb_servico_categoria.id_categoria;
+            on tb_categoria.id_categoria = tb_servico_categoria.id_categoria
+         where tb_servico.nm_servico like ?
+           and tb_categoria.ds_categoria like ?;
     `
-    const [linhas] = await con.query(comando);
+    const [linhas] = await con.query(comando, [`%${nome}%`, `%${categoria}%`]);
     return linhas;
 }
 

@@ -51,7 +51,7 @@ export async function editarPerfil(id, usuario) {
              ds_sobre        = ?,
              ds_email        = ?, 
              nr_celular     = ?,
-             ds_genero       = ?
+             ds_genero       = ?,
              dt_nascimento = ?
         where id_usuario = ? 
     `;
@@ -67,7 +67,8 @@ export async function VerDetalhesPerfil(id) {
             img_usuario               as foto,
             ds_email                  as email,
             nr_celular                 as celular,
-            dt_nascimento             as nascimento
+            dt_nascimento             as nascimento,
+            ds_genero                 as genero
         from tb_usuario
         where id_usuario = ?;
     `

@@ -51,14 +51,8 @@ server.put('/usuario/perfil/alterar/:id', async(req, resp) => {
 
     if(!novoPerfil.nome)
         throw new Error("Campo do nome é obrigatório")
-    else if(!novoPerfil.descricao)
-        throw new Error("Campo do descricao é obrigatório")
     else if(!novoPerfil.email)
       throw new Error("Campo do email é obrigatório")
-    else if(!novoPerfil.celular)
-      throw new Error("Campo do telefone é obrigatório")
-    else if(!novoPerfil.genero)
-      throw new Error("Campo do genero é obrigatório")
 
       const resposta = await editarPerfil(id, novoPerfil);
       resp.status(200).send(resposta);

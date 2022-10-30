@@ -17,6 +17,7 @@ export async function DetalhesUsuario(id) {
 }
 
 export async function EditarPerfil(perfil, id) {
+    console.log(id)
     const resp = await api.put(`/usuario/perfil/alterar/${id}`, {
         nome: perfil.nome,
         descricao: perfil.descricao,
@@ -25,6 +26,7 @@ export async function EditarPerfil(perfil, id) {
         genero: perfil.genero,
         nascimento: perfil.nascimento
     })
+    console.log(resp)
     return resp.data;
 }
 
@@ -35,5 +37,10 @@ export async function Usuarios() {
 
 export async function isWorker(id) {
     const resp = await api.get(`/profissional/${id}`)
+    return resp.data;
+}
+
+export async function beWorker(input) {
+    const resp = await api.post('/profissional', input)
     return resp.data;
 }

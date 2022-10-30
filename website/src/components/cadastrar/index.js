@@ -71,8 +71,10 @@ export default function Cadastrar(props) {
         async function definirCategorias() {
             const resp = await obterCategorias();
             setCatDisp(resp.data);
+            console.log(resp)
         }   
         definirCategorias();
+        console.log(catDisp)
     }, []);
 
     return (
@@ -86,18 +88,29 @@ export default function Cadastrar(props) {
                             <label> Título </label>
                             <input  className='iMedio' placeholder='Ex.: Manunteção de Máquina' value={titulo} onChange={e => setTitulo(e.target.value)} type="text" />
                         </div>
-
                         <div>
                             <label className='container-column'> Categoria </label>
                             <select className='iMedio' onChange={e => {
                                 let newArray = categorias;
-                                newArray.push(Number(e.target.value));
-                                setCategorias(newArray);
-                                setUpdated(!updated)
+                                let canAdd = true;
+                                for (let i = 0; i < newArray.length; i++)
+                                    if (catDisp[e.target.value] === newArray[i])
+                                        canAdd = false;
+                                if (canAdd || isNaN(Number(e.target.value))) {
+                                    newArray.push(Number(e.target.value));
+                                    setCategorias(newArray);
+                                    setUpdated(!updated)
+                                }
                             }}>
-                                {catDisp.map(item => <option key={item.id} value={item.id}>{item.categoria}</option>)}
+                                <option value="">Selecione uma categoria</option>
+                                {catDisp.map((item, index) => <option key={item.id} value={index}>{item.categoria}</option>)}
                             </select>
-                            {categorias.length >= 1 && (<ul className='container'>{categorias.map(item => <li key={item}>{catDisp[item - 1].categoria}</li>)}</ul>)}
+                            {categorias.length >= 1 && (<ul className='container'>{categorias.map((item, index) => <li className='container'  key={item}>{catDisp[item].categoria}<div style={{marginLeft:'0.5rem', color: '#ff0000'}} onClick={_ => {
+                                let newArray = categorias;
+                                newArray.splice(index, 1)
+                                setCategorias(newArray);
+                                setUpdated(!updated);
+                            }}>x</div></li>)}</ul>)}
                         </div>
                     </div>
                     <button className='pointer' onClick={_ => cadastrar()}>Cadastrar</button>

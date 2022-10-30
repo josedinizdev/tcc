@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
-import { DetalhesUsuario } from "../../../api/user";
+import { DetalhesUsuario, EditarPerfil } from "../../../api/user";
 import storage from 'local-storage';
 import { useNavigate, Link } from "react-router-dom";
 import StyledEditarPerfil from "./styles";
 import ProfileCard from '../../../components/profile/index.js';
 import User from '../../../assets/images/perfil.png'
+import { toast } from "react-toastify";
 
-export default function EditarPerfil() {
+export default function IEditarPerfil() {
     const [dados, setDados] = useState({});
     const [perfil, setPerfil] = useState(0)
     const [nome, setNome] = useState('');
@@ -14,6 +15,7 @@ export default function EditarPerfil() {
     const [email, setEmail] = useState('');
     const [telefone, setTelefone] = useState('');
     const [genero, setGenero] = useState('');
+    const [nascimento, setNascimento] = useState();
     const [id, setId] = useState(0);
 
     const navigate = useNavigate();
@@ -22,8 +24,20 @@ export default function EditarPerfil() {
         navigate('/perfil');
     }
 
-    function alterarPerfilClick() {
-        
+    async function alterarPerfilClick() {
+        try {
+            let resp = await EditarPerfil({
+                nome: nome,
+                descricao: descricao,
+                email: email,
+                celular: telefone,
+                genero: genero,
+                nascimento: nascimento
+            }, perfil)
+            toast('Perfil Editado')
+        } catch (err) {
+            toast(err.message)
+        }
     }
 
     useEffect(_ => {
@@ -39,6 +53,17 @@ export default function EditarPerfil() {
         async function requisicao() {
             const resp = await DetalhesUsuario(perfil)
             setDados(resp);
+            setNome(resp.nome);
+            setDescricao(resp.sobre);
+            setEmail(resp.email);
+            setTelefone(resp.celular);
+            setGenero(resp.genero);
+            console.log(resp.nascimento)
+            let d = resp.nascimento
+            console.log(d)
+            d = d.slice(0, 10)
+            console.log(d);
+            setNascimento(d);
         }
         requisicao();
     }, [perfil])
@@ -54,7 +79,6 @@ export default function EditarPerfil() {
 
                 <div className="container-column container-editar card-branco ">
                     <nav className="container jc-end"> 
-                        <button className="pointer" onClick={cancelar}> Cancelar </button>
                         <button className="b1E4F6F cFFFFFF pointer" onClick={alterarPerfilClick}> Finalizar </button>
                     </nav>
 
@@ -89,7 +113,11 @@ export default function EditarPerfil() {
 
                         <label className="container jc-between"> Gênero
                             <input className="input" type='text' value={genero} onChange={e => setGenero(e.target.value)} />
-                        </label> 
+                        </label>
+
+                        <label className="container jc-between"> Data de Nascimento
+                            <input className="input" type='date' value={nascimento} onChange={e => setNascimento(e.target.value)} />
+                        </label>
 
                         <div className="marg-top2r">
                             <Link to='/perfil/editar/profissional' className="b1E4F6F cFFFFFF pointer profissional"> Tornar-se Profissional </Link>
