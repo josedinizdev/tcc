@@ -15,6 +15,7 @@ export default function Profile() {
         switch (e.target.id) {
             case 'desconectar':
                 storage.remove('usuario-logado')
+                storage.remove('worker')
                 navigate('/')
                 break;
             default:

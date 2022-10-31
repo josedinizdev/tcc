@@ -40,13 +40,12 @@ export async function AtualizarServico(servico, local, categoria, estado, cidade
     })
     return resp.data;
 }
-
+    
 export async function ListarServico({ nome, categoria }) {
-    const req = {
-        nome: nome,
-        categoria: categoria
-    }
-    const resp = await api.get('/servicos/s', req)
+    const n = nome !== '' ? `nome=${nome}` : ''
+    const c = categoria !== ''? `categoria=${categoria}` : ''
+    const juncao = n !== '' && c !== ''? `?${n}&${c}` : `?${n}${c}`
+    const resp = await api.get(`/servicos/s${juncao}`);
     return resp.data;
 }
 

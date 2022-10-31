@@ -231,7 +231,9 @@ const Common = createGlobalStyle`
         min-width: 100vw;
     }
     
-
+    .width100 {
+        width: 100%;
+    }
 
     .h100v {
         min-height: 100vw;

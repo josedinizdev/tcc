@@ -26,8 +26,8 @@ export async function UsuarioWorker (id) {
             on tb_usuario.id_usuario = tb_worker.id_usuario
          where tb_worker.id_usuario = ?;
     `;
-    const linhas = await con.query(comando , [`%${id}%`]);
-    return linhas;
+    const [linhas] = await con.query(comando, [`%${id}%`]);
+    return linhas[0];
 }
 
 export async function AdicionarContatos (id) {

@@ -91,7 +91,7 @@ export default function IEditarPerfil() {
                     </div>
 
                     <form className="container-column">
-                        <div className="container-column al-center marg-right20r marg-top1r">
+                        <div className="container-column  marg-right20r ">
                             <label className="container jc-between"> Nome
                                 <input className="input" type='text' value={nome} onChange={e => setNome(e.target.value)} />
                             </label>
@@ -119,8 +119,8 @@ export default function IEditarPerfil() {
                             <input className="input" type='date' value={nascimento} onChange={e => setNascimento(e.target.value)} />
                         </label>
 
-                        <div className="marg-top2r">
-                            <Link to='/perfil/editar/profissional' className="b1E4F6F cFFFFFF pointer profissional"> Tornar-se Profissional </Link>
+                        <div className="container">
+                            <Link to='/perfil/editar/profissional' className="b1E4F6F cFFFFFF pointer profissional marg1r"> Tornar-se Profissional </Link>
                         </div>
                     </form>
 

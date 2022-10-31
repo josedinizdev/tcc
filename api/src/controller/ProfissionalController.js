@@ -43,6 +43,8 @@ server.get('/profissional/:id', async (req, resp) => {
   try {
     const id = req.params.id
     const worker = await UsuarioWorker(id)
+    if(!worker)
+      throw new Error('Não identificado')
     resp.status(200).send(worker)
   } catch (err) {
     resp.status(400).send ({

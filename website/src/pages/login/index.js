@@ -30,7 +30,8 @@ export default function Login() {
             storage('usuario-logado', resp)
             try {
                 const worker = await isWorker(storage('usuario-logado').id)
-                storage('worker', worker)
+                if (typeof worker.erro === 'undefined')
+                    storage('worker', worker)
             } catch (err) {
                 console.log(err)
             }

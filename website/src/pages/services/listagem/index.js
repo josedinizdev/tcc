@@ -101,10 +101,11 @@ export default function Services() {
                                 <button id="cadastrar" onClick={click} className="pointer">Criar</button>
                                 <button><Link to='/servicos/usuario'>Gerenciar</Link></button>
                                 <select className='iMedio' onChange={e => {
-                                    setCategoria(catDisp[e.target.value]);
-                                }}>
+                                        const req = catDisp[e.target.value].categoria
+                                        setCategoria(req);
+                                    }}>
                                     <option value=''>Selecione</option>
-                                    {catDisp.map((item, index) => <option key={item.id} value={index}>{item.categoria}</option>)}
+                                    {catDisp.map((item, index) => <option key={index} value={index} >{item.categoria}</option>)}
                                 </select>
                                 <div>
                                     <input type='text' placeholder="Pesquisar" value={filtro} onChange={e => setFiltro(e.target.value)} /> 
@@ -126,7 +127,7 @@ export default function Services() {
                                     <div className='container-column'>
                                         <li> {item.titulo} </li>
                                         <div className="container">
-                                                {item.categorias.map(categoria => <li key={categoria} style={{marginRight: '.4rem'}}>{categoria}</li>)} 
+                                                {item.categorias.map((categoria, index) => <li key={index} style={{marginRight: '.4rem'}}>{categoria}</li>)} 
                                         </div> 
                                     </div>
                                     <li onClick={_ => verDetalhes(item.id)} style={{cursor: "pointer"}}> Veja mais detalhes </li>

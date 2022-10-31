@@ -8,8 +8,8 @@ const StyledEditarPerfil = styled.main`
     }
     
     img {
-        width: 8rem;
-        height: 8rem;
+        width: 7rem;
+        height: 7rem;
     }
 
     label {
@@ -38,7 +38,7 @@ const StyledEditarPerfil = styled.main`
     .container-editar {
         padding: 1rem 2rem;
         height: 100%;
-        width: 100%;
+        width: 71%;
     }
 
     .linha {
@@ -61,10 +61,6 @@ const StyledEditarPerfil = styled.main`
         width: 25rem;
     }
 
-    .marg-top2r {
-        margin-top: 2.5rem;
-    }
-
     .marg-right20r {
         margin-right: 20rem;
     }
@@ -72,6 +68,23 @@ const StyledEditarPerfil = styled.main`
     .profissional {
         padding: .8rem 1rem;
         border-radius: .6rem;
+    }
+
+    @media (max-width: 1550px   ) {
+        img {
+            width: 6rem;
+            height: 6rem;
+        }
+
+        .linha {
+            visibility: hidden ;
+        }
+
+        form  label:nth-child(3) {
+            margin: 0;
+        }
+
+
     }
 `;
 

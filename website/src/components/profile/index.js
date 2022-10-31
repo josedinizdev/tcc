@@ -22,7 +22,7 @@ export default function ProfileCard(props) {
                 </div>
 
                 <h2> Sobre </h2>
-                <p>{props.habilidades}</p>
+                <p className='wrap width100'>{props.habilidades}</p>
                 <div className='container jc-between w100'>
                     <Link to='/perfil/editar' className='buttons absolute'>Editar Perfil</Link>
                     <Link to='/perfil/adm/contato' className='buttons contato absolute'>Contatos</Link>

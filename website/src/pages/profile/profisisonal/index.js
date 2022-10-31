@@ -52,9 +52,11 @@ export default function Profissional() {
     }, [])
 
     useEffect(_ => {
-        if (storage('worker'))
+        console.log(storage('worker'))
+        if (storage('worker')) {
             navigate('/perfil');
-        toast('Você já é um worker')
+            toast('Você já é um worker')
+        }
     }, [])
 
 
@@ -75,35 +77,38 @@ export default function Profissional() {
                         normal={true}
                 /> 
                 <div className="linha" /> 
-                <form className="container-column card-branco">
-                    <div className="container">
-                        <label> CPF </label>
-                        <input type='text' value={cpf} onChange={e => setCpf(e.target.value)} />
-                    </div>
 
-                    <div className="container">
-                        <label> Email Profisisonal </label>
-                        <input type='text' value={email} onChange={e => setEmail(e.target.value)}/>
-                    </div>
-                    <div className="container">
-                        <label> Estado </label>
-                        <input className="estado" type='text' value={estado} onChange={e => setEstado(e.target.value)} />
-                    </div>
-                    <div className="container-column jc-end desc">
+                <div className="container-column card-branco width100 pad1r">
+                    <form className="container-column">
                         <div className="container">
-                            <label> Cargos </label>
-                            <input type='text' value={cargo} onChange={e => setCargo(e.target.value)} />
-                        </div>  
-
-                        <div className="container">
-                            <label> Habilidades </label>
-                            <textarea value={habilidades} onChange={e => setHabilidades(e.target.value)} />
+                            <label> CPF </label>
+                            <input type='text' value={cpf} onChange={e => setCpf(e.target.value)} />
                         </div>
-                    </div>
+
+                        <div className="container">
+                            <label> Email Profisisonal </label>
+                            <input type='text' value={email} onChange={e => setEmail(e.target.value)}/>
+                        </div>
+                        <div className="container">
+                            <label> Estado </label>
+                            <input className="estado" type='text' value={estado} onChange={e => setEstado(e.target.value)} />
+                        </div>
+                        <div className="container-column jc-end desc">
+                            <div className="container">
+                                <label> Cargos </label>
+                                <input type='text' value={cargo} onChange={e => setCargo(e.target.value)} />
+                            </div>  
+
+                            <div className="container">
+                                <label> Habilidades </label>
+                                <textarea value={habilidades} onChange={e => setHabilidades(e.target.value)} />
+                            </div>
+                        </div>
+                    </form>
                     <div className="container al-end jc-end botaoTamanho">
                         <button onClick={worker} className="b1E4F6F cFFFFFF pointer"> Concluir </button>
                     </div>
-                </form>
+                </div>
             </section>
         </StyledProfissional>
     )
