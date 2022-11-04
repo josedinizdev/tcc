@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { AdicionarContato, AlterarFoto, DeletarLogin, DeletarUsuario, DescobrirContatoUsuario, editarPerfil, ListarMeusContatos, ListarUsuario, LoginUsuario, PesquisarUsuario, VerDetalhesPerfil } from '../repository/userRepository.js'
+import { AdicionarContato, AlterarFoto, CadastrarLogin, CadastroUsuario, DeletarLogin, DeletarUsuario, DescobrirContatoUsuario, editarPerfil, ListarMeusContatos, ListarUsuario, LoginUsuario, PesquisarUsuario, VerDetalhesPerfil } from '../repository/userRepository.js'
 const server = Router();
 
 server.post('/usuario/login' , async (req, resp) =>{
@@ -15,18 +15,39 @@ server.post('/usuario/login' , async (req, resp) =>{
   catch (err) {
     resp.status(400).send ({
       erro: err.message
-    });
+    })
   }
 })
 
-server.post('/usuario', async (req, resp) =>{
-  try {
-      
+server.post('/usuario/cadastro', async (req, resp) => {
+  try { 
+      const novoUsuario = req.body;
+      const novoCadastro = await CadastroUsuario(novoUsuario);
+      resp.status(200).send({novoCadastro})
   } 
   catch (err) {
     resp.status(401).send ({
       erro: err.message
     });
+  }
+})
+
+server.post('/usuario/cadastro/:id', async (req, resp) => {
+  try {
+      const id = req.params.id;
+      const novoLogin = req.body;
+      const result = CadastrarLogin(id, novoLogin.senha);
+      if(!novoLogin.senha) 
+        throw new Error('Campo da senha é obrigatório');
+
+      resp.status(200).send(result);
+
+      
+  }
+  catch(err) {
+    resp.status(400).send({
+      erro: err.message
+    })
   }
 })
 

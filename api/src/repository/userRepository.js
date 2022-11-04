@@ -8,7 +8,7 @@ export async function CadastroUsuario(novoUsuario) {
     const data = new Date();
     const [linhas] = await con.query(comando, [novoUsuario.nome, novoUsuario.email, novoUsuario.dtNascimento, data])
     novoUsuario.id = linhas.insertId;
-    return linhas;
+    return linhas.affectedRows;
 }
 
 export async function AtribuirContatos(id) {
@@ -16,18 +16,17 @@ export async function AtribuirContatos(id) {
         insert into tb_usuario_contato(id_usuario)
             values(?)
     `
-    const [linhas] = await con.query(comando, [id])
+    const [linhas] = await con.query(comando, [id]);
     return linhas
 }
 
-export async function CadastrarLogin(idUsuario, senha) {
+export async function CadastrarLogin(id, senha) {
     const comando = `
         insert into tb_login(id_usuario, ds_senha)
-             values(?, ?, ?);
+             values(?, ?);
     `
-    const [linhas] = await con.query(comando, [idUsuario, senha])
-    novoLogin.id = linhas.insertId;
-    return linhas
+    const [linhas] = await con.query(comando, [id, senha])
+    return linhas.affectedRows
 }
 
 export async function LoginUsuario(email, senha) {

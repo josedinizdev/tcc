@@ -11,6 +11,22 @@ export async function LoginUsuario(email, senha) {
     return resp.data;
 }
 
+export async function CadastrarUsuario(nome, email, dtNascimento) {
+    const resp = await api.post('/usuario/cadastro', {
+        nome: nome,
+        email: email,
+        dtNascimento: dtNascimento
+    })
+    return resp.data;
+}
+
+export async function CadastrarUsuarioLogin(id, senha) {
+    const resp = await api.post(`/usuario/cadastro/${id}`, {
+        senha: senha
+    })
+    return resp.data;
+}
+
 export async function DetalhesUsuario(id) {
     const resp = await api.get(`/usuario/${id}`)
     return resp.data;
