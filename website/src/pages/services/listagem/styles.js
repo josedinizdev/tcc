@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+    import styled from 'styled-components';
 
 const StyledServices = styled.div`
     .services {
@@ -19,12 +19,12 @@ const StyledServices = styled.div`
         color: #fff;
         font-family: inria-regular;
         font-size: 2rem;
-        padding-left: 8rem;
+        padding-left: 4rem;
     }
     .services__img {
         width: 50%;
         height: 100%;
-        padding-left: 8rem;
+        padding-left: 4rem;
     }
     
     /* Faixa */
@@ -55,10 +55,11 @@ const StyledServices = styled.div`
             padding: 1rem 1.2rem;
             outline: none;
         }
-    }
 
-    .toast {
-        position: absolute;
+        /* .pesquisar {
+            border: none;
+            border-radius: .8rem;
+        } */
     }
 `
 ;

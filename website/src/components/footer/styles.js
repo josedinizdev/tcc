@@ -64,7 +64,7 @@ section {
 }
 
 form {
-    width: 20%;
+    width: 32%;
 
     label {
         font-family: 'inria-regular';
@@ -72,7 +72,7 @@ form {
     }
 
     textarea {
-        height: 100%;
+        height: 10rem;
         margin-top: .4rem;
 
         background-color: rgba(205, 205, 205, 32%);

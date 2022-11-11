@@ -8,15 +8,15 @@ export default function Home(props) {
         <StyledHome>
             <header className='container'>  
                 <div className='container-column header-black al-center jc-center'>
-                    <div className='jc-start'>
+                    <div className='jc-start header-margin-l'>
                         <h2 className='cFFFFFF code-semibold'> - bem vindo(a) </h2>
                         <img src='/img/logo-white.png' alt='WITHU' />
                         <p className='cFFFFFF'> Sempre com você, o problema apareceu, conte conosco </p>
                     </div>
                 </div>
                 <div className='container-column header-img header-orange al-end jc-end'>
-                    <div className='jc-start espacamento'>
-                        <h2 className='cFFFFFF'> - introdução </h2>
+                    <div className='container-column al-end espacamento'>
+                        <h2 className='container cFFFFFF '> - introdução </h2>
                         <h1 className='cFFFFFF'> Empresa de freelancer para oferecer tudo que precisar </h1>
                         <p className='cFFFFFF p2'> Sempre oferecendo os melhores serviços para você e sua família. </p>
                     </div>
@@ -24,13 +24,13 @@ export default function Home(props) {
             </header>
             <section className='faixa1 container jc-center al-center'> {/* Faixa 1 */}  
                 <div className='container cinza-card'>
-                    <div className='container-column'> 
+                    <div className='container-column container-background-f1'> 
                         <h1 className='c1E4F6F'> Qualquer tipo de pergunta ou assunto </h1>
                         <p> 
                             Estamos sempre abertos a sugestões e perguntas, independente de sua dúvida, 
                             vamos ter comprometimento em atender o que você precisa.
                         </p>
-                        <div> <button className='botao-contato pointer'> Entre em contato </button> </div>
+                        <div className='botao-div'> <button className='pointer'> Entre em contato </button> </div>
                     </div>
 
                     <div className='container-column'> 
@@ -39,7 +39,7 @@ export default function Home(props) {
                         Vamos sempre estar em busca de oferecer nossos melhores serviços, 
                         e estamos sempre abertos a sugestões.
                         </p>
-                        <div> <button className='pointer'> Envie uma avaliação </button> </div>
+                        <div className='botao-div'> <button className='pointer'> Envie uma avaliação </button> </div>
                     </div>
                 </div>
             </section>
@@ -51,11 +51,10 @@ export default function Home(props) {
                             <h1> Em busca de trabalhar com o que quiser? </h1>
                             <p className='cFFFFFF'> Aqui você pode começar diretamente da sua casa! </p>
 
-                            <div className='container jc-end al-end'> 
-                                <Link to='/perfil'> <button className='cFFFFFF'> Junte-se </button> </Link>
+                            <div className='container jc-end al-end juntar-button-div'> 
+                                <Link className='cFFFFFF container al-end' to='/perfil'> Junte-se </Link>
                             </div>
                         </div>
-
                         <div className='img' /> 
             </section>
 
@@ -69,8 +68,8 @@ export default function Home(props) {
 
                     <div className='container jc-around'> {/* Confiabilidade, Qualidade e Valores */}
 
-                        <div className='container-column al-center'> {/* Confiabilidade */}
-                            <span> 1 </span> 
+                        <div className='container-column al-center valores-div'> {/* Confiabilidade */}
+                            <span > 1 </span > 
 
                             <div className='container al-center'> {/* Confiabilidade e Verificado */}
                                 <h1 className='uppercase'> Confiabilidade </h1>           
@@ -80,8 +79,8 @@ export default function Home(props) {
                             <p> Estamos sempre garantindo que seu serviço seja feita corretamente </p>
                         </div>
 
-                        <div className='container-column al-center'> {/* Qualidade */}
-                            <span> 2 </span> 
+                        <div className='container-column al-center valores-div'> {/* Qualidade */}
+                            <span > 2 </span > 
 
                             <div className='container al-center'> {/* Qualidade e Verificado */}
                                 <h1 className='uppercase'> Qualidade </h1>                 
@@ -91,8 +90,8 @@ export default function Home(props) {
                             <p> Todos os nossos serviços são oferecidos de maneira simples e com qualidade única </p>
                         </div>
 
-                        <div className='container-column al-center'> {/* Valores */}
-                            <span> 3 </span> 
+                        <div className='container-column al-center valores-div'> {/* Valores */}
+                            <span > 3 </span > 
 
                             <div className='container al-center'> {/* Valores e Verificado */}
                                 <h1 className='uppercase'> Valores </h1>
@@ -106,7 +105,7 @@ export default function Home(props) {
                 </div>
             </section>
 
-            <section className='container w100 faixa6 bEF7601 al-center jc-center'> {/* Faixa 6 */}
+            <section className='container w100 faixa5 bEF7601 al-center jc-center'> {/* Faixa 6 */}
                 <div className='container-column cinza-card'>
                     <h2> - liderança </h2>
 

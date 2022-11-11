@@ -23,11 +23,15 @@ header {
     }
 
     .header-img {
-        background: url('/img/home-background-header.png') #EF7601 no-repeat 100%;
+        background: url('/img/home-background-header.png') no-repeat 100%;
         height: auto;
         width: 100%;
         max-height: 60vh;
         background-size: 100% 100%;
+    }
+
+    .header-margin-l {
+        margin-left: 1rem;
     }
 
     img {
@@ -36,7 +40,7 @@ header {
     }
 
     h1 {
-        font-size: 2.3rem;
+        font-size: 1.8rem;
         width: 60%;
         line-height: 2.5rem;
         letter-spacing: 1px;
@@ -51,9 +55,15 @@ header {
         margin-top: .8rem;
     } 
 
+    h2 {
+        flex-direction: row-reverse;
+        width: 60%;
+        margin-right: 4rem;
+    }
+
     .p2 {
         width: 55%;
-        font-size: 1.9rem;
+        font-size: 1.5rem;
     }
 
     .espacamento {
@@ -64,12 +74,18 @@ header {
 .faixa1 {
     background-color: #EF7601;
     padding: 1.5rem 0;
+    height: 75vh;
+
+    .container-background-f1 {
+        width: 100%;
+        margin: 0 1rem;
+    }
 
     h1 {
         font-family: 'inria-regular';
         font-size: 2.4rem;
         font-weight: bold;
-        width: 50%;
+        width: 80%;
         line-height: 3rem;
         margin-bottom: 1.2rem;
     }
@@ -78,15 +94,14 @@ header {
         font-family: 'inria-regular';
         font-size: 1.5rem;
         letter-spacing: 1px;
-        width: 50%;
+        width: 75%;
     }
     
     button {
         font-family: 'inria-regular';
         font-size: .9rem;
         font-weight: bold;       
-        margin-top: 12rem;
-        width: 25%;
+        width: 40%;
         color: #fff;
         background-color: #FF9226;
         border-radius: .4rem;
@@ -100,14 +115,18 @@ header {
     .w60 {
         width: 60%;
     }
-    .botao-contato {
-        margin-top: 10rem;
+
+    .botao-div {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        justify-content: flex-end;
     }
 }
 
 .faixa2 {
     width: 100%;
-    
+    height: 60vh;
 
     .trabalho-juntar {
         padding: 2rem 2rem 2rem 3rem;
@@ -129,7 +148,7 @@ header {
         font-family: 'inria-regular';
         font-weight: bold;
         font-size: 2.4rem;
-        width: 50%;
+        width: 80%;
         line-height: 2.6rem;
         color: #EF7601;
     }
@@ -137,18 +156,23 @@ header {
     p {
         font-family: 'inria-regular';
         font-size: 1.6rem;
-        width: 40%;
+        width: 75%;
         margin-top: 1rem;
     }
 
-    button {
+    .juntar-button-div {
+        display: flex;
+        height: 100%;
+        align-items: flex-end;
+    }
+
+    a {
         font-family: 'inria-regular';
         font-size: 1.2rem;
         justify-self: flex-end;
         background-color: #FF9226;
         padding: .8rem 2.4rem;
         border-radius: .6rem;
-        margin-top: 20rem;
     }
 
     .img {
@@ -167,6 +191,10 @@ header {
         font-size: 2rem;
         color: #EF7601;
     }
+    
+    .valores-div {
+        width: 60%;
+    }
 
     span {
         display: flex;
@@ -177,10 +205,10 @@ header {
         font: bold;
         color: #1E4F6F;
     
-        width: 15%;
+        width: 20%;
         margin: 1rem 0 .5rem 0;
-        border: 1px solid #C8D2D2;
-        padding: .5rem 1rem;
+        border: 1px solid #000;
+        padding: 1rem;
         border-radius: 999px;
     }
 
@@ -196,11 +224,11 @@ header {
         font-size: 1.2rem;
 
         text-align: center;
-        width: 36%;
+        width: 50%;
     }
 }
 
-.faixa6 {
+.faixa5 {
     padding: 2rem 1rem;
     
     img {
@@ -216,7 +244,7 @@ header {
     }
 
     p {
-        width: 90%;
+        width: 80%;
     }
 }
 `;

@@ -21,7 +21,7 @@ h1 {
 }
 
 h2 {
-    font-size: 1.1rem;
+    font-size: 1.4rem;
 }
 
 .height100 {

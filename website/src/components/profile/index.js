@@ -9,21 +9,23 @@ import StyledProfile from './styles'
 import { Link } from 'react-router-dom'
 
 export default function ProfileCard(props) {
+
     return(
         <StyledProfile>
             <article className='container-column card-branco pad1r infoPerfil'>
-                <div className='container'>
+                <div className='container al-center'>
                     <img src={props.userProfile} alt=''/>
 
                     <div className='container-column'>
                         <h2> {props.nome} </h2>
                         <p className='cargo'> {props.cargo}</p>
+
                     </div>
                 </div>
 
                 <h2> Sobre </h2>
                 <p className='wrap width100'>{props.habilidades}</p>
-                <div className='container jc-between w100'>
+                <div className='container jc-between al-end w100 height100'>
                     <Link to='/perfil/editar' className='buttons absolute'>Editar Perfil</Link>
                     <Link to='/perfil/adm/contato' className='buttons contato absolute'>Contatos</Link>
                 </div>

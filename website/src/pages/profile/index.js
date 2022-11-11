@@ -22,6 +22,13 @@ export default function Profile() {
                 break;
         }
     }
+
+    // function caracter(cargoa) {
+    //     if(cargoa.length >= 100) 
+    //     console.log(cargoa);
+    //         return (cargoa + '...')
+    // }
+
     
     useEffect(_ => {
         let resp;
@@ -46,10 +53,13 @@ export default function Profile() {
                 <div className='container cinza-card '>
                     <ProfileCard userProfile={User}
                         desconectar={e => click(e)}
-                        nome={dados.nome}
-                        habilidades={dados.sobre}
-                        normal={true}
+                        nome='David Douglas'
+                        habilidades=' David Douglas David Douglas David Douglas David Douglas David Douglas David DouglasDavid Douglas David Douglas David Douglas '
+                        normal={true} 
                     />
+
+                    
+                    
                     <div className='linha' />
                 <section className='container-column'>
                     <h1> Bem-vindo de volta</h1>
@@ -67,3 +77,5 @@ export default function Profile() {
     </StyledProfile>
     )
 }
+
+console.log(ProfileCard.habilidades);

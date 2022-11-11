@@ -5,9 +5,11 @@ const StyledProfile = styled.div`
 
 .infoPerfil {
     height: 15rem;
+    width: 18rem;
+    max-width: 18rem;
 
     .buttons {
-        margin-top: 2rem;
+        margin-top: .8rem;
         font-family: 1.2rem;
         text-transform: uppercase;
         color: #fff;
@@ -29,6 +31,9 @@ const StyledProfile = styled.div`
     .absolute {
         position: absolute;
     }
+}
+.height100 {
+    height: 100%;
 }
 
 aside {

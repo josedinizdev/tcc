@@ -109,7 +109,7 @@ export default function Services() {
                                 </select>
                                 <div>
                                     <input type='text' placeholder="Pesquisar" value={filtro} onChange={e => setFiltro(e.target.value)} /> 
-                                    <button onClick={pesquisar}>pesquisar</button>
+                                    <button className="pointer" onClick={pesquisar}>pesquisar</button>
                                 </div>
                             </div>
                         </section>
