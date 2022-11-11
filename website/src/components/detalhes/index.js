@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { VerDetalhes } from '../../api/servicos';
+import { Link } from 'react-router-dom'
 import './styles.scss'
+import Jose from '../../assets/images/diretor-ceo.png'
 const StyledDetalhes = styled.div`
     top: 0;
     left: 0;
@@ -34,20 +36,45 @@ export default function Detalhes(props) {
             <div id='detalhes' className='overlay' onClick={props.close} />
             <div className='content container-column detalhesContainer'>
                 <div id='detalhes' className="modal__close" onClick={props.close} />
-                <p>{servicos.titulo}</p>
-                <p>{servicos.descricao}</p>
-                <p>{servicos.ideias}</p>
-                <p>{servicos.requisitos}</p>
-                <p>{servicos.data}</p>
-                <p>{servicos.usuario}</p>
-                <p>{servicos.estado}</p>
+                <div className='container detalhes jc-around'>
+                    <div className='container-column w45'>
+                        <h1>{servicos.titulo}</h1>
+                        <p>{servicos.descricao}</p>
+                    </div>
+
+                    <div className='container-column wDireito'>
+                        <p className='container jc-end data'>{servicos.data}</p>
+                        <div className='container'>
+                            <div className='card'>
+                                <h2> IDEIA </h2> 
+                                <p>{servicos.ideias}</p>
+                            </div>
+                            <div className='card'>
+                                <h2> REQUISITOS </h2>
+                                <p>{servicos.requisitos}</p>    
+                            </div>
+                        </div>
+
+                        <div className='container usuario'>
+                            { /* Imagem */}
+                            <img src={Jose} alt='perfil'/>
+                            <div className='container-column'>
+                                <h1 className='username'>{servicos.usuario}</h1>
+                                <Link className='visualizar' to='/perfil'> visualizar perfil >></Link>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+
+                {/* <p>{servicos.estado}</p>
                 <p>{servicos.cidade}</p>
                 <p>{servicos.endereco}</p>
                 <p>{servicos.numero}</p>
                 <p>{servicos.cep}</p>
-                <p>{servicos.complemento}</p>
-                <div className='container'>
-                    {categorias.map(item => <p>{item}</p>)}
+                <p>{servicos.complemento}</p> */}
+                <div className='container categoria'>
+                    {categorias.map(item => <p className='pato'>{item}</p>)}
                 </div>
             </div>
         </StyledDetalhes>
