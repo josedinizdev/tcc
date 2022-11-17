@@ -33,7 +33,7 @@ export default function View(props) {
                         <ul className='container h100 al-center'>
                             <li><Link to='/'>Página Inicial</Link></li>
                             <li><Link to='/servicos'>Serviços</Link></li>
-                            <li><Link to='/support'>Suporte</Link></li>
+                            <li><Link to='/suporte'>Suporte</Link></li>
                             <li><Link to='/sobre'>Sobre</Link></li>
                             <li><Link to='/perfil'>Perfil</Link></li>
                         </ul>
