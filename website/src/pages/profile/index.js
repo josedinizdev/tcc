@@ -53,8 +53,8 @@ export default function Profile() {
                 <div className='container cinza-card '>
                     <ProfileCard userProfile={User}
                         desconectar={e => click(e)}
-                        nome='David Douglas'
-                        habilidades=' David Douglas David Douglas David Douglas David Douglas David Douglas David DouglasDavid Douglas David Douglas David Douglas '
+                        nome={dados.nome}
+                        habilidades={dados.habilidades}
                         normal={true} 
                     />
 

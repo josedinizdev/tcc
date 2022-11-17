@@ -15,6 +15,8 @@ import BuscarUsuarioPage from './pages/profile/pesquisarUsuario';
 import EditarPerfil from './pages/profile/editar';
 import Gerenciar from './pages/services/usuario'
 import ProfissionalPage from './pages/profile/profisisonal';
+import SuportePage from './pages/support';
+import SobrePage from './pages/about';
 
 export default function Index() {
     return (
@@ -25,6 +27,8 @@ export default function Index() {
                 <Route path='/cadastro' element={<Register />} />
                 <Route path='/servicos/usuario' element={<View><Gerenciar /></View>} /> 
                 <Route path='/servicos' element={<View><Services /> <Footer /> </View>} />
+                <Route path='/suporte' element={<View><SuportePage /> <Footer /> </View> } />
+                <Route path='/sobre' element={<View><SobrePage /> <Footer /> </View> } />
                 <Route path='/perfil' element={<View><Profile /> <Footer /> </View>} />
                 <Route path='/perfil/pesquisa' element={<View><BuscarUsuarioPage />  </View>} />
                 <Route path='/perfil/editar' element={<View><EditarPerfil />  </View>} />

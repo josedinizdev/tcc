@@ -80,7 +80,7 @@ export default function Cadastrar(props) {
     return (
         <StyledCadastrar className='fixed z4 container jc-center al-center wh100'>
             <div id='close-cadastro' className='cadastrar__overlay absolute z1 wh100' onClick={props.close} />
-            <div className='cadastrar__content relative z2 container-column cadastrar'>
+            <div className='cadastrar__content relative z2 container-column cadastrar pad1r'>
                 <div id='close-cadastro' onClick={props.close}>x</div>
                 <div className='container jc-between al-center'> {/* Titulo, categoria e botão */}
                     <div className='container-column'> {/* Título e categoria */}
@@ -122,7 +122,7 @@ export default function Cadastrar(props) {
                     </div>
 
                     <div className='container-column inputDiv'>
-                        <label> Ideías </label>
+                        <label> Ideias </label>
                         <textarea placeholder='Ex.: Fique limpa e quero uma decoração...' value={ideias} onChange={e => setIdeias(e.target.value)} type="text" />
                     </div>
 

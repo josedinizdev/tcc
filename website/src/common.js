@@ -377,10 +377,10 @@ const Common = createGlobalStyle`
     }
     .modal__close::before {
         content: 'X';
-        color: red;
+        color: #000;
         position: absolute;
         top: 10px;
-        right: 10px;
+        left: 10px;
         z-index: 3;
         cursor: pointer;
     }

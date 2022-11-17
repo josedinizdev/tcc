@@ -35,9 +35,9 @@ export default function Detalhes(props) {
         <StyledDetalhes className='fixed container jc-center al-center wh100'>
             <div id='detalhes' className='overlay' onClick={props.close} />
             <div className='content container-column detalhesContainer'>
-                <div id='detalhes' className="modal__close" onClick={props.close} />
+                <div id='detalhes' className="modal__close modal-padding    " onClick={props.close} />
                 <div className='container detalhes jc-around'>
-                    <div className='container-column w45'>
+                    <div className='container-column w38'>
                         <h1>{servicos.titulo}</h1>
                         <p>{servicos.descricao}</p>
                     </div>
@@ -45,21 +45,20 @@ export default function Detalhes(props) {
                     <div className='container-column wDireito'>
                         <p className='container jc-end data'>{servicos.data}</p>
                         <div className='container'>
-                            <div className='card'>
+                            <div className='card scroll-y'>
                                 <h2> IDEIA </h2> 
                                 <p>{servicos.ideias}</p>
                             </div>
-                            <div className='card'>
+                            <div className='card scroll-y'>
                                 <h2> REQUISITOS </h2>
                                 <p>{servicos.requisitos}</p>    
                             </div>
                         </div>
 
-                        <div className='container usuario'>
-                            { /* Imagem */}
+                        <div className='container usuario al-center'>
                             <img src={Jose} alt='perfil'/>
                             <div className='container-column'>
-                                <h1 className='username'>{servicos.usuario}</h1>
+                                <h2>{servicos.usuario}</h2>
                                 <Link className='visualizar' to='/perfil'> visualizar perfil >></Link>
                             </div>
                         </div>
@@ -73,8 +72,8 @@ export default function Detalhes(props) {
                 <p>{servicos.numero}</p>
                 <p>{servicos.cep}</p>
                 <p>{servicos.complemento}</p> */}
-                <div className='container categoria'>
-                    {categorias.map(item => <p className='pato'>{item}</p>)}
+                <div className='container categorias'>
+                    {categorias.map(item => <p className='categoria'>{item}</p>)}
                 </div>
             </div>
         </StyledDetalhes>

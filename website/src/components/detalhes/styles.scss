@@ -64,8 +64,8 @@
         height: 85%;
         width: 100%;
 
-        .w45 {
-            width: 40%;
+        .w38 {
+            width: 38%;
         }
 
         .wDireito {
@@ -88,6 +88,12 @@
             width: 100%;
             margin: 0 .5rem;
             padding: .6rem;
+
+            
+        h2 {
+            font-size: 1.4rem;
+            margin-bottom: .5rem;
+        }
         }
         h1 {
             font-family: 'code-bold';
@@ -96,54 +102,61 @@
             font-size: 2rem;
         }
 
-        h2 {
-            font-size: 1.4rem;
-            margin-bottom: .6rem;
-        }
 
         p {
             font-family: 'inria-regular';
             font-size: 1rem;
         }
 
-        .usuario {
-            margin-top: 1rem;
-
-            .username {
-                font: bold;
-                font-family: 'code-bold';
-                text-transform: uppercase;
-                font-family: 2.2rem ;
-            }
-
-            img {
-                border: 4px solid #242424;
-                border-radius: 999px;
-                width: 5rem;
-                height: 5rem;
-                margin-right: .6rem;
-            }
-
-            .visualizar {
-                color: #b3b3b3;
-            }
+        .scroll-y {
+            overflow-y: scroll;
         }
 
-        .categoria {
-            height: 100%;
-            width: 100%;
-
-            display: flex;
-            align-items: flex-end;
-            background-color: #1E4F6F;
-        }
     }
 
-    .pato {
+    .categorias {
+        height: 100%;
+        width: 100%;
+
+        display: flex;
+        align-items: flex-end;
+    }
+
+    .categoria {
         background-color: #1E4F6F;
         color: #fff;
         padding: .4rem .8rem;
         text-align: center;
         border-radius: .8rem;
+        margin: 0 .5rem;        
+    }
+
+    .usuario {
+        margin-top: 1.5rem;
+
+        h2 {
+            font: bold;
+            font-family: 'code-bold';
+            text-transform: uppercase;
+            font-family: 4.2rem ;
+        }
+
+        img {
+            border: 4px solid #242424;
+            border-radius: 999px;
+            width: 5rem;
+            height: 5rem;
+            margin-right: .6rem;
+        }
+
+        a {
+            color: #b3b3b3;
+        }
+    }
+}
+
+@media (max-width: 1310px) {
+    p {
+        overflow-y: scroll;
     }
 }
