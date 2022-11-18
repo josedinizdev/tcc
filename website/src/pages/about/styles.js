@@ -10,7 +10,7 @@ header {
     height: 50vh;
 
     .lEsquerdo-margin {
-        margin-left: 2rem;
+        margin: 10% 0 0 2rem;
     }
 
     .b242424 {
@@ -22,7 +22,7 @@ header {
     }
 
     .withu {
-        height: 50%;
+        height: 35%;
     }
 
     .background {
@@ -63,6 +63,14 @@ section {
         align-items: flex-end;
     }
 }
+
+@media (max-width: 1180px) {
+    section > div > p {
+        font-size: 1.2rem
+    }
+}
+
+
 `;
 
 export default StyledAbout;

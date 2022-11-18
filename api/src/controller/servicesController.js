@@ -1,6 +1,6 @@
 import { Router } from 'express'
 import {
-  BuscarServicosUsuario,
+  BuscarServicosUsuarioAt,
   CadastrarServico,
   AtribuirCategoria,
   RedefinirCategorias,
@@ -12,7 +12,8 @@ import {
   DetalhesServicos,
   EditarServico,
   listarServicosAplicados,
-  concluirServico
+  concluirServico,
+  aplicarServicos
 } from '../repository/servicesRepository.js';
 const server = Router();
 
@@ -66,7 +67,6 @@ server.post('/servicos', async (req, resp) =>{
 server.get('/servicos/s', async (req, resp) =>{
   try {
     let input = req.query;
-    console.log(input);
     const resposta = await BuscarServicos(input);
     resp.status(200).send(resposta)
   } 
@@ -119,7 +119,7 @@ server.put('/servicos', async (req, resp) => {
 server.get('/servicos/usuario/:id', async (req, resp) =>{
   try {
     const id = Number(req.params.id);
-    const resposta = await BuscarServicosUsuario(id);
+    const resposta = await BuscarServicosUsuarioAt(id);
     resp.status(200).send(resposta)
   } 
   catch (err) {
@@ -201,17 +201,23 @@ server.get('/servicos/worker/', async (req, resp) => {
   }
 })
 
+server.post('/servicos/aplicar/e', async (req, resp) => {
+  try {
+    const input = req.body;
+    console.log('a')
+    const res = aplicarServicos(input)
+    console.log(res)
+    resp.send(res)
+  } catch (err) {
+    resp.status(400).send({err: err.message})
+  }
+})
+
 server.post('/servicos/worker/done/:id', async (req, resp) => {
   try {
-    /* {
-    /*    "done": true
-    /* }
-    */
-    const body = req.body
-    if(body.done === undefined || body.done === " ") 
-      throw new Error('Valor Inválido')
-    const resposta = await concluirServico(id, body.done)
-    resp.status(200).charsetsend(resposta)
+    const id = req.params.id
+    const resposta = await concluirServico(id)
+    resp.status(200).send(resposta)
   } catch (err) {
     resp.status(400).send ({
       erro: err.message

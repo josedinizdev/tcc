@@ -19,6 +19,18 @@ export default function Profissional() {
 
     const navigate = useNavigate();
 
+    function click(e) {
+        switch (e.target.id) {
+            case 'desconectar':
+                storage.remove('usuario-logado')
+                storage.remove('worker')
+                navigate('/')
+                break;
+            default:
+                break;
+        }
+    }
+
     function cancelar() {
         navigate('/perfil');
     }
@@ -52,8 +64,8 @@ export default function Profissional() {
     }, [])
 
     useEffect(_ => {
-        console.log(storage('worker'))
-        if (storage('worker')) {
+        console.log('worker' + storage('worker'))
+        if (storage('worker') !== null) {
             navigate('/perfil');
             toast('Você já é um worker')
         }
@@ -72,9 +84,10 @@ export default function Profissional() {
         <StyledProfissional className="container jc-center al-center wh100v bEF7601">
             <section className="container cinza-card">
                 <ProfileCard userProfile={User}
-                        nome={dados.nome}
-                        habilidades={dados.sobre}
-                        normal={true}
+                    desconectar={e => click(e)}
+                    nome={dados.nome}
+                    habilidades={dados.sobre}
+                    normal={true}
                 /> 
                 <div className="linha" /> 
 

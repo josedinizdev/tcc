@@ -6,7 +6,7 @@ export default function Sobre() {
     return(
         <StyledAbout className='container-column wh100v'>
              <header className='container'>  
-                <div className='container-column header-black jc-center w50p b242424 '>
+                <div className='container-column header-black jc-center al-center w50p b242424 '>
                     <div className='jc-start lEsquerdo-margin'>
                         <h2 className='cFFFFFF code-semibold'> - bem vindo(a) </h2>
                         <img className='withu' src='/img/logo-white.png' alt='WITHU' />

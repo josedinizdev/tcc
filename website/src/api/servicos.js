@@ -74,10 +74,24 @@ export async function VerDetalhes(id) {
     return resp.data;
 }
 
-export async function ServicosAplicados(user) {
-    const resp = await api.get('/servicos/worker/', {
-        nome: user.pesquisa,
-        trabalhador: user.user
-    })
+export async function Concluir(id) {
+    const resp = await api.post(`/servicos/worker/done/${id}`)
+    return resp.data;
+}
+
+export async function ServicosAplicados(input) {
+    const resp = await api.get(`/profissional/servicos/${input}`);
+    console.log(resp)
+    return resp.data;
+}
+
+export async function ServicosAplicadosHis(input) {
+    const resp = await api.get(`/profissional/servicos/his/${input}`);
+    console.log(resp)
+    return resp.data;
+}
+
+export async function AplicarAoServico(servico, usuario) {
+    const resp = await api.post('/servicos/aplicar/e', {servico: servico, usuario: usuario});
     return resp.data;
 }

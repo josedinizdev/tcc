@@ -42,7 +42,7 @@ export default function Editar(props) {
     }, []);
 
     function cadastrar() {
-        if (logado)
+        if (logado) {
             AtualizarServico(
                 servico,
                 local,
@@ -59,6 +59,8 @@ export default function Editar(props) {
                 ideias,
                 requisitos
             );
+            props.close()
+        }
         else
             navigate('/login')
     };
@@ -125,7 +127,7 @@ export default function Editar(props) {
                                     if (catDisp[e.target.value] === newArray[i])
                                         canAdd = false;
                                 if (canAdd || isNaN(Number(e.target.value))) {
-                                    newArray.push(Number(e.target.value));
+                                    newArray.push(Number(e.target.value) + 1);
                                     setCategorias(newArray);
                                     setUpdated(!updated)
                                 }

@@ -97,7 +97,7 @@ export default function Cadastrar(props) {
                                     if (catDisp[e.target.value] === newArray[i])
                                         canAdd = false;
                                 if (canAdd || isNaN(Number(e.target.value))) {
-                                    newArray.push(Number(e.target.value));
+                                    newArray.push(Number(e.target.value + 1));
                                     setCategorias(newArray);
                                     setUpdated(!updated)
                                 }

@@ -23,7 +23,7 @@ export default function Register() {
         <StyledRegister className='container wh100v'>
             <BackgroundDiv className='container w50 h100'>
                 <div className='container whf'>
-                    <img className='register__logo' src='/img/withu-logo.png' alt=''/>
+                    <Link to='/'> <img className='register__logo' src='/img/withu-logo.png' alt=''/> </Link>
                 </div>
                 <div className="container-column">
                     <h1 className='cFFFFFF'>Seja bem vindo(a) á WITHU</h1>

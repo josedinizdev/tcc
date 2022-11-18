@@ -31,12 +31,16 @@ export default function Profile() {
 
     
     useEffect(_ => {
-        let resp;
-        if (!storage('usuario-logado'))
-            navigate('/login');
-        else
-            resp = storage('usuario-logado');
-        setPerfil(resp.id)
+        try {
+            let resp;
+            if (!storage('usuario-logado'))
+                navigate('/login');
+            else
+                resp = storage('usuario-logado');
+            setPerfil(resp.id)
+        } catch (err) {
+            navigate('/login')
+        }
     }, [])
 
     useEffect(_ => {

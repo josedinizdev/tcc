@@ -131,32 +131,19 @@
         margin: 0 .5rem;        
     }
 
-    .usuario {
-        margin-top: 1.5rem;
-
-        h2 {
-            font: bold;
-            font-family: 'code-bold';
-            text-transform: uppercase;
-            font-family: 4.2rem ;
-        }
-
-        img {
-            border: 4px solid #242424;
-            border-radius: 999px;
-            width: 5rem;
-            height: 5rem;
-            margin-right: .6rem;
-        }
-
-        a {
-            color: #b3b3b3;
+    .atribuir {
+        button {
+            color: #fff;
+            background-color: #1E4F6F;
+            border-radius: 1.1rem;
+            padding: .4rem 2.4rem;
+            margin-top: 1.5rem;
         }
     }
 }
 
-@media (max-width: 1310px) {
-    p {
-        overflow-y: scroll;
-    }
-}
+// @media (max-width: 1310px) {
+//     p {
+//         overflow-y: scroll;
+//     }
+// }

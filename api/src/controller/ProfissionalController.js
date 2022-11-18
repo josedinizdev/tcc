@@ -1,5 +1,6 @@
 import { Router } from 'express'
 import {BuscarProfissas, BuscarProfissionaisNome, DeletarContato, UsuarioWorker, VirarProfissional} from '../repository/profissionalRepository.js';
+import { BuscarServicosUsuarioAt, BuscarServicosUsuarioAtHis } from '../repository/servicesRepository.js';
 const server = Router();
 
 server.post('/profissional', async (req, resp) => {
@@ -23,19 +24,7 @@ server.post('/profissional', async (req, resp) => {
     resp.status(400).send ({
       erro: err.message
     });
-  }
-})
-
-server.get('/profissional', async (req, resp) =>{
-  try {
-    const resposta = await BuscarProfissas();
-    resp.status(200).send(resposta)
-
-  } 
-  catch (err) {
-    resp.status(400).send ({
-      erro: err.message
-    });
+    console.log(err)
   }
 })
 
@@ -43,6 +32,7 @@ server.get('/profissional/:id', async (req, resp) => {
   try {
     const id = req.params.id
     const worker = await UsuarioWorker(id)
+    console.log(worker)
     if(!worker)
       throw new Error('Não identificado')
     resp.status(200).send(worker)
@@ -52,6 +42,27 @@ server.get('/profissional/:id', async (req, resp) => {
     });
   }
 })
+
+server.get('/profissional/servicos/:id', async(req, resp) => {
+  try {
+    const id = req.params.id
+    const serv = await BuscarServicosUsuarioAt(id)
+    resp.send(serv)
+  } catch (err) {
+    resp.status(400).send({err: err.message})
+  }
+})
+
+server.get('/profissional/servicos/his/:id', async(req, resp) => {
+  try {
+    const id = req.params.id
+    const serv = await BuscarServicosUsuarioAtHis(id)
+    resp.send(serv)
+  } catch (err) {
+    resp.status(400).send({err: err.message})
+  }
+})
+
 
 server.get('/profissional/:nome', async (req, resp) => {
   try {

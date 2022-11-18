@@ -2,8 +2,9 @@ import User from '../../../assets/images/perfil.png'
 import ProfileCard from '../../../components/profile'
 import StyledContatos from './styles'
 import ContatoCard from '../../../components/profile/contatoCard'
-
+import { useState, useEffect } from 'react'
 export default function AdmContatosPage() {
+    const [dados, setDados] = useState({});
     return(
         <StyledContatos className="container wh100v b5551E3 al-center jc-center">
             <section className='container cinza-card resolutionAdm' >

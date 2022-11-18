@@ -23,6 +23,7 @@ export default function Services() {
         async function ExibirListagem() {
             const resp = await ListarServico({nome: filtro, categoria: categoria});
             let newResp = [];
+            console.log(newResp)
             for (let i = 0; i < resp.length; i++) {
                 let category = false;
                 if (newResp.length > 1)
@@ -47,6 +48,7 @@ export default function Services() {
     async function pesquisar() {
         const req = { nome: filtro, categoria: categoria }
         const resp = await ListarServico(req);
+        console.log(resp)
         let newResp = [];
         for (let i = 0; i < resp.length; i++) {
             let category = false;
@@ -122,12 +124,12 @@ export default function Services() {
                 <div className="container jc-between background-orange"> 
                     <div className="container-column background-transparent services-listar">
                         {servicos.map((item, index) =>
-                            <CardServicoList key={index} className='container-column'>
+                            <CardServicoList key={item.id} className='container-column'>
                                 <ul className='container card al-center jc-between'>
                                     <div className='container-column'>
                                         <li> {item.titulo} </li>
                                         <div className="container">
-                                                {item.categorias.map((categoria, index) => <li key={index} style={{marginRight: '.4rem'}}>{categoria}</li>)} 
+                                                {item.categorias.map((categoria, index) => <li key={categoria.id} style={{marginRight: '.4rem'}}>{categoria}</li>)} 
                                         </div> 
                                     </div>
                                     <li onClick={_ => verDetalhes(item.id)} style={{cursor: "pointer"}}> Veja mais detalhes </li>

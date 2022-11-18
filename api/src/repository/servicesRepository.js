@@ -49,18 +49,47 @@ export async function BuscarServicos({nome = '', categoria = ''}) {
     return linhas;
 }
 
-export async function BuscarServicosUsuario(id) {
+export async function BuscarServicosUsuarioAt(id) {
     const comando = `
-        select tb_servico.id_servico     as id,
-               tb_servico.nm_servico     as titulo,
-               tb_servico.dt_publicado   as data,
-               tb_categoria.ds_categoria as categoria
-          from tb_servico
-         inner join tb_servico_categoria
-            on tb_servico_categoria.id_servico = tb_servico.id_servico
-         inner join tb_categoria
-            on tb_categoria.id_categoria = tb_servico_categoria.id_categoria
-         where tb_servico.id_usuario = ?;
+    select tb_servico.id_servico     as id,
+        tb_servico.nm_servico     as titulo,
+        tb_servico.dt_publicado   as data,
+        tb_categoria.ds_categoria as categoria,
+        tb_usuario.nm_usuario as usuario
+    from tb_servico
+    inner join tb_servico_categoria 
+    on tb_servico_categoria.id_servico = tb_servico.id_servico 
+    inner join tb_categoria 
+    on tb_categoria.id_categoria = tb_servico_categoria.id_categoria 
+    inner join tb_atribuido 
+    on tb_atribuido.id_servico = tb_servico.id_servico 
+    inner join tb_usuario
+    on tb_usuario.id_usuario = tb_servico.id_usuario
+    where tb_atribuido.id_worker = ?
+    and tb_servico.bt_servico = false;
+    `
+    const [linhas] = await con.query(comando, [id]);
+    return linhas;
+}
+
+export async function BuscarServicosUsuarioAtHis(id) {
+    const comando = `
+    select tb_servico.id_servico     as id,
+        tb_servico.nm_servico     as titulo,
+        tb_servico.dt_publicado   as data,
+        tb_categoria.ds_categoria as categoria,
+        tb_usuario.nm_usuario as usuario
+    from tb_servico
+    inner join tb_servico_categoria 
+    on tb_servico_categoria.id_servico = tb_servico.id_servico 
+    inner join tb_categoria 
+    on tb_categoria.id_categoria = tb_servico_categoria.id_categoria 
+    inner join tb_atribuido 
+    on tb_atribuido.id_servico = tb_servico.id_servico 
+    inner join tb_usuario
+    on tb_usuario.id_usuario = tb_servico.id_usuario
+    where tb_atribuido.id_worker = ?
+    and tb_servico.bt_servico = true;
     `
     const [linhas] = await con.query(comando, [id]);
     return linhas;
@@ -163,16 +192,13 @@ export async function DetalhesServicos(id) {
     return linhas;
 }
 
-export async function aplicarServicos (id) {
-    const comando = `
-        insert into tb_servico( ds_titulo, ds_servico, ds_ideias, ds_requisitos, dt_publicado)
-        values( ?, ?, ?, ?, current_data() ) 
-
-        insert into tb_atribuido ( id_servico, id_worker)
-        values   (?, ?) 
+export async function aplicarServicos ({servico, usuario}) {
+    const aply = `
+        insert into tb_atribuido(id_servico, id_worker)
+            values(?, ?);
     `;
-    const [linhas] = await con.query(comando, [`%${id}%`]);
-    return linhas[0];
+    const [linhas] = await con.query(aply, [servico, usuario]);
+    return linhas;
 }
 
 export async function listarServicosAplicados({ categoria = '', nome = '', trabalhador }) {
@@ -196,12 +222,12 @@ export async function listarServicosAplicados({ categoria = '', nome = '', traba
     return linhas;
 }
 
-export async function concluirServico(id, value) {
+export async function concluirServico(id) {
     const comando = `
     update tb_servico
-        set bt_servico = ?
+        set bt_servico = true
     where id_servico = ?;
     `
-    const [linhas] = await con.query(comando, [value, id])
+    const [linhas] = await con.query(comando, [id])
     return linhas;
 }

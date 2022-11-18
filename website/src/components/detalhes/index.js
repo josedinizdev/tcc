@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { VerDetalhes } from '../../api/servicos';
+import { AplicarAoServico, VerDetalhes } from '../../api/servicos';
 import { Link } from 'react-router-dom'
 import './styles.scss'
 import Jose from '../../assets/images/diretor-ceo.png'
+import storage from 'local-storage';
+import { toast, ToastContainer } from 'react-toastify'
 const StyledDetalhes = styled.div`
     top: 0;
     left: 0;
@@ -13,6 +15,15 @@ const StyledDetalhes = styled.div`
 export default function Detalhes(props) {
     const [servicos, setServicos] = useState({});
     const [categorias, setCategorias] = useState([]);
+
+    async function Aplicar() {
+        const worker = storage('worker').id
+        console.log(worker)
+        console.log(props.id)
+        const resp = await AplicarAoServico(props.id, worker)
+        console.log(resp)
+        toast('')
+    }
 
     async function DefinirDetalhes() {
         const resp = await VerDetalhes(props.id);
@@ -54,14 +65,11 @@ export default function Detalhes(props) {
                                 <p>{servicos.requisitos}</p>    
                             </div>
                         </div>
-
-                        <div className='container usuario al-center'>
-                            <img src={Jose} alt='perfil'/>
-                            <div className='container-column'>
-                                <h2>{servicos.usuario}</h2>
-                                <Link className='visualizar' to='/perfil'> visualizar perfil >></Link>
+                        {(storage('worker') && !props.and) && (
+                            <div className='container atribuir al-center'>
+                                <button onClick={_ => Aplicar()}> Atribuir-se </button>
                             </div>
-                        </div>
+                        )}
                     </div>
                 </div>
                 

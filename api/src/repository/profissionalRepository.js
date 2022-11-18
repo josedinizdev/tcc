@@ -1,12 +1,13 @@
 import { con } from "./connection.js";
 
-export async function VirarProfissional (input) {
+export async function VirarProfissional(input) {
+    console.log(input.email)
     const comando = `
-        insert into tb_worker(id_usuario, nr_cpf, ds_estado, ds_email_profissional, nm_cargo, ds_habilidade)
+        insert into tb_worker(id_usuario, nr_cpf, ds_estado, ds_email_profissional, nm_cargo, ds_habilidades)
             values(?, ?, ?, ?, ?, ?);
     `;
-const [linhas] = await con.query(comando , [input.usuario, input.cpf, input.estado. input.email. input.cargo, input.habilidade]);
-return linhas;
+    const [linhas] = await con.query(comando , [input.usuario, input.cpf, input.estado, input.email, input.cargo, input.habilidade]);
+    return linhas;
 }
 
 export async function AvaliaProfissional (input) {
@@ -26,7 +27,7 @@ export async function UsuarioWorker (id) {
             on tb_usuario.id_usuario = tb_worker.id_usuario
          where tb_worker.id_usuario = ?;
     `;
-    const [linhas] = await con.query(comando, [`%${id}%`]);
+    const [linhas] = await con.query(comando, [id]);
     return linhas[0];
 }
 
@@ -50,12 +51,14 @@ return linhas[0];
 
 export async function BuscarProfissas(id) {
     const comando = `
-        select  tb_usuario.id_usuario   id,
-                tb_usuario.nm_usuario     nome,
-                tb_usuario.ds_sobre        sobre
-        from tb_usuario
+        select tb_worker.id_usuario     as id
+            from tb_worker
+        inner join tb_usuario
+            on tb_usuario.id_usuario    = tb_worker.id_usuario
+        where tb_worker.id_usuario     = ?;
     `;
-    const [linhas] = await con.query(comando , [id]);
+    const [linhas] = await con.query(comando, [id]);
+    console.log(linhas)
     return linhas;
 }
 

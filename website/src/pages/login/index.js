@@ -27,10 +27,12 @@ export default function Login() {
         setCarregar(true);
         try {
             const resp = await LoginUsuario(email, senha);
+            console.log(resp)
             storage('usuario-logado', resp)
             try {
                 const worker = await isWorker(storage('usuario-logado').id)
-                if (typeof worker.erro === 'undefined')
+                console.log(worker)
+                if (typeof worker.id !== 'undefined')
                     storage('worker', worker)
             } catch (err) {
                 console.log(err)
@@ -51,7 +53,7 @@ export default function Login() {
         <StyledLogin className='container wh100v z1 relative'>
             <BackgroundDiv className='container w50 h100'>
                 <div className='container whf'>
-                    <img className='login__logo' src='/img/withu-logo.png' alt=''/>
+                    <Link to='/'> <img className='login__logo' src='/img/withu-logo.png' alt=''/> </Link>
                 </div>
                 <div className="container-column">
                     <h1 className='cFFFFFF'>Seja bem vindo(a) á WITHU</h1>
