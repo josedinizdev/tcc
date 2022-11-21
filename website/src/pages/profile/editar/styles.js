@@ -45,10 +45,16 @@ const StyledEditarPerfil = styled.main`
         margin: 1rem;
     }
 
-    .editarFoto {
+    #imagemPerfil {
         visibility: hidden;
+        width: 10rem;
+
     }
 
+    .radius {
+        border-radius: 999px;
+    }
+    
     div button {
         border-radius: .4rem;
         font-size: 1rem;

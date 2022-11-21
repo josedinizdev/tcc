@@ -1,6 +1,8 @@
 import { Router } from 'express'
 import { AdicionarContato, AlterarFoto, CadastrarLogin, CadastroUsuario, DeletarLogin, DeletarUsuario, DescobrirContatoUsuario, editarPerfil, ListarMeusContatos, ListarUsuario, LoginUsuario, PesquisarUsuario, VerDetalhesPerfil } from '../repository/userRepository.js'
+import multer from 'multer';
 const server = Router();
+const upload = multer({dest: 'storage/fotoPerfil'})
 
 server.post('/usuario/login' , async (req, resp) =>{
   try {
@@ -72,8 +74,16 @@ server.put('/usuario/perfil/alterar/:id', async(req, resp) => {
 
     if(!novoPerfil.nome)
         throw new Error("Campo do nome é obrigatório")
-    else if(!novoPerfil.email)
+    if(!novoPerfil.descricao)
+      throw new Error("Campo da descrição é obrigatório")
+    if(!novoPerfil.email)
       throw new Error("Campo do email é obrigatório")
+    if(!novoPerfil.telefone)
+      throw new Error("Campo do telefone é obrigatório")
+    if(!novoPerfil.genero)
+      throw new Error("Campo do gênero é obrigatório")
+    if(!novoPerfil.nascimento)
+      throw new Error("Campo do nascimento é obrigatório")
 
       const resposta = await editarPerfil(id, novoPerfil);
       resp.status(200).send(resposta);
@@ -84,16 +94,15 @@ server.put('/usuario/perfil/alterar/:id', async(req, resp) => {
   }
 })
 
-server.put('/usuario/perfil/alterar/:id/foto', async(req, resp) => {
+server.put('/usuario/perfil/alterar/:id/imagem', upload.single('imagem'), async(req, resp) => {
   try {
-    const id = Number(req.params.id);
-    const fotoUsuario = req.body;
+    const {id} = req.params;
+    const imagem = req.file.path;
 
-    if(!fotoUsuario)
-        throw new Error("Não foi possível alterar.");
-
-    const result = await AlterarFoto(id, fotoUsuario)
-      resp.status(200).send(result);
+    const result = await AlterarFoto(id, imagem)
+    if (resposta != 1)
+      throw new Error('A imagem não pode ser salva.');
+    resp.status(200).send();
   }
 
   catch(err) {

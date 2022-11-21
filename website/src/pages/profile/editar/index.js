@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { DetalhesUsuario, EditarPerfil } from "../../../api/user";
+import { DetalhesUsuario, EditarPerfil, AleterarFotoPerfil } from "../../../api/user";
 import storage from 'local-storage';
 import { useNavigate, Link } from "react-router-dom";
 import StyledEditarPerfil from "./styles";
@@ -16,6 +16,7 @@ export default function IEditarPerfil() {
     const [telefone, setTelefone] = useState('');
     const [genero, setGenero] = useState('');
     const [nascimento, setNascimento] = useState();
+    const [imagemPerfil, setImagemPerfil] = useState('')
     const [id, setId] = useState(0);
 
     const navigate = useNavigate();
@@ -34,6 +35,7 @@ export default function IEditarPerfil() {
                 genero: genero,
                 nascimento: nascimento
             }, perfil)
+            let respImg = await AleterarFotoPerfil(perfil, imagemPerfil);    
             toast('Perfil Editado')
         } catch (err) {
             toast(err.message)
@@ -67,6 +69,16 @@ export default function IEditarPerfil() {
         }
         requisicao();
     }, [perfil])
+
+    function alterarImagem() {
+        document.getElementById('imagemPerfil').click();
+    }
+
+    function exibirImagem() {
+        return URL.createObjectURL(imagemPerfil);
+    }
+
+
     return(
         <StyledEditarPerfil className="container al-center jc-center bEF7601 wrap wh100v">
             <section className="container cinza-card jc-center">
@@ -83,10 +95,16 @@ export default function IEditarPerfil() {
                     </nav>
 
                     <div className="container jc-center">
-                        <img src={User} alt='' />
-                        <span className="container c1E4F6F al-end"> 
+                        {imagemPerfil && 
+                            <img className="radius" src={exibirImagem()} alt='' />
+                        }
+
+                        {!imagemPerfil && 
+                            <img className="radius" src={User} alt='' />
+                        }
+                        <span className="container-column al-start jc-end c1E4F6F pointer" onClick={alterarImagem}> 
+                        <input type='file' id='imagemPerfil'  onChange={e => setImagemPerfil(e.target.files[0])}/>
                             Alterar foto de perfil 
-                            <input className="editarFoto" type='file' />
                         </span>
                     </div>
 

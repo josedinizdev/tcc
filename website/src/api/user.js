@@ -33,7 +33,6 @@ export async function DetalhesUsuario(id) {
 }
 
 export async function EditarPerfil(perfil, id) {
-    console.log(id)
     const resp = await api.put(`/usuario/perfil/alterar/${id}`, {
         nome: perfil.nome,
         descricao: perfil.descricao,
@@ -42,8 +41,18 @@ export async function EditarPerfil(perfil, id) {
         genero: perfil.genero,
         nascimento: perfil.nascimento
     })
-    console.log(resp)
     return resp.data;
+}
+
+export async function AleterarFotoPerfil(id, imagem) {
+    const formData = new FormData();
+    formData.append('imagem', imagem);
+    const resp = await api.put(`usuario/perfil/alterar/${id}/imagem`, formData, {
+        headers: {
+            "Content-Type": "multipart/form-data"
+        },
+    });
+    return resp.status;
 }
 
 export async function Usuarios() {
@@ -59,4 +68,4 @@ export async function isWorker(id) {
 export async function beWorker(input) {
     const resp = await api.post('/profissional', input)
     return resp.data;
-}
+}   

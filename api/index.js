@@ -15,4 +15,6 @@ server.use(profissionalController);
 server.use(servicesController);
 server.use(categoriasController);
 
+server.use('/storage/fotoPerfil', express.static('storage/fotoPerfil'));
+
 server.listen(process.env.PORT, () => console.log(`API ONLINE NA PORTA ${process.env.PORT}`));

@@ -76,13 +76,13 @@ export async function VerDetalhesPerfil(id) {
 }
 
 
-export async function AlterarFoto(usuario, id) {
+export async function AlterarFoto(imagem, id) {
     const comando = `
         update tb_usuario
             set img_usuario = ?
         where id_usuario = ?;
     `;
-    const [linhas] = await con.query(comando, [usuario.imagem, id]);
+    const [linhas] = await con.query(comando, [imagem, id]);
     return linhas.affectedRows; 
 }
 
